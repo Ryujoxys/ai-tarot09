@@ -1,0 +1,200 @@
+/* 是否问题页面专用样式 */
+.question-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.question-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.question-title {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.question-subtitle {
+    color: #777;
+    font-size: 1.1rem;
+}
+
+.question-form {
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #555;
+}
+
+.form-control {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #8A2BE2;
+    box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.2);
+}
+
+.question-examples {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.examples-title {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.examples-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.examples-list li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+    color: #555;
+}
+
+.examples-list li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #8A2BE2;
+}
+
+.examples-list li:last-child {
+    margin-bottom: 0;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #8A2BE2;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.submit-btn:hover {
+    background-color: #7926c9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+}
+
+.notes {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.notes-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .question-container {
+        padding: 30px 20px;
+        margin: 30px 15px;
+    }
+}
+
+/* 夜间模式适配 */
+body.dark-mode .question-container {
+    background-color: #2c2c2e;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .question-title {
+    color: #e0e0e0;
+}
+
+body.dark-mode .question-subtitle {
+    color: #b0b0b0;
+}
+
+body.dark-mode .form-label {
+    color: #c7c7cc;
+}
+
+body.dark-mode .form-control {
+    background-color: #3a3a3c;
+    border-color: #38383a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .form-control:focus {
+    border-color: #9d4ced;
+    box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.3);
+}
+
+body.dark-mode .question-examples {
+    background-color: #3a3a3c;
+}
+
+body.dark-mode .examples-title {
+    color: #e0e0e0;
+}
+
+body.dark-mode .examples-list li {
+    color: #c7c7cc;
+}
+
+body.dark-mode .examples-list li:before {
+    color: #9d4ced;
+}
+
+body.dark-mode .submit-btn {
+    background-color: #9d4ced;
+}
+
+body.dark-mode .submit-btn:hover {
+    background-color: #b072f3;
+    box-shadow: 0 5px 15px rgba(157, 76, 237, 0.4);
+}
+
+body.dark-mode .notes {
+    background-color: #3a3a3c;
+    color: #b0b0b0;
+}
+
+body.dark-mode .notes-title {
+    color: #e0e0e0;
+}

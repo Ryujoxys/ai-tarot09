@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抽取塔罗牌 - Tarot09</title>
+    <meta name="description" content="左右滑动选择与您能量感应最强的塔罗牌，获取命运指引。">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/page-styles/tarot-drawing.css">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <span>🔮</span>
+                    <span>Tarot09</span>
+                </a>
+            </div>
+            
+            <button class="menu-toggle" aria-label="菜单">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-capsules">
+                <!-- 主导航胶囊 -->
+                <div class="nav-capsule main-nav-capsule">
+                    <div class="nav-menu">
+                        <ul>
+                            <li><a href="index.html" class="nav-link">首页</a></li>
+                            <li><a href="ai-taluopai.html" class="nav-link active">AI塔罗占卜</a></li>
+                            <li><a href="yes-no-tarot.html" class="nav-link">是否塔罗占卜</a></li>
+                            <li><a href="javascript:void(0)" class="nav-link premium" id="premiumLink"><i class="fas fa-crown"></i> 会员订阅</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 用户控制胶囊 -->
+                <div class="nav-capsule user-controls-capsule">
+                    <div class="user-controls">
+                        <button class="theme-toggle" aria-label="切换主题">
+                            <i class="fas fa-moon"></i>
+                            <i class="fas fa-sun"></i>
+                        </button>
+                        <button class="language-toggle" aria-label="切换语言">
+                            <i class="fas fa-globe"></i>
+                        </button>
+                        <button class="debug-toggle" aria-label="调试设置">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                        <a href="javascript:void(0)" class="user-profile">
+                            😊
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main>
+        <section class="drawing-header">
+            <div class="container">
+                <h1 class="drawing-title">
+                    抽取您的 <span class="tarot-highlight">塔罗牌</span>
+                </h1>
+                <p class="drawing-subtitle">点击卡牌，获取塔罗能量指引</p>
+            </div>
+        </section>
+        
+        <!-- 在线抽牌按钮 -->
+        <div class="online-drawing-btn" id="onlineDrawingBtn">
+            <i class="fas fa-random shuffle-icon"></i>
+            <span>在线抽牌</span>
+        </div>
+        
+        <!-- 塔罗牌扇形展示区域 -->
+        <div class="tarot-container">
+            <!-- 扇形卡牌区 -->
+            <div class="tarot-fan" id="tarotFan">
+                <!-- 卡牌将通过JS动态生成 -->
+            </div>
+            
+            <!-- 牌位展示区域 -->
+            <div class="card-positions" id="cardPositions">
+                <!-- 牌位将通过JS动态生成 -->
+            </div>
+        </div>
+        
+        <!-- 重新抽牌按钮 -->
+        <button class="redraw-button" id="redrawButton">
+            <i class="fas fa-sync-alt redraw-icon"></i>
+            <span>重新洗牌</span>
+        </button>
+    </main>
+
+    <!-- 塔罗牌解读子界面 -->
+    <div class="reading-modal" id="readingModal">
+        <div class="reading-container">
+            <button class="close-reading" id="closeReading">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="reading-header">
+                <h2 class="reading-title">您的塔罗牌解读</h2>
+                <div class="reading-question" id="readingQuestion">您的问题: 未来一个月的事业发展如何？</div>
+                <div class="reading-date" id="readingDate">2023年12月30日 19:42</div>
+            </div>
+            
+            <div class="cards-summary" id="cardsSummary">
+                <!-- 卡牌总结区域将通过JS动态生成 -->
+            </div>
+            
+            <div class="reading-conversation">
+                <h3 class="conversation-title">塔罗解读对话</h3>
+                
+                <div class="chat-messages" id="chatMessages">
+                    <!-- 聊天消息将通过JS动态生成 -->
+                </div>
+                
+                <div class="chat-input-container">
+                    <input type="text" class="chat-input" id="chatInput" placeholder="输入您的问题或回应...">
+                    <button class="send-button" id="sendMessage">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="reading-actions">
+                <button class="action-button" id="saveReading">
+                    <i class="fas fa-save action-icon"></i>
+                    保存解读
+                </button>
+                <button class="action-button" id="shareReading">
+                    <i class="fas fa-share-alt action-icon"></i>
+                    分享
+                </button>
+                <button class="action-button" id="newReading">
+                    <i class="fas fa-redo action-icon"></i>
+                    重新抽牌
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    © 2023 AI塔罗牌 - 版权所有
+                </div>
+                <div class="footer-links">
+                    <a href="javascript:void(0)">关于我们</a>
+                    <a href="javascript:void(0)">隐私政策</a>
+                    <a href="javascript:void(0)">使用条款</a>
+                    <a href="javascript:void(0)">联系我们</a>
+                    <a href="javascript:void(0)">问题反馈</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 会员订阅弹窗 -->
+    <div class="modal-overlay" id="subscriptionModal">
+        <div class="subscription-modal">
+            <div class="modal-header">
+                <h3 class="modal-title">升级会员</h3>
+                <p class="modal-subtitle">享受无限次塔罗占卜和更多高级功能</p>
+            </div>
+            
+            <div class="plan-options">
+                <div class="plan-option" data-plan="monthly">
+                    <div class="plan-name">
+                        月度会员 <span class="plan-price">¥18.00</span>
+                    </div>
+                    <p class="plan-description">每月自动续费，随时可取消</p>
+                </div>
+                
+                <div class="plan-option selected" data-plan="quarterly">
+                    <div class="plan-name">
+                        季度会员 <span class="plan-price">¥48.00</span>
+                    </div>
+                    <p class="plan-description">每三个月自动续费，相当于每月¥16.00</p>
+                </div>
+                
+                <div class="plan-option" data-plan="yearly">
+                    <div class="plan-name">
+                        年度会员 <span class="plan-price">¥168.00</span>
+                    </div>
+                    <p class="plan-description">每年自动续费，相当于每月¥14.00，最划算</p>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="cancel-button" id="cancelSubscription">取消</button>
+                <button class="subscribe-button" id="confirmSubscription">确认订阅</button>
+            </div>
+            
+            <div class="term-conditions">
+                <p>订阅即表示您同意我们的服务条款和隐私政策。可在到期前24小时取消自动续订。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI调试模态窗口 -->
+    <div id="debug-modal" class="debug-modal">
+        <div class="debug-modal-content">
+            <span class="close-btn" id="close-debug">&times;</span>
+            <h2>AI调试设置</h2>
+            <div class="api-setting">
+                <label for="ai-api-key">请输入AI API密钥：</label>
+                <input type="password" id="ai-api-key" placeholder="API密钥">
+            </div>
+            <div class="api-setting">
+                <label for="ai-api-url">AI服务地址：</label>
+                <input type="text" id="ai-api-url" placeholder="https://api.example.com/v1/chat/completions">
+            </div>
+            <div class="api-setting">
+                <label for="ai-model">AI模型选择：</label>
+                <select id="ai-model">
+                    <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+                    <option value="gpt-4">GPT-4</option>
+                    <option value="claude-3-sonnet">Claude 3 Sonnet</option>
+                    <option value="gemini-1.5-pro">Gemini 1.5 Pro</option>
+                    <option value="custom">自定义</option>
+                </select>
+            </div>
+            <div class="api-setting" id="custom-model-setting" style="display: none;">
+                <label for="custom-model">自定义模型名称：</label>
+                <input type="text" id="custom-model" placeholder="模型名称">
+            </div>
+            <div class="api-setting">
+                <label for="temperature">创造性参数（Temperature）：</label>
+                <input type="range" id="temperature" min="0" max="1" step="0.1" value="0.7">
+                <span id="temperature-value">0.7</span>
+            </div>
+            <div class="api-setting">
+                <label for="tarot-prompt">塔罗牌基础提示词：</label>
+                <textarea id="tarot-prompt" rows="6"></textarea>
+            </div>
+            <button id="save-api-settings" class="btn">保存设置</button>
+            <button id="test-api-connection" class="btn">测试连接</button>
+            <div id="api-test-result" class="api-test-result"></div>
+        </div>
+    </div>
+
+    <!-- 导入订阅模块脚本 -->
+    <script src="js/subscription.js"></script>
+    <!-- 导入测试脚本 -->
+    <script src="js/test-subscription.js"></script>
+    <!-- 导入导航栏模块脚本 -->
+    <script src="js/navbar.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // API相关设置
+            let apiSettings = {
+                apiKey: localStorage.getItem('tarot-api-key') || '',
+                apiUrl: localStorage.getItem('tarot-api-url') || 'https://api.openai.com/v1/chat/completions',
+                model: localStorage.getItem('tarot-api-model') || 'gpt-3.5-turbo',
+                customModel: localStorage.getItem('tarot-custom-model') || '',
+                temperature: localStorage.getItem('tarot-temperature') || 0.7
+            };
+            
+            // 塔罗牌基础提示词
+            const baseTarotPrompt = `# 角色：塔罗占卜师
+# 背景：
+我是一位拥有20年占卜经验的塔罗牌大师。精通78张塔罗牌的含义和解读，擅长运用直觉和智慧为人们解答疑惑。我的占卜技艺源自古老的吉普赛传统，经过多年实践不断精进。
+# 偏好：
+我的语气富有神秘主义，使用形象和感性的语言。用聊天的形式进行占卜，我会一步一步主导这个过程。最终将占卜结果与用户的个人经历相连接，使用涉及他们情感和期望的语言，创造一种只属于他们的故事。
+# 档案：
+语言：中文/英文
+描述：一位经验丰富的塔罗占卜师，通过塔罗牌为人们指引方向 
+# 定义：
+塔罗牌：一种用于占卜和冥想的78张图像牌组。
+大阿尔卡纳：塔罗牌中22张主牌，代表人生重大主题。
+小阿尔卡纳：塔罗牌中56张副牌，代表日常生活。
+# 目标：
+1.通过塔罗牌占卜为用户解答疑惑
+2.引导用户进行自我反思和觉察
+3.为用户提供积极向上的建议和指引
+# 限制：
+1.我详细阅读过[塔罗全书]，我会严格按照书中的方法进行塔罗占卜。
+2.但我不会提到书名《塔罗全书》。
+# 技能：
+1.精通78张塔罗牌的含义和解读
+2.擅长倾听和提问，引导用户表达内心想法
+3.具备丰富的心理学和哲学知识，善于给出建设性建议
+4.能敏锐捕捉用户情绪，给予适当的安慰和鼓励
+# 示例：
+用户：我最近工作上遇到了困难，不知道该如何是好。
+塔罗师：让我们来抽一张牌看看。您抽到了"力量"牌。这张牌象征着内在的力量和勇气。它提醒您，虽然当前面临挑战，但您内心拥有克服困难的力量。试着静下心来，相信自己的能力。也许可以尝试新的工作方法，或寻求同事的支持。记住，每个困难都是成长的机会。
+# 输出格式：
+1.倾听用户的问题或困扰
+2.引导用户抽取塔罗牌
+3.解读抽到的塔罗牌含义
+4.结合用户情况给出建议
+5.鼓励用户进行自我反思
+# 注意事项：
+适应用户高度近视的阅读需求，优化文字排版以提升阅读体验，你可以适当使用emoji
+# 初始化：
+作为塔罗占卜师，拥有精湛的塔罗牌解读技能和敏锐的洞察力，使用中文与用户对话，友好地欢迎用户。然后介绍自己，并提示用户输入想要占卜的问题。
+你好，欢迎来到神秘的塔罗世界。我是一位拥有丰富经验的塔罗占卜师。塔罗牌蕴含着宇宙的智慧，能为您指引人生的方向。今天我很荣幸能为您进行占卜。`;
+            
+            // 设置调试模态窗口功能
+            const debugModal = document.getElementById('debug-modal');
+            const debugToggle = document.querySelector('.debug-toggle');
+            const closeDebug = document.getElementById('close-debug');
+            const aiApiKey = document.getElementById('ai-api-key');
+            const aiApiUrl = document.getElementById('ai-api-url');
+            const aiModel = document.getElementById('ai-model');
+            const customModelSetting = document.getElementById('custom-model-setting');
+            const customModel = document.getElementById('custom-model');
+            const temperatureSlider = document.getElementById('temperature');
+            const temperatureValue = document.getElementById('temperature-value');
+            const saveApiSettings = document.getElementById('save-api-settings');
+            const testApiConnection = document.getElementById('test-api-connection');
+            const apiTestResult = document.getElementById('api-test-result');
+            const tarotPromptTextarea = document.getElementById('tarot-prompt');
+            
+            // 显示基础提示词
+            if (tarotPromptTextarea) {
+                tarotPromptTextarea.value = baseTarotPrompt;
+            }
+            
+            // 调试模态窗口控制
+            if (debugToggle) {
+                debugToggle.addEventListener('click', function() {
+                    debugModal.style.display = 'block';
+                    
+                    // 填充之前保存的设置
+                    aiApiKey.value = apiSettings.apiKey;
+                    aiApiUrl.value = apiSettings.apiUrl;
+                    aiModel.value = apiSettings.model;
+                    
+                    if (apiSettings.model === 'custom') {
+                        customModelSetting.style.display = 'block';
+                        customModel.value = apiSettings.customModel;
+                    } else {
+                        customModelSetting.style.display = 'none';
+                    }
+                    
+                    temperatureSlider.value = apiSettings.temperature;
+                    temperatureValue.textContent = apiSettings.temperature;
+                });
+            }
+            
+            if (closeDebug) {
+                closeDebug.addEventListener('click', function() {
+                    debugModal.style.display = 'none';
+                });
+            }
+            
+            // 当在模态窗口外点击时关闭窗口
+            window.addEventListener('click', function(event) {
+                if (event.target === debugModal) {
+                    debugModal.style.display = 'none';
+                }
+            });
+            
+            // 模型选择切换
+            if (aiModel) {
+                aiModel.addEventListener('change', function() {
+                    if (this.value === 'custom') {
+                        customModelSetting.style.display = 'block';
+                    } else {
+                        customModelSetting.style.display = 'none';
+                    }
+                });
+            }
+            
+            // 温度滑块实时更新显示
+            if (temperatureSlider) {
+                temperatureSlider.addEventListener('input', function() {
+                    temperatureValue.textContent = this.value;
+                });
+            }
+            
+            // 保存API设置
+            if (saveApiSettings) {
+                saveApiSettings.addEventListener('click', function() {
+                    const modelValue = aiModel.value;
+                    
+                    apiSettings = {
+                        apiKey: aiApiKey.value,
+                        apiUrl: aiApiUrl.value,
+                        model: modelValue,
+                        customModel: modelValue === 'custom' ? customModel.value : '',
+                        temperature: temperatureSlider.value
+                    };
+                    
+                    // 保存到本地存储
+                    localStorage.setItem('tarot-api-key', apiSettings.apiKey);
+                    localStorage.setItem('tarot-api-url', apiSettings.apiUrl);
+                    localStorage.setItem('tarot-api-model', apiSettings.model);
+                    localStorage.setItem('tarot-custom-model', apiSettings.customModel);
+                    localStorage.setItem('tarot-temperature', apiSettings.temperature);
+                    
+                    apiTestResult.textContent = '设置已保存';
+                    apiTestResult.className = 'api-test-result success';
+                    apiTestResult.style.display = 'block';
+                    
+                    setTimeout(() => {
+                        apiTestResult.style.display = 'none';
+                    }, 3000);
+                });
+            }
+            
+            // 测试API连接
+            if (testApiConnection) {
+                testApiConnection.addEventListener('click', async function() {
+                    apiTestResult.textContent = '正在测试连接...';
+                    apiTestResult.className = 'api-test-result';
+                    apiTestResult.style.display = 'block';
+                    
+                    try {
+                        const modelToUse = aiModel.value === 'custom' ? customModel.value : aiModel.value;
+                        
+                        const response = await fetch(aiApiUrl.value, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${aiApiKey.value}`
+                            },
+                            body: JSON.stringify({
+                                model: modelToUse,
+                                messages: [
+                                    {role: "system", content: "您是一位塔罗牌占卜师。"},
+                                    {role: "user", content: "测试连接"}
+                                ],
+                                temperature: parseFloat(temperatureSlider.value)
+                            })
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (response.ok) {
+                            apiTestResult.textContent = '连接成功！API正常工作。';
+                            apiTestResult.className = 'api-test-result success';
+                        } else {
+                            apiTestResult.textContent = `连接失败：${data.error?.message || '未知错误'}`;
+                            apiTestResult.className = 'api-test-result error';
+                        }
+                    } catch (error) {
+                        apiTestResult.textContent = `连接错误：${error.message}`;
+                        apiTestResult.className = 'api-test-result error';
+                    }
+                });
+            }
+            
+            // 获取DOM元素
+            const tarotFan = document.getElementById('tarotFan');
+            const cardPositions = document.getElementById('cardPositions');
+            const onlineDrawingBtn = document.getElementById('onlineDrawingBtn');
+            const redrawButton = document.getElementById('redrawButton');
+            
+            // 定义不同牌阵的牌位名称
+            const spreadConfigs = {
+                'three-card': {
+                    title: '三牌阵',
+                    labels: ['过去', '现在', '未来'],
+                    maxCards: 3
+                },
+                'cross': {
+                    title: '十字牌阵',
+                    labels: ['核心问题', '阻碍', '当前状态', '影响', '可能结果'],
+                    maxCards: 5
+                },
+                'five-card': {
+                    title: '发展牌阵',
+                    labels: ['当前状态', '未来发展', '障碍', '最后结果', '建议'],
+                    maxCards: 5
+                },
+                'single-card': {
+                    title: '单卡解读',
+                    labels: ['指引'],
+                    maxCards: 1
+                }
+            };
+            
+            // 获取URL中的牌阵类型参数
+            const urlParams = new URLSearchParams(window.location.search);
+            const spreadType = urlParams.get('spread') || 'five-card'; // 默认为五卡牌阵
+            
+            // 当前牌阵配置
+            const currentSpreadConfig = spreadConfigs[spreadType] || spreadConfigs['five-card'];
+            
+            // 最大可选卡牌数量（根据牌阵类型）
+            const maxCards = currentSpreadConfig.maxCards;
+            
+            // 塔罗牌数据
+            const tarotData = {
+                // 大阿卡纳牌 - 22张
+                majorArcana: [
+                    "愚人", "魔法师", "女祭司", "皇后", "皇帝", "教皇", "恋人", "战车", 
+                    "力量", "隐士", "命运之轮", "正义", "倒吊人", "死神", "节制", "恶魔", 
+                    "高塔", "星星", "月亮", "太阳", "审判", "世界"
+                ],
+                // 小阿卡纳牌 - 56张
+                minorArcana: {
+                    suits: ["权杖", "圣杯", "宝剑", "星币"],
+                    values: ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "侍卫", "骑士", "王后", "国王"]
+                }
+            };
+            
+            // 卡牌名称映射到图片文件名
+            const cardImageMapping = {
+                // 大阿卡纳牌映射
+                "愚人": "00愚者.jpg",
+                "魔法师": "01魔术师.jpg",
+                "女祭司": "02女祭祀.jpg",
+                "皇后": "03皇后.jpg",
+                "皇帝": "04皇帝.jpg",
+                "教皇": "05教皇.jpg",
+                "恋人": "06恋人.jpg",
+                "战车": "07战车.jpg",
+                "力量": "08力量.jpg",
+                "隐士": "09隐士.jpg",
+                "命运之轮": "10命运之轮.jpg",
+                "正义": "11正义.jpg",
+                "倒吊人": "12倒吊人.jpg",
+                "死神": "13死神.jpg",
+                "节制": "14节制.jpg",
+                "恶魔": "15恶魔.jpg",
+                "高塔": "16高塔.jpg",
+                "星星": "17星星.jpg",
+                "月亮": "18月亮.jpg",
+                "太阳": "19太阳.jpg",
+                "审判": "20审判.jpg",
+                "世界": "21世界.jpg",
+                
+                // 小阿卡纳牌映射 - 权杖
+                "权杖Ace": "权杖ACE.jpg",
+                "权杖2": "权杖2.jpg",
+                "权杖3": "权杖3.jpg",
+                "权杖4": "权杖4.jpg",
+                "权杖5": "权杖5.jpg",
+                "权杖6": "权杖6.jpg",
+                "权杖7": "权杖7.jpg",
+                "权杖8": "权杖8.jpg",
+                "权杖9": "权杖9.jpg",
+                "权杖10": "权杖10.jpg",
+                "权杖侍卫": "权杖侍卫.jpg",
+                "权杖骑士": "权杖骑士.jpg",
+                "权杖王后": "权杖王后.jpg",
+                "权杖国王": "权杖国王.jpg",
+                
+                // 小阿卡纳牌映射 - 圣杯
+                "圣杯Ace": "圣杯ACE.jpg",
+                "圣杯2": "圣杯2.jpg",
+                "圣杯3": "圣杯3.jpg",
+                "圣杯4": "圣杯4.jpg",
+                "圣杯5": "圣杯5.jpg",
+                "圣杯6": "圣杯6.jpg",
+                "圣杯7": "圣杯7.jpg",
+                "圣杯8": "圣杯8.jpg",
+                "圣杯9": "圣杯9.jpg",
+                "圣杯10": "圣杯10.jpg",
+                "圣杯侍卫": "圣杯侍卫.jpg",
+                "圣杯骑士": "圣杯骑士.jpg",
+                "圣杯王后": "圣杯王后.jpg",
+                "圣杯国王": "圣杯国王.jpg",
+                
+                // 小阿卡纳牌映射 - 宝剑
+                "宝剑Ace": "宝剑ACE.jpg",
+                "宝剑2": "宝剑2.jpg",
+                "宝剑3": "宝剑3.jpg",
+                "宝剑4": "宝剑4.jpg",
+                "宝剑5": "宝剑5.jpg",
+                "宝剑6": "宝剑6.jpg",
+                "宝剑7": "宝剑7.jpg",
+                "宝剑8": "宝剑8.jpg",
+                "宝剑9": "宝剑9.jpg",
+                "宝剑10": "宝剑10.jpg",
+                "宝剑侍卫": "宝剑侍卫.jpg",
+                "宝剑骑士": "宝剑骑士.jpg",
+                "宝剑王后": "宝剑王后.jpg",
+                "宝剑国王": "宝剑国王.jpg",
+                
+                // 小阿卡纳牌映射 - 星币
+                "星币Ace": "星币ACE.jpg",
+                "星币2": "星币2.jpg",
+                "星币3": "星币3.jpg",
+                "星币4": "星币4.jpg",
+                "星币5": "星币5.jpg",
+                "星币6": "星币6.jpg",
+                "星币7": "星币7.jpg",
+                "星币8": "星币8.jpg",
+                "星币9": "星币9.jpg",
+                "星币10": "星币10.jpg",
+                "星币侍卫": "星币侍卫.jpg",
+                "星币骑士": "星币骑士.jpg",
+                "星币王后": "星币王后.jpg",
+                "星币国王": "星币国王.jpg"
+            };
+            
+            // 创建完整的塔罗牌数组
+            const allTarotCards = [];
+            
+            // 添加大阿卡纳牌
+            tarotData.majorArcana.forEach(card => {
+                allTarotCards.push(card);
+            });
+            
+            // 添加小阿卡纳牌
+            tarotData.minorArcana.suits.forEach(suit => {
+                tarotData.minorArcana.values.forEach(value => {
+                    allTarotCards.push(`${suit}${value}`);
+                });
+            });
+            
+            // 当前已选择的卡牌
+            const selectedCards = [];
+            // 总卡牌数量
+            const totalCards = allTarotCards.length;
+            // 扇形展示数量
+            const visibleCardCount = getVisibleCardCount();
+            
+            // 根据屏幕宽度确定可显示的卡牌数量
+            function getVisibleCardCount() {
+                const width = window.innerWidth;
+                if (width <= 480) {
+                    return 13; // 小屏幕显示较少卡牌
+                } else if (width <= 768) {
+                    return 21; // 中等屏幕
+                } else {
+                    return 32; // 大屏幕
+                }
+            }
+            
+            // 初始化牌位
+            function initCardPositions() {
+                cardPositions.innerHTML = '';
+                
+                // 根据当前牌阵配置生成牌位
+                for (let i = 0; i < maxCards; i++) {
+                    const position = document.createElement('div');
+                    position.className = 'card-position';
+                    
+                    const placeholder = document.createElement('div');
+                    placeholder.className = 'position-placeholder';
+                    placeholder.id = `position${i + 1}`;
+                    placeholder.innerHTML = `${i + 1}`;
+                    
+                    const label = document.createElement('div');
+                    label.className = 'position-label';
+                    label.textContent = currentSpreadConfig.labels[i] || `位置${i + 1}`;
+                    
+                    position.appendChild(placeholder);
+                    position.appendChild(label);
+                    cardPositions.appendChild(position);
+                }
+            }
+            
+            // 生成扇形卡牌
+            function generateFanCards(withAnimation, showHint = false) {
+                const numCards = 78; // 展示的卡片数量
+                const totalCards = 78; // 塔罗牌总数
+                
+                // 只在明确要求显示提示时才显示洗牌提示
+                if (showHint) {
+                    showShufflingHint();
+                }
+                
+                // 检测当前窗口宽高比
+                const isWideAspect = window.innerWidth / window.innerHeight >= 1;
+                
+                // 根据宽高比调整扇形参数
+                let fanRadius = isWideAspect ? 400 : 250; // 宽屏时使用更大的半径，小屏幕增大半径
+                let vertOffset = isWideAspect ? -150 : -70; // 宽屏时调整垂直偏移，增大小屏幕的垂直偏移
+
+                // 生成随机卡片索引
+                let randomIndices = Array.from(Array(totalCards).keys()); // 创建包含所有卡片索引的数组
+                shuffleArray(randomIndices); // 使用洗牌算法随机化卡片顺序
+                
+                // 为每张卡片随机决定正逆位
+                const cardOrientations = {};
+                randomIndices.forEach(index => {
+                    // 50%概率是逆位
+                    cardOrientations[index] = Math.random() < 0.5;
+                });
+                
+                // 如果需要展示的卡片少于总卡片数，则只使用前numCards个
+                if (numCards < totalCards) {
+                    randomIndices = randomIndices.slice(0, numCards);
+                }
+
+                // 扇形布局参数
+                const totalAngle = 60; // 扇形总角度
+                const startAngle = -totalAngle / 2; // 起始角度
+                const angleStep = totalAngle / (numCards - 1); // 每张卡片的角度步长
+                const verticalOffset = vertOffset; // 竖直偏移，宽屏时调整位置
+                const horizontalOffset = 0; // 水平偏移
+                const radius = fanRadius; // 扇形半径
+
+                // 清空原有的扇形容器
+                const fanContainer = document.querySelector('.tarot-fan');
+                fanContainer.innerHTML = '';
+
+                // 创建SVG元素用于装饰曲线
+                const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                svg.setAttribute('width', '100%');
+                svg.setAttribute('height', '100%');
+                svg.style.position = 'absolute';
+                svg.style.zIndex = '1';
+                svg.style.pointerEvents = 'none';
+                svg.style.left = '0';
+                svg.style.top = '0';
+
+                // 计算扇形路径
+                let path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                let pathData = 'M ';
+                
+                // 计算容器中心点 - 固定圆心在容器宽度中心和高度底部
+                const centerX = fanContainer.offsetWidth / 2;
+                const centerY = fanContainer.offsetHeight;
+                
+                // 生成曲线点
+                for (let i = 0; i < numCards; i++) {
+                    const angle = startAngle + i * angleStep;
+                    const angleRad = (angle * Math.PI) / 180;
+                    const x = radius * Math.sin(angleRad) + centerX + horizontalOffset;
+                    const y = -radius * Math.cos(angleRad) + centerY - verticalOffset;
+                    pathData += `${x},${y} `;
+                }
+                
+                path.setAttribute('d', pathData);
+                path.setAttribute('fill', 'none');
+                path.setAttribute('stroke', 'rgba(255, 215, 0, 0.1)');
+                path.setAttribute('stroke-width', '1');
+                svg.appendChild(path);
+                fanContainer.appendChild(svg);
+
+                // 生成卡片
+                for (let i = 0; i < numCards; i++) {
+                    const cardIndex = randomIndices[i];
+                    const isReversed = cardOrientations[cardIndex]; // 获取该卡片是否为逆位
+                    
+                    const card = document.createElement('div');
+                    card.className = 'tarot-card';
+                    card.dataset.index = cardIndex;
+                    card.dataset.reversed = isReversed; // 存储是否逆位的信息
+                    
+                    // 计算位置和旋转
+                    const angle = startAngle + i * angleStep;
+                    const angleRad = (angle * Math.PI) / 180;
+                    
+                    // 使用固定的圆心计算卡片位置
+                    const x = radius * Math.sin(angleRad) + horizontalOffset;
+                    const y = -radius * Math.cos(angleRad) - verticalOffset;
+                    
+                    // 存储卡牌的角度和位置信息，用于悬浮效果
+                    card.dataset.angle = angle;
+                    card.dataset.x = x;
+                    card.dataset.y = y;
+                    card.dataset.radius = radius;
+                    
+                    // 设置卡片样式 - 确保使用正确的transform原点
+                    card.style.transformOrigin = 'center bottom';
+                    
+                    if (withAnimation) {
+                        // 初始位置在中间
+                        card.style.transform = `translate(-50%, 0) translate(0px, 0px) rotate(0deg)`;
+                        card.style.opacity = '0';
+                        
+                        // 延迟并添加展开动画
+                        setTimeout(() => {
+                            card.style.transition = `all ${0.5 + i * 0.01}s cubic-bezier(0.23, 1, 0.32, 1)`;
+                            card.style.opacity = '1';
+                            card.style.transform = `translate(-50%, 0) translate(${x}px, ${y}px) rotate(${angle}deg)`;
+                        }, 50 + i * 20);
+                    } else {
+                        // 直接设置最终位置
+                        card.style.transform = `translate(-50%, 0) translate(${x}px, ${y}px) rotate(${angle}deg)`;
+                        card.style.opacity = '1';
+                    }
+                    
+                    card.style.zIndex = i + 10;
+                    
+                    // 添加鼠标悬浮和离开事件
+                    card.addEventListener('mouseenter', function() {
+                        const angle = parseFloat(this.dataset.angle);
+                        const angleRad = (angle * Math.PI) / 180;
+                        const x = parseFloat(this.dataset.x);
+                        const y = parseFloat(this.dataset.y);
+                        const radius = parseFloat(this.dataset.radius);
+                        
+                        const popOutDistance = radius * 0.2;
+                        const popX = x + popOutDistance * Math.sin(angleRad);
+                        const popY = y - popOutDistance * Math.cos(angleRad);
+                        
+                        this.style.transform = `translate(-50%, 0) translate(${popX}px, ${popY}px) rotate(${angle}deg)`;
+                    });
+                    
+                    card.addEventListener('mouseleave', function() {
+                        const angle = parseFloat(this.dataset.angle);
+                        const x = parseFloat(this.dataset.x);
+                        const y = parseFloat(this.dataset.y);
+                        
+                        this.style.transform = `translate(-50%, 0) translate(${x}px, ${y}px) rotate(${angle}deg)`;
+                    });
+                    
+                    // 创建卡片背面
+                    const cardBack = document.createElement('div');
+                    cardBack.className = 'card-back';
+                    cardBack.style.backgroundImage = `url('images/背面A.jpg')`;
+                    cardBack.style.backgroundSize = 'cover';
+                    cardBack.style.backgroundPosition = 'center';
+                    card.appendChild(cardBack);
+                    
+                    // 创建卡片正面
+                    const cardFront = document.createElement('div');
+                    cardFront.className = 'card-front';
+                    cardFront.textContent = allTarotCards[cardIndex];
+                    card.appendChild(cardFront);
+                    
+                    // 添加点击事件
+                    card.addEventListener('click', function() {
+                        selectCard(this.dataset.index, this.dataset.reversed === 'true');
+                    });
+                    
+                    fanContainer.appendChild(card);
+                }
+            }
+            
+            // 显示洗牌提示
+            function showShufflingHint() {
+                // 创建洗牌提示元素
+                const hintElement = document.createElement('div');
+                hintElement.className = 'shuffling-hint';
+                hintElement.innerHTML = '<i class="fas fa-random"></i> 正在洗牌...';
+                
+                // 将提示添加到塔罗容器中
+                const tarotContainer = document.querySelector('.tarot-container');
+                tarotContainer.appendChild(hintElement);
+                
+                // 3秒后移除提示
+                setTimeout(() => {
+                    const hint = document.querySelector('.shuffling-hint');
+                    if (hint) {
+                        hint.classList.add('fade-out');
+                        setTimeout(() => {
+                            if (hint.parentNode) {
+                                hint.parentNode.removeChild(hint);
+                            }
+                        }, 500);
+                    }
+                }, 3000);
+            }
+            
+            // 显示宇宙传讯提示
+            function showCosmicMessageHint() {
+                // 创建宇宙传讯提示元素
+                const hintElement = document.createElement('div');
+                hintElement.className = 'shuffling-hint cosmic-message';
+                hintElement.innerHTML = '<i class="fas fa-star"></i> 宇宙传讯，稍等片刻...';
+                
+                // 将提示添加到塔罗容器中
+                const tarotContainer = document.querySelector('.tarot-container');
+                tarotContainer.appendChild(hintElement);
+                
+                // 第三阶段结束后自动移除提示
+                setTimeout(() => {
+                    const hint = document.querySelector('.cosmic-message');
+                    if (hint) {
+                        hint.classList.add('fade-out');
+                        setTimeout(() => {
+                            if (hint.parentNode) {
+                                hint.parentNode.removeChild(hint);
+                            }
+                        }, 500);
+                    }
+                }, 5000); // 与第三阶段相同的时间
+            }
+            
+            // 选择卡牌
+            function selectCard(cardIndex, isReversed = false) {
+                // 如果已经选择过，不再处理
+                if (selectedCards.some(card => card.index === cardIndex)) {
+                    return;
+                }
+                
+                // 如果已经选满，不再处理
+                if (selectedCards.length >= maxCards) {
+                    return;
+                }
+
+                // 获取卡牌数据
+                const cardName = allTarotCards[cardIndex];
+                const displayName = isReversed ? `${cardName}-逆位` : cardName;
+                
+                // 获取卡牌元素
+                const cardElement = document.querySelector(`.tarot-card[data-index="${cardIndex}"]`);
+                if (!cardElement) return;
+                
+                // 立即标记卡牌为已选择状态
+                cardElement.classList.add('selected');
+                cardElement.style.display = 'none'; // 直接隐藏卡片，不使用透明度过渡
+                
+                // 直接添加到已选择的卡牌数组
+                selectedCards.push({
+                    index: cardIndex,
+                    name: cardName,
+                    displayName: displayName,
+                    isReversed: isReversed
+                });
+                
+                // 更新对应的占位符
+                const positionIndex = selectedCards.length - 1;
+                const placeholder = document.getElementById(`position${positionIndex + 1}`);
+                
+                // 更新占位符样式
+                placeholder.className = 'position-placeholder filled';
+                placeholder.innerHTML = '';
+                
+                // 检查是否是宽屏模式，并设置对应的尺寸
+                const isWideAspect = window.innerWidth / window.innerHeight >= 1;
+                if (isWideAspect) {
+                    placeholder.style.width = '178px';
+                    placeholder.style.height = '300px';
+                } else {
+                    placeholder.style.width = '89px';
+                    placeholder.style.height = '150px';
+                }
+                
+                // 获取卡牌图片
+                const imageUrl = getCardImageFilename(cardName);
+                if (imageUrl) {
+                    placeholder.style.backgroundImage = `url('${imageUrl}')`;
+                    // 如果是逆位，旋转180度
+                    if (isReversed) {
+                        placeholder.style.transform = 'rotate(180deg)';
+                    }
+                } else {
+                    // 如果没有图片，显示卡牌名称
+                    placeholder.innerHTML = displayName;
+                }
+                
+                // 显示卡牌名称在占位符下方
+                const label = document.querySelector(`.position-${positionIndex + 1} .position-label`);
+                if (label) {
+                    label.textContent = displayName;
+                    label.style.display = 'block';
+                }
+                
+                // 全部选完后立即进入阅读界面
+                if (selectedCards.length === maxCards) {
+                    showReadingInterface();
+                }
+            }
+            
+            // 随机洗牌算法
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+            
+            // 获取卡牌图片文件名
+            function getCardImageFilename(cardName) {
+                if (cardImageMapping[cardName]) {
+                    return `images/${cardImageMapping[cardName]}`;
+                } else {
+                    console.warn(`未找到卡牌 "${cardName}" 对应的图片`);
+                    return null;
+                }
+            }
+            
+            // 在线抽牌按钮点击事件
+            onlineDrawingBtn.addEventListener('click', function() {
+                // 如果已经选满卡牌，则不再继续
+                if (selectedCards.length >= maxCards) {
+                    alert(`您已选择${maxCards}张塔罗牌，点击"重新洗牌"可重新开始`);
+                    return;
+                }
+                
+                // 创建所有卡牌的索引数组
+                const allCardIndices = Array.from(Array(totalCards).keys());
+                // 过滤掉已经选择的卡牌索引
+                const remainingIndices = allCardIndices.filter(index => 
+                    !selectedCards.some(card => card.index === index)
+                );
+                
+                if (remainingIndices.length > 0) {
+                    // 计算要抽取的卡牌数量
+                    const cardsToSelect = Math.min(
+                        maxCards - selectedCards.length, 
+                        remainingIndices.length
+                    );
+                    
+                    // 随机洗牌剩余索引
+                    shuffleArray(remainingIndices);
+                    
+                    // 按顺序抽取随机洗牌后的卡牌
+                    for (let i = 0; i < cardsToSelect; i++) {
+                        setTimeout(() => {
+                            selectCard(remainingIndices[i]);
+                        }, i * 600); // 间隔抽牌
+                    }
+                }
+            });
+            
+            // 重新抽牌按钮点击事件
+            redrawButton.addEventListener('click', function() {
+                // 清空已选卡牌
+                selectedCards.length = 0;
+                
+                // 重置牌位
+                initCardPositions();
+                
+                // 重新生成卡牌，不显示洗牌提示
+                generateFanCards(false, false);
+            });
+            
+            // 初始化
+            initCardPositions();
+            generateFanCards(false, false);
+            
+            // 页面加载完成后显示洗牌动画
+            window.addEventListener('load', function() {
+                // 只在页面加载时显示"正在洗牌"状态栏
+                showShufflingHint();
+                
+                // 启动洗牌动画序列
+                showShuffleAnimation();
+            });
+            
+            // 响应窗口大小变化
+            window.addEventListener('resize', function() {
+                // 检查界面比例并重新生成卡牌
+                if (selectedCards.length === 0) {
+                    generateFanCards();
+                }
+                
+                // 根据窗口宽高比更新已填充的占位符尺寸
+                updatePlaceholderSizes();
+                
+                // 更新卡片摘要区域的图片尺寸
+                updateSummaryImageSizes();
+            });
+            
+            // 更新已填充占位符尺寸
+            function updatePlaceholderSizes() {
+                const isWideAspect = window.innerWidth / window.innerHeight >= 1;
+                const filledPlaceholders = document.querySelectorAll('.position-placeholder.filled');
+                
+                filledPlaceholders.forEach(placeholder => {
+                    if (isWideAspect) {
+                        placeholder.style.width = '178px';
+                        placeholder.style.height = '300px';
+                    } else {
+                        placeholder.style.width = '89px';
+                        placeholder.style.height = '150px';
+                    }
+                });
+            }
+            
+            // 添加函数来更新卡片摘要区域的图片尺寸
+            function updateSummaryImageSizes() {
+                const isWideAspect = window.innerWidth / window.innerHeight >= 1;
+                const summaryImages = document.querySelectorAll('.card-summary img');
+                const summaryPlaceholders = document.querySelectorAll('.card-summary div[style*="background:#1c1347"]');
+                
+                const width = isWideAspect ? '178px' : '89px';
+                const height = isWideAspect ? '300px' : '150px';
+                
+                summaryImages.forEach(img => {
+                    img.style.width = width;
+                    img.style.height = height;
+                });
+                
+                summaryPlaceholders.forEach(div => {
+                    div.style.width = width;
+                    div.style.height = height;
+                });
+            }
+            
+            // 初始调用一次以设置正确的尺寸
+            window.addEventListener('DOMContentLoaded', function() {
+                updateSummaryImageSizes();
+                updatePlaceholderSizes();
+            });
+            
+            // 显示塔罗牌解读界面
+            function showReadingInterface() {
+                const readingModal = document.getElementById('readingModal');
+                const cardsSummary = document.getElementById('cardsSummary');
+                const readingDate = document.getElementById('readingDate');
+                const readingQuestion = document.getElementById('readingQuestion');
+                
+                // 设置当前日期和时间
+                const now = new Date();
+                const dateOptions = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+                readingDate.textContent = now.toLocaleDateString('zh-CN', dateOptions);
+                
+                // 获取URL中的问题参数
+                const question = urlParams.get('q');
+                if (question) {
+                    readingQuestion.textContent = `您的问题: ${decodeURIComponent(question)}`;
+                } else {
+                    readingQuestion.textContent = '您的塔罗指引';
+                }
+                
+                // 清空卡牌总结区域
+                cardsSummary.innerHTML = '';
+                
+                // 添加选中的卡牌到总结区域
+                selectedCards.forEach((card, index) => {
+                    const cardSummary = document.createElement('div');
+                    cardSummary.className = 'card-summary';
+                    
+                    const imageUrl = getCardImageFilename(card.name);
+                    let imageHtml;
+                    
+                    if (imageUrl) {
+                        // 如果是逆位，添加旋转样式
+                        const rotationStyle = card.isReversed ? 'transform: rotate(180deg);' : '';
+                        imageHtml = `<img src="${imageUrl}" alt="${card.displayName}" style="${rotationStyle}">`;
+                    } else {
+                        imageHtml = `<div style="width:89px;height:150px;background:#1c1347;border-radius:8px;margin:0 auto 10px;display:flex;justify-content:center;align-items:center;color:gold;font-size:0.8rem;">${card.displayName}</div>`;
+                    }
+                    
+                    cardSummary.innerHTML = `
+                        ${imageHtml}
+                        <div class="card-name">${card.displayName}</div>
+                        <div class="card-position-name">${currentSpreadConfig.labels[index] || `位置${index+1}`}</div>
+                    `;
+                    
+                    cardsSummary.appendChild(cardSummary);
+                });
+                
+                // 显示解读界面
+                readingModal.style.display = 'block';
+                
+                // 设置关闭按钮事件
+                document.getElementById('closeReading').addEventListener('click', function() {
+                    readingModal.style.display = 'none';
+                });
+                
+                // 设置聊天输入和发送功能
+                const chatInput = document.getElementById('chatInput');
+                const sendMessage = document.getElementById('sendMessage');
+                const chatMessages = document.getElementById('chatMessages');
+                
+                // 清空现有的聊天消息
+                chatMessages.innerHTML = '';
+                
+                // 收集塔罗解读所需的数据
+                const readingData = {
+                    question: question ? decodeURIComponent(question) : "塔罗指引",
+                    spreadType: spreadType,
+                    spreadName: currentSpreadConfig.title,
+                    cards: selectedCards.map((card, index) => {
+                        return {
+                            name: card.displayName, // 使用带有可能的"-逆位"后缀的显示名称
+                            position: currentSpreadConfig.labels[index] || `位置${index+1}`,
+                            index: index
+                        };
+                    }),
+                    date: now.toLocaleDateString('zh-CN', dateOptions)
+                };
+                
+                // 调用AI进行初始解读
+                getTarotReading(readingData, "初始解读").then(response => {
+                    // 添加欢迎消息
+                    const welcomeHtml = `
+                        <div class="message">
+                            <div class="message-tarot">
+                                ${response.welcome || `✨ 欢迎进入塔罗解读`}
+                            </div>
+                            <div class="message-info message-tarot-info">
+                                塔罗导师 • 刚刚
+                            </div>
+                        </div>
+                    `;
+                    chatMessages.insertAdjacentHTML('beforeend', welcomeHtml);
+                    
+                    // 添加短暂延迟后显示第一张牌的解读
+                    setTimeout(() => {
+                        if (response.firstCard) {
+                            const firstCardHtml = `
+                                <div class="message">
+                                    <div class="message-tarot">
+                                        ${response.firstCard}
+                                    </div>
+                                    <div class="message-info message-tarot-info">
+                                        塔罗导师 • 刚刚
+                                    </div>
+                                </div>
+                            `;
+                            chatMessages.insertAdjacentHTML('beforeend', firstCardHtml);
+                            chatMessages.scrollTop = chatMessages.scrollHeight;
+                        }
+                        
+                        // 如果有额外的消息，依次显示
+                        if (response.additionalMessages && response.additionalMessages.length > 0) {
+                            let delay = 800;
+                            response.additionalMessages.forEach((message, index) => {
+                                setTimeout(() => {
+                                    const messageHtml = `
+                                        <div class="message">
+                                            <div class="message-tarot">
+                                                ${message}
+                                            </div>
+                                            <div class="message-info message-tarot-info">
+                                                塔罗导师 • 刚刚
+                                            </div>
+                                        </div>
+                                    `;
+                                    chatMessages.insertAdjacentHTML('beforeend', messageHtml);
+                                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                                }, delay + index * 800); // 每条消息之间间隔800毫秒
+                            });
+                        }
+                    }, 800); // 第一张牌的解读延迟800毫秒显示
+                    
+                    // 滚动到底部
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                });
+                
+                function sendUserMessage() {
+                    const messageText = chatInput.value.trim();
+                    if (!messageText) return;
+                    
+                    // 添加用户消息
+                    const messageHtml = `
+                        <div class="message">
+                            <div class="message-user">
+                                ${messageText}
+                            </div>
+                            <div class="message-info message-user-info">
+                                您 • 刚刚
+                            </div>
+                        </div>
+                    `;
+                    
+                    chatMessages.insertAdjacentHTML('beforeend', messageHtml);
+                    chatInput.value = '';
+                    
+                    // 滚动到底部
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                    
+                    // 先移除可能已存在的思考指示器
+                    const existingIndicator = document.getElementById('thinking-indicator');
+                    if (existingIndicator) {
+                        existingIndicator.remove();
+                    }
+                    
+                    
+                    // 调用AI回复
+                    getTarotReading(readingData, messageText).then(response => {
+                        
+                        // 重新启用输入和发送按钮
+                        chatInput.disabled = false;
+                        sendMessage.disabled = false;
+                        chatInput.focus();
+                        
+                        if (response.welcomeResponse) {
+                            // 有分段回复，显示第一条简短回复
+                            const shortResponseHtml = `
+                                <div class="message">
+                                    <div class="message-tarot">
+                                        ${response.welcomeResponse}
+                                    </div>
+                                    <div class="message-info message-tarot-info">
+                                        塔罗导师 • 刚刚
+                                    </div>
+                                </div>
+                            `;
+                            chatMessages.insertAdjacentHTML('beforeend', shortResponseHtml);
+                            chatMessages.scrollTop = chatMessages.scrollHeight;
+                            
+                            // 依次显示后续回复
+                            if (response.additionalResponses && response.additionalResponses.length > 0) {
+                                let delay = 800;
+                                response.additionalResponses.forEach((message, index) => {
+                                    setTimeout(() => {
+                                        const messageHtml = `
+                                            <div class="message">
+                                                <div class="message-tarot">
+                                                    ${message}
+                                                </div>
+                                                <div class="message-info message-tarot-info">
+                                                    塔罗导师 • 刚刚
+                                                </div>
+                                            </div>
+                                        `;
+                                        chatMessages.insertAdjacentHTML('beforeend', messageHtml);
+                                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                                    }, delay + index * 800); // 每条消息之间间隔800毫秒
+                                });
+                            }
+                        } else {
+                            // 没有分段回复，显示单条回复
+                            simulateTarotResponse(response.reply);
+                        }
+                    }).catch(error => {
+                        // 移除思考指示器
+                        const thinkingIndicator = document.getElementById('thinking-indicator');
+                        if (thinkingIndicator) {
+                            thinkingIndicator.remove();
+                        }
+                        
+                        // 重新启用输入和发送按钮
+                        chatInput.disabled = false;
+                        sendMessage.disabled = false;
+                        
+                        // 显示错误消息
+                        simulateTarotResponse(`抱歉，塔罗解读服务暂时不可用。请稍后再试。`);
+                    });
+                }
+                
+                sendMessage.addEventListener('click', sendUserMessage);
+                chatInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendUserMessage();
+                    }
+                });
+                
+                // 设置其他按钮事件
+                document.getElementById('saveReading').addEventListener('click', function() {
+                    alert('解读已保存！（模拟功能）');
+                });
+                
+                document.getElementById('shareReading').addEventListener('click', function() {
+                    alert('分享功能已激活！（模拟功能）');
+                });
+                
+                document.getElementById('newReading').addEventListener('click', function() {
+                    readingModal.style.display = 'none';
+                    redrawButton.click(); // 触发重新抽牌
+                });
+            }
+            
+            // 模拟塔罗回复功能
+            function simulateTarotResponse(customResponse = null) {
+                const responses = [
+                    "塔罗牌为您指引的是，此刻您应该更加信任自己的直觉。您所选的卡牌展示了一个强大的内在智慧，等待被释放。",
+                    "我看到您面临的障碍可能与过去的经历有关。这些「障碍」牌位上的能量提示您需要放下过去，才能迎接新的机会。",
+                    "这个组合很有意思，各张卡牌共同指向一个转变期。您似乎正处于一个决策点上，任何选择都将带来深远的影响。",
+                    "根据您抽到的卡牌，特别是在「建议」位置上的牌，现在是采取行动的时候了。不要再等待完美时机，因为机会就在当下。",
+                    "让我们更深入探讨您抽到的卡牌组合。它们展示了一个清晰的能量流动，从当前状态一直到未来的可能性。您准备好迎接这个旅程了吗？"
+                ];
+                
+                const responseText = customResponse || responses[Math.floor(Math.random() * responses.length)];
+                
+                const responseHtml = `
+                    <div class="message">
+                        <div class="message-tarot">
+                            ${responseText}
+                        </div>
+                        <div class="message-info message-tarot-info">
+                            塔罗导师 • 刚刚
+                        </div>
+                    </div>
+                `;
+                
+                const chatMessages = document.getElementById('chatMessages');
+                chatMessages.insertAdjacentHTML('beforeend', responseHtml);
+                
+                // 滚动到底部
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
+            // 预设AI API接口，获取塔罗牌解读
+            async function getTarotReading(readingData, userMessage) {
+                // 如果启用了API并且有API密钥
+                if (apiSettings.apiKey) {
+                    try {
+                        // 构建塔罗牌提示词
+                        const fullPrompt = `${baseTarotPrompt}
+                        
+用户问题: ${readingData.question}
+牌阵类型: ${readingData.spreadName}
+抽取的塔罗牌:
+${readingData.cards.map(card => `${card.position}: ${card.name}`).join('\n')}
+
+${userMessage === "初始解读" ? 
+"请提供初始解读，第一条消息应是简短的问候（不超过20字），第二条消息才详细解读第一张牌，把内容分成多条独立消息\n注意：\n1. 不要使用---作为分隔符\n2. 不要使用###作为标题标记，用emoji代替\n3. 每条消息之间用空行分隔" : 
+`用户消息: ${userMessage}\n请根据用户消息提供回应，第一条消息应是简短的回应（不超过20字），后续消息再详细分析\n注意：\n1. 不要使用---作为分隔符\n2. 不要使用###作为标题标记，用emoji代替\n3. 每条消息之间用空行分隔`}`;
+
+                        // 确定使用的模型
+                        const modelToUse = apiSettings.model === 'custom' ? apiSettings.customModel : apiSettings.model;
+                        
+                        try {
+                            // 发送请求到API
+                            const response = await fetch(apiSettings.apiUrl, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'Authorization': `Bearer ${apiSettings.apiKey}`
+                                },
+                                body: JSON.stringify({
+                                    model: modelToUse,
+                                    messages: [
+                                        {role: "system", content: fullPrompt},
+                                        {role: "user", content: userMessage === "初始解读" ? 
+                                            "请提供解读，先简短问候，然后分别解读各张牌，每段内容作为独立消息发送。记住不要使用分隔符，也不要使用###标题标记，用emoji代替。如果需要说很多话时，请把话讲完，不要中断。" : 
+                                            userMessage}
+                                    ],
+                                    temperature: parseFloat(apiSettings.temperature)
+                                })
+                            });
+                            
+                            const data = await response.json();
+                            
+                            if (response.ok && data.choices && data.choices.length > 0) {
+                                const aiResponse = data.choices[0].message.content;
+                                
+                                // 处理返回的消息，使用双换行符作为消息分隔
+                                const processMessageContent = (content) => {
+                                    // 移除任何---分隔符
+                                    const withoutSeparators = content.replace(/---+/g, '');
+                                    
+                                    // 替换###标题格式为适当的emoji (如果存在)
+                                    const withEmojiTitles = withoutSeparators.replace(/###\s*(.*?)(?:\n|$)/g, (match, title) => {
+                                        // 根据标题内容选择合适的emoji
+                                        let emoji = '✨';
+                                        if (title.includes('过去') || title.includes('历史')) emoji = '⏮️';
+                                        else if (title.includes('现在') || title.includes('当前')) emoji = '⏺️';
+                                        else if (title.includes('未来')) emoji = '⏭️';
+                                        else if (title.includes('建议') || title.includes('指引')) emoji = '🔮';
+                                        else if (title.includes('核心') || title.includes('中心')) emoji = '🎯';
+                                        else if (title.includes('障碍') || title.includes('挑战')) emoji = '🧩';
+                                        else if (title.includes('结果') || title.includes('结论')) emoji = '🏁';
+                                        else if (title.includes('总结')) emoji = '📝';
+                                        return `${emoji} ${title}\n`;
+                                    });
+                                    
+                                    // 使用双换行符分割消息
+                                    return withEmojiTitles.split(/\n\s*\n/).filter(msg => msg.trim().length > 0);
+                                };
+                                
+                                if (userMessage === "初始解读") {
+                                    // 处理初始解读消息
+                                    const messages = processMessageContent(aiResponse);
+                                    
+                                    // 确保至少有一条消息
+                                    if (messages.length === 0) {
+                                        messages.push("✨ 欢迎进入塔罗解读");
+                                    }
+                                    
+                                    // 返回分割后的消息
+                                    return {
+                                        welcome: messages[0], // 第一条简短的问候
+                                        firstCard: messages.length > 1 ? messages[1] : '', // 第一张牌的解读
+                                        additionalMessages: messages.slice(2), // 额外的消息（如果有）
+                                        reply: "请告诉我您对这个解读有什么感受或疑问？" // 默认引导回复
+                                    };
+                                } else {
+                                    // 处理用户问题的回复
+                                    const messages = processMessageContent(aiResponse);
+                                    
+                                    // 如果没有成功分割消息，或者只有一条消息
+                                    if (messages.length <= 1) {
+                                        return {
+                                            reply: aiResponse
+                                        };
+                                    } else {
+                                        // 返回分割后的多条消息
+                                        return {
+                                            welcomeResponse: messages[0], // 第一条简短回应
+                                            additionalResponses: messages.slice(1) // 后续的详细分析
+                                        };
+                                    }
+                                }
+                            } else {
+                                // 返回错误信息，不使用本地模拟
+                                return {
+                                    welcome: userMessage === "初始解读" ? "✨ 与塔罗能量建立连接中..." : null,
+                                    firstCard: userMessage === "初始解读" ? "很抱歉，塔罗服务暂时不可用。" : null,
+                                    reply: `抱歉，无法连接到塔罗解读服务。错误: ${data.error?.message || '未知错误'}`
+                                };
+                            }
+                        } catch (error) {
+                            // 发生错误，返回错误信息，不使用本地模拟
+                            return {
+                                welcome: userMessage === "初始解读" ? "✨ 欢迎来到塔罗解读" : null,
+                                firstCard: userMessage === "初始解读" ? "很抱歉，塔罗服务连接出现问题。" : null,
+                                reply: `抱歉，连接塔罗解读服务时出错: ${error.message || '未知错误'}`
+                            };
+                        }
+                    } catch (error) {
+                        // 其他错误，返回错误信息
+                        return {
+                            welcome: userMessage === "初始解读" ? "✨ 欢迎来到塔罗解读" : null,
+                            firstCard: userMessage === "初始解读" ? "很抱歉，处理塔罗信息时出现问题。" : null,
+                            reply: `抱歉，处理塔罗数据时出错: ${error.message || '未知错误'}`
+                        };
+                    }
+                } else {
+                    // 如果未设置API密钥
+                    return {
+                        welcome: userMessage === "初始解读" ? "✨ 欢迎来到塔罗解读" : null,
+                        firstCard: userMessage === "初始解读" ? "请在设置中配置API密钥以启用塔罗解读功能。" : null,
+                        reply: "请配置API密钥以使用塔罗解读功能。点击右上角的设置图标进行配置。"
+                    };
+                }
+            }
+
+            // 展开为扇形
+            function expandToFan() {
+                const leftDeck = document.getElementById('leftDeck');
+                const middleDeck = document.getElementById('middleDeck');
+                const rightDeck = document.getElementById('rightDeck');
+                const expandDeckBtn = document.getElementById('expandDeckBtn');
+                
+                // 隐藏展开按钮
+                expandDeckBtn.style.display = 'none';
+                
+                // 启动洗牌动画序列 - 点击展开时不显示"正在洗牌"状态栏
+                showShuffleAnimation();
+            }
+
+            // 洗牌动画序列
+            function showShuffleAnimation() {
+                // 隐藏扇形区域，直到动画结束
+                const fanContainer = document.querySelector('.tarot-fan');
+                if (fanContainer) {
+                    fanContainer.style.visibility = 'hidden';
+                }
+                
+                // 创建洗牌动画容器
+                const shuffleContainer = document.createElement('div');
+                shuffleContainer.className = 'shuffle-container';
+                document.querySelector('.tarot-container').appendChild(shuffleContainer);
+                
+                const isWideAspect = window.innerWidth / window.innerHeight >= 1;
+                const cardWidth = isWideAspect ? 178 : 89;
+                const cardHeight = isWideAspect ? 300 : 150;
+                
+                // 阶段1: 创建初始牌堆
+                const mainDeck = document.createElement('div');
+                mainDeck.className = 'shuffle-deck';
+                mainDeck.style.zIndex = '10';
+                shuffleContainer.appendChild(mainDeck);
+                
+                // 创建初始散乱卡片
+                const numScatteredCards = 35;
+                const cards = [];
+                
+                for (let i = 0; i < numScatteredCards; i++) {
+                    const card = document.createElement('div');
+                    card.className = 'shuffle-card';
+                    card.style.opacity = '0';
+                    card.style.zIndex = i;
+                    shuffleContainer.appendChild(card);
+                    cards.push(card);
+                }
+                
+                // 动画时间线 - 第一阶段：打乱展开 (延长3秒)
+                setTimeout(() => {
+                    // 阶段1: 打乱展开 - 从主牌堆散开
+                    for (let i = 0; i < cards.length; i++) {
+                        setTimeout(() => {
+                            const randomX = (Math.random() - 0.5) * window.innerWidth * 0.6;
+                            const randomY = (Math.random() - 0.5) * window.innerHeight * 0.6;
+                            const randomRotate = (Math.random() - 0.5) * 40;
+                            
+                            cards[i].style.opacity = '1';
+                            cards[i].style.transform = `translate(${randomX}px, ${randomY}px) rotate(${randomRotate}deg)`;
+                        }, i * 100);
+                    }
+                }, 500);
+                
+                // 第二阶段：切牌 (延长3秒)
+                setTimeout(() => {
+                    // 阶段2: 切牌 - 将散开的牌收集成3堆
+                    const leftPileX = -cardWidth * 1.2;
+                    const rightPileX = cardWidth * 1.2;
+                    
+                    // 创建左、中、右三堆
+                    const leftPile = document.createElement('div');
+                    leftPile.className = 'shuffle-deck';
+                    leftPile.style.transform = `translateX(${leftPileX}px)`;
+                    shuffleContainer.appendChild(leftPile);
+                    
+                    const rightPile = document.createElement('div');
+                    rightPile.className = 'shuffle-deck';
+                    rightPile.style.transform = `translateX(${rightPileX}px)`;
+                    shuffleContainer.appendChild(rightPile);
+                    
+                    // 将散乱的牌收回到三堆
+                    for (let i = 0; i < cards.length; i++) {
+                        setTimeout(() => {
+                            // 随机分配到左、中、右三堆
+                            const pileIndex = i % 3; // 0=左, 1=中, 2=右
+                            let targetX = 0;
+                            
+                            if (pileIndex === 0) targetX = leftPileX;
+                            else if (pileIndex === 2) targetX = rightPileX;
+                            
+                            cards[i].style.transform = `translateX(${targetX}px) translateY(0) rotate(0deg)`;
+                            cards[i].style.zIndex = 20 + i;
+                        }, i * 100);
+                    }
+                    
+                    // 隐藏主牌堆
+                    mainDeck.style.opacity = '0';
+                }, 2000 + 3000);
+                
+                // 第三阶段：合并 (延长3秒)
+                setTimeout(() => {
+                    // 阶段3: 合并 - 将三堆牌合并在一起
+                    const allDecks = document.querySelectorAll('.shuffle-deck');
+                    allDecks.forEach(deck => {
+                        deck.style.transform = 'translate(0, 0)';
+                        deck.style.opacity = '1';
+                        deck.style.zIndex = '30';
+                    });
+                    
+                    // 将散乱的牌全部合并到中间
+                    cards.forEach(card => {
+                        card.style.transform = 'translate(0, 0) rotate(0deg)';
+                        card.style.zIndex = '20';
+                    });
+                }, 3500 + 5000);
+                
+                // 在第三阶段结束后立即显示宇宙传讯提示
+                setTimeout(() => {
+                    showCosmicMessageHint();
+                }, 3500 + 5000 + 100); // 稍微延迟一点以确保在第三阶段结束后显示
+                
+                // 第四阶段：平铺 (延长3秒)
+                const totalAnimationTime = 5000 + 9000; // 原时间 + 各阶段延长累计9秒
+                
+                setTimeout(() => {
+                    // 阶段4: 平铺 - 移除洗牌动画元素，显示最终的扇形布局
+                    shuffleContainer.remove();
+                    
+                    // 显示扇形区域
+                    if (fanContainer) {
+                        fanContainer.style.visibility = 'visible';
+                    }
+                    
+                    // 生成扇形卡牌，不显示洗牌提示
+                    generateFanCards(true, false); // 传入参数表示带有动画效果，但不显示洗牌提示
+                }, totalAnimationTime);
+            }
+        });
+    </script>
+</body>
+</html>

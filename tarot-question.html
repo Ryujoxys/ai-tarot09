@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>塔罗占卜问题 - Tarot09</title>
+    <meta name="description" content="输入您想要占卜的问题，获得AI塔罗牌解读和指引。">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/page-styles/tarot-question.css">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <span>🔮</span>
+                    <span>Tarot09</span>
+                </a>
+            </div>
+            
+            <button class="menu-toggle" aria-label="菜单">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-capsules">
+                <!-- 主导航胶囊 -->
+                <div class="nav-capsule main-nav-capsule">
+                    <div class="nav-menu">
+                        <ul>
+                            <li><a href="index.html" class="nav-link">首页</a></li>
+                            <li><a href="ai-taluopai.html" class="nav-link active">AI塔罗占卜</a></li>
+                            <li><a href="yes-no-tarot.html" class="nav-link">是否塔罗占卜</a></li>
+                            <li><a href="javascript:void(0)" class="nav-link premium" id="premiumLink"><i class="fas fa-crown"></i> 会员订阅</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 用户控制胶囊 -->
+                <div class="nav-capsule user-controls-capsule">
+                    <div class="user-controls">
+                        <button class="theme-toggle" aria-label="切换主题">
+                            <i class="fas fa-moon"></i>
+                            <i class="fas fa-sun"></i>
+                        </button>
+                        <button class="language-toggle" aria-label="切换语言">
+                            <i class="fas fa-globe"></i>
+                        </button>
+                        <a href="javascript:void(0)" class="user-profile">
+                            😊
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main>
+        <!-- 问题标题区域 -->
+        <section class="question-header">
+            <div class="container">
+                <h1 class="question-title">
+                    <span class="input-highlight">输入您的</span><br>
+                    塔罗牌问题
+                </h1>
+                <p class="question-subtitle">您想占卜什么问题？</p>
+            </div>
+        </section>
+        
+        <!-- 问题输入区域 -->
+        <section class="question-input-section">
+            <div class="container">
+                <div class="question-input-container">
+                    <div style="position: relative;">
+                        <textarea id="questionInput" class="question-textarea" placeholder="输入您想占卜的问题"></textarea>
+                        <button class="upload-button" title="上传图片">
+                            <i class="fas fa-image"></i>
+                        </button>
+                    </div>
+                    <div class="character-counter" id="charCounter">0/300</div>
+                </div>
+                
+                <!-- 问题建议区域 -->
+                <div class="question-suggestions">
+                    <button class="suggestion-button">
+                        <span class="suggestion-emoji">🌙</span> 这段缘分是未完待续...还是终将散场？
+                    </button>
+                    <button class="suggestion-button">
+                        <span class="suggestion-emoji">⭐</span> Ta心底是否藏着一个「秘密答案」？
+                    </button>
+                    <button class="suggestion-button">
+                        <span class="suggestion-emoji">🔮</span> 谁会先打破沉默？72小时内的转机
+                    </button>
+                    <button class="suggestion-button">
+                        <span class="suggestion-emoji">✨</span> 三个月内，我的事业转折点会出现在哪个方向？
+                    </button>
+                </div>
+                
+                <!-- 提交按钮 -->
+                <button class="submit-button" id="submitQuestion">
+                    开始塔罗占卜
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    © 2023 AI塔罗牌 - 版权所有
+                </div>
+                <div class="footer-links">
+                    <a href="javascript:void(0)">关于我们</a>
+                    <a href="javascript:void(0)">隐私政策</a>
+                    <a href="javascript:void(0)">使用条款</a>
+                    <a href="javascript:void(0)">联系我们</a>
+                    <a href="javascript:void(0)">问题反馈</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 会员订阅弹窗 -->
+    <div class="modal-overlay" id="subscriptionModal">
+        <div class="subscription-modal">
+            <div class="modal-header">
+                <h3 class="modal-title">升级会员</h3>
+                <p class="modal-subtitle">享受无限次塔罗占卜和更多高级功能</p>
+            </div>
+            
+            <div class="plan-options">
+                <div class="plan-option" data-plan="monthly">
+                    <div class="plan-name">
+                        月度会员 <span class="plan-price">¥18.00</span>
+                    </div>
+                    <p class="plan-description">每月自动续费，随时可取消</p>
+                </div>
+                
+                <div class="plan-option selected" data-plan="quarterly">
+                    <div class="plan-name">
+                        季度会员 <span class="plan-price">¥48.00</span>
+                    </div>
+                    <p class="plan-description">每三个月自动续费，相当于每月¥16.00</p>
+                </div>
+                
+                <div class="plan-option" data-plan="yearly">
+                    <div class="plan-name">
+                        年度会员 <span class="plan-price">¥168.00</span>
+                    </div>
+                    <p class="plan-description">每年自动续费，相当于每月¥14.00，最划算</p>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="cancel-button" id="cancelSubscription">取消</button>
+                <button class="subscribe-button" id="confirmSubscription">确认订阅</button>
+            </div>
+            
+            <div class="term-conditions">
+                <p>订阅即表示您同意我们的服务条款和隐私政策。可在到期前24小时取消自动续订。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 导入订阅模块脚本 -->
+    <script src="js/subscription.js"></script>
+    <!-- 导入测试脚本 -->
+    <script src="js/test-subscription.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取DOM元素
+            const questionInput = document.getElementById('questionInput');
+            const charCounter = document.getElementById('charCounter');
+            const suggestionButtons = document.querySelectorAll('.suggestion-button');
+            const submitButton = document.getElementById('submitQuestion');
+            
+            // 字符计数功能
+            questionInput.addEventListener('input', function() {
+                const length = this.value.length;
+                charCounter.textContent = length + '/300';
+                
+                // 超出300字符限制
+                if (length > 300) {
+                    this.value = this.value.substring(0, 300);
+                    charCounter.textContent = '300/300';
+                    charCounter.style.color = '#FF3B30';
+                } else {
+                    charCounter.style.color = '#999';
+                }
+            });
+            
+            // 点击问题建议填充文本框
+            suggestionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const suggestionText = this.textContent.trim().substring(2); // 去掉emoji和空格
+                    questionInput.value = suggestionText;
+                    // 触发input事件更新计数器
+                    const event = new Event('input');
+                    questionInput.dispatchEvent(event);
+                    // 聚焦文本框
+                    questionInput.focus();
+                });
+            });
+            
+            // 提交按钮点击事件
+            submitButton.addEventListener('click', function() {
+                const question = questionInput.value.trim();
+                if (!question) {
+                    alert('请输入您想要占卜的问题');
+                    return;
+                }
+                
+                // 跳转到塔罗占卜页面，将问题作为参数传递
+                window.location.href = "tarot-reading.html?q=" + encodeURIComponent(question);
+            });
+        });
+    </script>
+    <!-- 导入导航栏模块脚本 -->
+    <script src="js/navbar.js"></script>
+</body>
+</html> 

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarot Reading - Tarot09</title>
+    <meta name="description" content="Choose your tarot spread and start your AI tarot reading.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/page-styles/tarot-reading-eng.css">    <!-- Font Awesome icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index-eng.html">
+                    <span>🔮</span>
+                    <span>Tarot09</span>
+                </a>
+            </div>
+            
+            <button class="menu-toggle" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-capsules">
+                <!-- Main navigation capsule -->
+                <div class="nav-capsule main-nav-capsule">
+                    <div class="nav-menu">
+                        <ul>
+                            <li><a href="index-eng.html" class="nav-link">Home</a></li>
+                            <li><a href="ai-taluopai-eng.html" class="nav-link active">AI Tarot Reading</a></li>
+                            <li><a href="yes-no-tarot.html" class="nav-link">Yes/No Tarot Reading</a></li>
+                            <li><a href="javascript:void(0)" class="nav-link premium" id="premiumLink"><i class="fas fa-crown"></i> Premium</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- User controls capsule -->
+                <div class="nav-capsule user-controls-capsule">
+                    <div class="user-controls">
+                        <button class="theme-toggle" aria-label="Toggle theme">
+                            <i class="fas fa-moon"></i>
+                            <i class="fas fa-sun"></i>
+                        </button>
+                        <button class="language-toggle" aria-label="Toggle language">
+                            <i class="fas fa-globe"></i>
+                        </button>
+                        <a href="javascript:void(0)" class="user-profile">
+                            😊
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <main>
+        <h1 class="tarot-header">Tarot Reading</h1>
+        <h2 class="tarot-subtitle">Choose Your Tarot Spread</h2>
+        
+        <!-- Tarot reader info -->
+        <div class="tarot-reader-info">
+            <div class="reader-avatar">Master</div>
+            <div class="reader-message">
+                Let's see what the cards reveal!
+            </div>
+        </div>
+        
+        <!-- Tarot spread -->
+        <div class="tarot-spread-container">
+            <h3 class="tarot-spread-title">Development Spread</h3>
+            
+            <!-- Tarot cards -->
+            <div class="tarot-cards">
+                <div class="tarot-card"></div>
+                <div class="tarot-card"></div>
+                <div class="tarot-card"></div>
+                <div class="tarot-card"></div>
+                <div class="tarot-card"></div>
+            </div>
+            
+            <!-- Draw cards button -->
+            <button class="tarot-action-button" id="drawCards">
+                Draw Cards
+            </button>
+            <br>
+            <!-- Other spread options -->
+            <div class="other-spread-option" id="otherSpreadOption">
+                Choose Another Spread <span class="new-badge">NEW</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    © 2023 AI Tarot Reading - All Rights Reserved
+                </div>
+                <div class="footer-links">
+                    <a href="javascript:void(0)">About Us</a>
+                    <a href="javascript:void(0)">Privacy Policy</a>
+                    <a href="javascript:void(0)">Terms of Use</a>
+                    <a href="javascript:void(0)">Contact Us</a>
+                    <a href="javascript:void(0)">Feedback</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Premium subscription modal -->
+    <div class="modal-overlay" id="subscriptionModal">
+        <div class="subscription-modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Upgrade to Premium</h3>
+                <p class="modal-subtitle">Enjoy unlimited tarot readings and more premium features</p>
+            </div>
+            
+            <div class="plan-options">
+                <div class="plan-option" data-plan="monthly">
+                    <div class="plan-name">
+                        Monthly Plan <span class="plan-price">$2.99</span>
+                    </div>
+                    <p class="plan-description">Auto-renews monthly, cancel anytime</p>
+                </div>
+                
+                <div class="plan-option selected" data-plan="quarterly">
+                    <div class="plan-name">
+                        Quarterly Plan <span class="plan-price">$7.99</span>
+                    </div>
+                    <p class="plan-description">Auto-renews every three months, equal to $2.66/month</p>
+                </div>
+                
+                <div class="plan-option" data-plan="yearly">
+                    <div class="plan-name">
+                        Annual Plan <span class="plan-price">$26.99</span>
+                    </div>
+                    <p class="plan-description">Auto-renews yearly, equal to $2.25/month, best value</p>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="cancel-button" id="cancelSubscription">Cancel</button>
+                <button class="subscribe-button" id="confirmSubscription">Subscribe</button>
+            </div>
+            
+            <div class="term-conditions">
+                <p>By subscribing, you agree to our Terms of Service and Privacy Policy. You can cancel auto-renewal 24 hours before the renewal date.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import subscription module script -->
+    <script src="js/subscription.js"></script>
+    <!-- Import test script -->
+    <script src="js/test-subscription.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get DOM elements
+            const drawCardsButton = document.getElementById('drawCards');
+            const otherSpreadOption = document.getElementById('otherSpreadOption');
+            const tarotCards = document.querySelectorAll('.tarot-card');
+            
+            // Draw cards button click event
+            drawCardsButton.addEventListener('click', function() {
+                // Pass the question parameter to the drawing page
+                const urlParams = new URLSearchParams(window.location.search);
+                const question = urlParams.get('q');
+                let url = "tarot-drawing-eng.html";
+                if (question) {
+                    url += "?q=" + encodeURIComponent(question);
+                }
+                window.location.href = url;
+            });
+            
+            // Other spread option click event
+            otherSpreadOption.addEventListener('click', function() {
+                alert('More spread options coming soon...');
+                // Future implementation: window.location.href = "tarot-spreads-eng.html";
+            });
+            
+            // Add click effect for each tarot card
+            tarotCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // Card flip animation
+                    this.style.transform = 'translateY(-10px)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 500);
+                });
+            });
+            
+            // Get question from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const question = urlParams.get('q');
+            
+            // Handle the question if present in URL
+            if (question) {
+                console.log('Current tarot question:', question);
+                // Can customize page content based on question here
+            }
+        });
+    </script>
+    <!-- Import navbar module script -->
+    <script src="js/navbar.js"></script>
+</body>
+</html> 
