@@ -1621,6 +1621,37 @@ body.dark-mode .more-features-button:hover {
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
+/* 查看更多故事按钮容器 */
+.view-more-container {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.view-more-button {
+    display: inline-block;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.view-more-button i {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.view-more-button:hover i {
+    transform: translateX(5px);
+}
+
+/* 暗黑模式适配 */
+body.dark-mode .view-more-button {
+    background-color: var(--primary-dark, #7926c9);
+}
+
+body.dark-mode .view-more-button:hover {
+    background-color: var(--primary-color, #8a4baf);
+}
+
 #storyDetailModal.active {
     opacity: 1;
     visibility: visible;
@@ -2049,4 +2080,166 @@ body.dark-mode .more-features-button:hover {
         min-width: 160px;
         text-align: center;
     }
+}
+
+/* 故事页面样式 */
+.stories-filter {
+    margin: 2rem auto;
+    max-width: 700px;
+}
+
+.search-bar {
+    display: flex;
+    margin-bottom: 1.5rem;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 30px 0 0 30px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.search-bar button {
+    background-color: var(--primary-color, #8a4baf);
+    color: white;
+    border: none;
+    padding: 0 1.5rem;
+    border-radius: 0 30px 30px 0;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.search-bar button:hover {
+    background-color: var(--primary-dark, #7926c9);
+}
+
+.filter-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.filter-tag {
+    padding: 0.5rem 1.2rem;
+    background-color: var(--bg-secondary, #f5f5f7);
+    color: var(--text-secondary, #666);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
+.filter-tag:hover, .filter-tag.active {
+    background-color: var(--primary-color, #8a4baf);
+    color: white;
+}
+
+/* 瀑布流布局 */
+.stories-waterfall-section {
+    padding: 2rem 0 4rem;
+}
+
+.stories-waterfall {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.load-more-container, .share-story-container {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.load-more-button, .share-story-button {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.load-more-button i, .share-story-button i {
+    margin-left: 0.5rem;
+}
+
+.load-more-button:hover i {
+    animation: spin 1s linear infinite;
+}
+
+.share-story-button {
+    margin-top: 2rem;
+    background-color: #fff;
+    color: var(--primary-color, #8a4baf);
+    border: 2px solid var(--primary-color, #8a4baf);
+}
+
+.share-story-button:hover {
+    background-color: var(--primary-color, #8a4baf);
+    color: white;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 暗色模式适配 */
+body.dark-mode .search-bar input {
+    background-color: var(--dark-card-bg, #2d2d2d);
+    border-color: #444;
+    color: var(--dark-text, #f1f1f1);
+}
+
+body.dark-mode .filter-tag {
+    background-color: var(--dark-card-bg, #2d2d2d);
+    color: var(--dark-secondary-text, #bebebe);
+}
+
+body.dark-mode .filter-tag:hover, body.dark-mode .filter-tag.active {
+    background-color: var(--primary-dark, #7926c9);
+    color: white;
+}
+
+body.dark-mode .share-story-button {
+    background-color: transparent;
+    color: var(--primary-light, #9d4ced);
+    border-color: var(--primary-light, #9d4ced);
+}
+
+body.dark-mode .share-story-button:hover {
+    background-color: var(--primary-dark, #7926c9);
+    color: white;
+}
+
+/* 响应式适配 */
+@media (max-width: 768px) {
+    .stories-waterfall {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .filter-tags {
+        gap: 0.5rem;
+    }
+    
+    .filter-tag {
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .stories-waterfall {
+        grid-template-columns: 1fr;
+    }
+}
+
+#storyDetailModal.active {
+    opacity: 1;
+    visibility: visible;
+    display: flex;
 } 

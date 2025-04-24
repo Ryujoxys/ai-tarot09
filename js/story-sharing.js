@@ -1,12 +1,210 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // 卡牌名称映射到英文名称
+    const cardNameMapping = {
+        // 大阿卡纳牌映射
+        "愚人": "TheFool",
+        "魔法师": "TheMagician",
+        "女祭司": "TheHighPriestess",
+        "皇后": "TheEmpress",
+        "皇帝": "TheEmperor",
+        "教皇": "TheHierophant",
+        "恋人": "TheLovers",
+        "战车": "TheChariot",
+        "力量": "Strength",
+        "隐士": "TheHermit",
+        "命运之轮": "WheelOfFortune",
+        "正义": "Justice",
+        "倒吊人": "TheHangedMan",
+        "死神": "Death",
+        "节制": "Temperance",
+        "恶魔": "TheDevil",
+        "高塔": "TheTower",
+        "星星": "TheStar",
+        "月亮": "TheMoon",
+        "太阳": "TheSun",
+        "审判": "Judgement",
+        "世界": "TheWorld",
+        
+        // 小阿卡纳牌映射 - 权杖(Wands)
+        "权杖骑士": "KnightOfWands",
+        "权杖王后": "QueenOfWands",
+        "权杖国王": "KingOfWands",
+        "权杖侍卫": "PageOfWands",
+        "权杖Ace": "AceOfWands",
+        "权杖2": "TwoOfWands",
+        "权杖3": "ThreeOfWands",
+        "权杖4": "FourOfWands",
+        "权杖5": "FiveOfWands",
+        "权杖6": "SixOfWands",
+        "权杖7": "SevenOfWands",
+        "权杖8": "EightOfWands",
+        "权杖9": "NineOfWands",
+        "权杖10": "TenOfWands",
+        
+        // 小阿卡纳牌映射 - 圣杯(Cups)
+        "圣杯二": "TwoOfCups",
+        "圣杯Ace": "AceOfCups",
+        "圣杯2": "TwoOfCups",
+        "圣杯3": "ThreeOfCups",
+        "圣杯4": "FourOfCups",
+        "圣杯5": "FiveOfCups",
+        "圣杯6": "SixOfCups",
+        "圣杯7": "SevenOfCups",
+        "圣杯8": "EightOfCups",
+        "圣杯9": "NineOfCups",
+        "圣杯10": "TenOfCups",
+        "圣杯侍卫": "PageOfCups",
+        "圣杯骑士": "KnightOfCups",
+        "圣杯王后": "QueenOfCups",
+        "圣杯国王": "KingOfCups",
+        
+        // 小阿卡纳牌映射 - 宝剑(Swords)
+        "宝剑四": "FourOfSwords",
+        "宝剑Ace": "AceOfSwords",
+        "宝剑2": "TwoOfSwords",
+        "宝剑3": "ThreeOfSwords",
+        "宝剑4": "FourOfSwords",
+        "宝剑5": "FiveOfSwords",
+        "宝剑6": "SixOfSwords",
+        "宝剑7": "SevenOfSwords",
+        "宝剑8": "EightOfSwords",
+        "宝剑9": "NineOfSwords",
+        "宝剑10": "TenOfSwords",
+        "宝剑侍卫": "PageOfSwords",
+        "宝剑骑士": "KnightOfSwords",
+        "宝剑王后": "QueenOfSwords",
+        "宝剑国王": "KingOfSwords",
+        
+        // 小阿卡纳牌映射 - 星币(Pentacles)
+        "星币王牌": "AceOfPentacles",
+        "星币八": "EightOfPentacles",
+        "星币Ace": "AceOfPentacles",
+        "星币2": "TwoOfPentacles",
+        "星币3": "ThreeOfPentacles",
+        "星币4": "FourOfPentacles",
+        "星币5": "FiveOfPentacles",
+        "星币6": "SixOfPentacles",
+        "星币7": "SevenOfPentacles",
+        "星币8": "EightOfPentacles",
+        "星币9": "NineOfPentacles",
+        "星币10": "TenOfPentacles",
+        "星币侍卫": "PageOfPentacles",
+        "星币骑士": "KnightOfPentacles",
+        "星币王后": "QueenOfPentacles",
+        "星币国王": "KingOfPentacles"
+    };
+    
+    // 英文名称映射到CDN链接
+    const cardCdnMapping = {
+        "TheFool": "https://qiniustatic.wodidashi.com/TheFool.jpg",
+        "TheMagician": "https://qiniustatic.wodidashi.com/TheMagician.jpg",
+        "TheHighPriestess": "https://qiniustatic.wodidashi.com/TheHighPriestess.jpg",
+        "TheEmpress": "https://qiniustatic.wodidashi.com/TheEmpress.jpg",
+        "TheEmperor": "https://qiniustatic.wodidashi.com/TheEmperor.jpg",
+        "TheHierophant": "https://qiniustatic.wodidashi.com/TheHierophant.jpg",
+        "TheLovers": "https://qiniustatic.wodidashi.com/TheLovers.jpg",
+        "TheChariot": "https://qiniustatic.wodidashi.com/TheChariot.jpg",
+        "Strength": "https://qiniustatic.wodidashi.com/Strength.jpg",
+        "TheHermit": "https://qiniustatic.wodidashi.com/TheHermit.jpg",
+        "WheelOfFortune": "https://qiniustatic.wodidashi.com/WheelOfFortune.jpg",
+        "Justice": "https://qiniustatic.wodidashi.com/Justice.jpg",
+        "TheHangedMan": "https://qiniustatic.wodidashi.com/TheHangedMan.jpg",
+        "Death": "https://qiniustatic.wodidashi.com/Death.jpg",
+        "Temperance": "https://qiniustatic.wodidashi.com/Temperance.jpg",
+        "TheDevil": "https://qiniustatic.wodidashi.com/TheDevil.jpg",
+        "TheTower": "https://qiniustatic.wodidashi.com/TheTower.jpg",
+        "TheStar": "https://qiniustatic.wodidashi.com/TheStar.jpg",
+        "TheMoon": "https://qiniustatic.wodidashi.com/TheMoon.jpg",
+        "TheSun": "https://qiniustatic.wodidashi.com/TheSun.jpg",
+        "Judgement": "https://qiniustatic.wodidashi.com/Judgement.jpg",
+        "TheWorld": "https://qiniustatic.wodidashi.com/TheWorld.jpg",
+        
+        // 小阿卡纳牌 - 权杖(Wands)
+        "AceOfWands": "https://qiniustatic.wodidashi.com/AceOfWands.jpg",
+        "TwoOfWands": "https://qiniustatic.wodidashi.com/TwoOfWands.jpg",
+        "ThreeOfWands": "https://qiniustatic.wodidashi.com/ThreeOfWands.jpg",
+        "FourOfWands": "https://qiniustatic.wodidashi.com/FourOfWands.jpg",
+        "FiveOfWands": "https://qiniustatic.wodidashi.com/FiveOfWands.jpg",
+        "SixOfWands": "https://qiniustatic.wodidashi.com/SixOfWands.jpg",
+        "SevenOfWands": "https://qiniustatic.wodidashi.com/SevenOfWands.jpg",
+        "EightOfWands": "https://qiniustatic.wodidashi.com/EightOfWands.jpg",
+        "NineOfWands": "https://qiniustatic.wodidashi.com/NineOfWands.jpg",
+        "TenOfWands": "https://qiniustatic.wodidashi.com/TenOfWands.jpg",
+        "PageOfWands": "https://qiniustatic.wodidashi.com/PageOfWands.jpg",
+        "KnightOfWands": "https://qiniustatic.wodidashi.com/KnightOfWands.jpg",
+        "QueenOfWands": "https://qiniustatic.wodidashi.com/QueenOfWands.jpg",
+        "KingOfWands": "https://qiniustatic.wodidashi.com/KingOfWands.jpg",
+        
+        // 小阿卡纳牌 - 圣杯(Cups)
+        "AceOfCups": "https://qiniustatic.wodidashi.com/AceOfCups.jpg",
+        "TwoOfCups": "https://qiniustatic.wodidashi.com/TwoOfCups.jpg",
+        "ThreeOfCups": "https://qiniustatic.wodidashi.com/ThreeOfCups.jpg",
+        "FourOfCups": "https://qiniustatic.wodidashi.com/FourOfCups.jpg",
+        "FiveOfCups": "https://qiniustatic.wodidashi.com/FiveOfCups.jpg",
+        "SixOfCups": "https://qiniustatic.wodidashi.com/SixOfCups.jpg",
+        "SevenOfCups": "https://qiniustatic.wodidashi.com/SevenOfCups.jpg",
+        "EightOfCups": "https://qiniustatic.wodidashi.com/EightOfCups.jpg",
+        "NineOfCups": "https://qiniustatic.wodidashi.com/NineOfCups.jpg",
+        "TenOfCups": "https://qiniustatic.wodidashi.com/TenOfCups.jpg",
+        "PageOfCups": "https://qiniustatic.wodidashi.com/PageOfCups.jpg",
+        "KnightOfCups": "https://qiniustatic.wodidashi.com/KnightOfCups.jpg",
+        "QueenOfCups": "https://qiniustatic.wodidashi.com/QueenOfCups.jpg",
+        "KingOfCups": "https://qiniustatic.wodidashi.com/KingOfCups.jpg",
+        
+        // 小阿卡纳牌 - 宝剑(Swords)
+        "AceOfSwords": "https://qiniustatic.wodidashi.com/AceOfSwords.jpg",
+        "TwoOfSwords": "https://qiniustatic.wodidashi.com/TwoOfSwords.jpg",
+        "ThreeOfSwords": "https://qiniustatic.wodidashi.com/ThreeOfSwords.jpg",
+        "FourOfSwords": "https://qiniustatic.wodidashi.com/FourOfSwords.jpg",
+        "FiveOfSwords": "https://qiniustatic.wodidashi.com/FiveOfSwords.jpg",
+        "SixOfSwords": "https://qiniustatic.wodidashi.com/SixOfSwords.jpg",
+        "SevenOfSwords": "https://qiniustatic.wodidashi.com/SevenOfSwords.jpg",
+        "EightOfSwords": "https://qiniustatic.wodidashi.com/EightOfSwords.jpg",
+        "NineOfSwords": "https://qiniustatic.wodidashi.com/NineOfSwords.jpg",
+        "TenOfSwords": "https://qiniustatic.wodidashi.com/TenOfSwords.jpg",
+        "PageOfSwords": "https://qiniustatic.wodidashi.com/PageOfSwords.jpg",
+        "KnightOfSwords": "https://qiniustatic.wodidashi.com/KnightOfSwords.jpg",
+        "QueenOfSwords": "https://qiniustatic.wodidashi.com/QueenOfSwords.jpg",
+        "KingOfSwords": "https://qiniustatic.wodidashi.com/KingOfSwords.jpg",
+        
+        // 小阿卡纳牌 - 星币(Pentacles)
+        "AceOfPentacles": "https://qiniustatic.wodidashi.com/AceOfPentacles.jpg",
+        "TwoOfPentacles": "https://qiniustatic.wodidashi.com/TwoOfPentacles.jpg",
+        "ThreeOfPentacles": "https://qiniustatic.wodidashi.com/ThreeOfPentacles.jpg",
+        "FourOfPentacles": "https://qiniustatic.wodidashi.com/FourOfPentacles.jpg",
+        "FiveOfPentacles": "https://qiniustatic.wodidashi.com/FiveOfPentacles.jpg",
+        "SixOfPentacles": "https://qiniustatic.wodidashi.com/SixOfPentacles.jpg",
+        "SevenOfPentacles": "https://qiniustatic.wodidashi.com/SevenOfPentacles.jpg",
+        "EightOfPentacles": "https://qiniustatic.wodidashi.com/EightOfPentacles.jpg",
+        "NineOfPentacles": "https://qiniustatic.wodidashi.com/NineOfPentacles.jpg",
+        "TenOfPentacles": "https://qiniustatic.wodidashi.com/TenOfPentacles.jpg",
+        "PageOfPentacles": "https://qiniustatic.wodidashi.com/PageOfPentacles.jpg",
+        "KnightOfPentacles": "https://qiniustatic.wodidashi.com/KnightOfPentacles.jpg",
+        "QueenOfPentacles": "https://qiniustatic.wodidashi.com/QueenOfPentacles.jpg",
+        "KingOfPentacles": "https://qiniustatic.wodidashi.com/KingOfPentacles.jpg",
+        
+        // 牌背
+        "CardBack": "https://qiniustatic.wodidashi.com/CardBack.jpg"
+    };
+    
+    // 获取卡牌CDN图片路径
+    function getCardCdnImage(cardName) {
+        if (cardNameMapping[cardName] && cardCdnMapping[cardNameMapping[cardName]]) {
+            return cardCdnMapping[cardNameMapping[cardName]];
+        } else {
+            console.warn(`未找到卡牌 "${cardName}" 对应的CDN链接`);
+            return null;
+        }
+    }
+    
     // 故事数据 - 实际应用中可以从服务器获取
     const storyData = {
         "1": {
             title: "爱情抉择的困惑",
             cards: [
-                { image: "images/06恋人.jpg", name: "恋人" },
-                { image: "images/圣杯2.jpg", name: "圣杯二" },
-                { image: "images/权杖骑士.jpg", name: "权杖骑士" }
+                { image: getCardCdnImage("恋人") || "images/06恋人.jpg", name: "恋人" },
+                { image: getCardCdnImage("圣杯二") || "images/圣杯2.jpg", name: "圣杯二" },
+                { image: getCardCdnImage("权杖骑士") || "images/权杖骑士.jpg", name: "权杖骑士" }
             ],
             conversation: {
                 userQuestion: "我现在面临两段感情，一个是相处多年的稳定关系，另一个是新认识但有强烈吸引力的人。我该如何抉择？",
@@ -18,9 +216,9 @@ document.addEventListener('DOMContentLoaded', function() {
         "2": {
             title: "职业转型的迷茫",
             cards: [
-                { image: "images/10命运之轮.jpg", name: "命运之轮" },
-                { image: "images/星币8.jpg", name: "星币八" },
-                { image: "images/19太阳.jpg", name: "太阳" }
+                { image: getCardCdnImage("命运之轮") || "images/10命运之轮.jpg", name: "命运之轮" },
+                { image: getCardCdnImage("星币八") || "images/星币8.jpg", name: "星币八" },
+                { image: getCardCdnImage("太阳") || "images/19太阳.jpg", name: "太阳" }
             ],
             conversation: {
                 userQuestion: "我在金融行业工作了8年，但现在想转行做科技产品经理。这个转变是否正确？我该如何开始？",
@@ -32,9 +230,9 @@ document.addEventListener('DOMContentLoaded', function() {
         "3": {
             title: "学业压力的缓解",
             cards: [
-                { image: "images/09隐士.jpg", name: "隐士" },
-                { image: "images/宝剑4.jpg", name: "宝剑四" },
-                { image: "images/星币ACE.jpg", name: "星币王牌" }
+                { image: getCardCdnImage("隐士") || "images/09隐士.jpg", name: "隐士" },
+                { image: getCardCdnImage("宝剑四") || "images/宝剑4.jpg", name: "宝剑四" },
+                { image: getCardCdnImage("星币王牌") || "images/星币ACE.jpg", name: "星币王牌" }
             ],
             conversation: {
                 userQuestion: "考研备考压力太大，感觉自己快要崩溃了，该怎么调整状态？我有时候怀疑自己是否适合读研。",

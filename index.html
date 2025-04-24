@@ -129,6 +129,12 @@
                             <button class="story-read-more">查看完整故事</button>
                         </div>
                     </div>
+                    <!-- 查看更多按钮 -->
+                    <div class="view-more-container">
+                        <a href="stories.html" class="action-button purple-button view-more-button">
+                            查看更多故事 <i class="fas fa-angle-right"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -379,7 +385,7 @@
             // 将所有链接更改为无效链接，但保留AI塔罗占卜链接
             links.forEach(function(link) {
                 var href = link.getAttribute('href');
-                if (href !== 'javascript:void(0)' && href !== 'ai-taluopai.html' && href !== 'yes-no-tarot.html') {
+                if (href !== 'javascript:void(0)' && href !== 'ai-taluopai.html' && href !== 'yes-no-tarot.html' && href !== 'stories.html') {
                     link.setAttribute('href', 'javascript:void(0)');
                 }
             });
