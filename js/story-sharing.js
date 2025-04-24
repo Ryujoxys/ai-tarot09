@@ -202,9 +202,9 @@ document.addEventListener('DOMContentLoaded', function() {
         "1": {
             title: "爱情抉择的困惑",
             cards: [
-                { image: getCardCdnImage("恋人") || "images/06恋人.jpg", name: "恋人" },
-                { image: getCardCdnImage("圣杯二") || "images/圣杯2.jpg", name: "圣杯二" },
-                { image: getCardCdnImage("权杖骑士") || "images/权杖骑士.jpg", name: "权杖骑士" }
+                { image: getCardCdnImage("恋人"), name: "恋人" },
+                { image: getCardCdnImage("圣杯二"), name: "圣杯二" },
+                { image: getCardCdnImage("权杖骑士"), name: "权杖骑士" }
             ],
             conversation: {
                 userQuestion: "我现在面临两段感情，一个是相处多年的稳定关系，另一个是新认识但有强烈吸引力的人。我该如何抉择？",
@@ -216,9 +216,9 @@ document.addEventListener('DOMContentLoaded', function() {
         "2": {
             title: "职业转型的迷茫",
             cards: [
-                { image: getCardCdnImage("命运之轮") || "images/10命运之轮.jpg", name: "命运之轮" },
-                { image: getCardCdnImage("星币八") || "images/星币8.jpg", name: "星币八" },
-                { image: getCardCdnImage("太阳") || "images/19太阳.jpg", name: "太阳" }
+                { image: getCardCdnImage("命运之轮"), name: "命运之轮" },
+                { image: getCardCdnImage("星币八"), name: "星币八" },
+                { image: getCardCdnImage("太阳"), name: "太阳" }
             ],
             conversation: {
                 userQuestion: "我在金融行业工作了8年，但现在想转行做科技产品经理。这个转变是否正确？我该如何开始？",
@@ -230,9 +230,9 @@ document.addEventListener('DOMContentLoaded', function() {
         "3": {
             title: "学业压力的缓解",
             cards: [
-                { image: getCardCdnImage("隐士") || "images/09隐士.jpg", name: "隐士" },
-                { image: getCardCdnImage("宝剑四") || "images/宝剑4.jpg", name: "宝剑四" },
-                { image: getCardCdnImage("星币王牌") || "images/星币ACE.jpg", name: "星币王牌" }
+                { image: getCardCdnImage("隐士"), name: "隐士" },
+                { image: getCardCdnImage("宝剑四"), name: "宝剑四" },
+                { image: getCardCdnImage("星币王牌"), name: "星币王牌" }
             ],
             conversation: {
                 userQuestion: "考研备考压力太大，感觉自己快要崩溃了，该怎么调整状态？我有时候怀疑自己是否适合读研。",

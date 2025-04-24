@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Choose Your AI Tarot Reader - Tarot09</title>
-    <meta name="description" content="Choose your favorite AI Tarot Reader and get professional tarot reading and life guidance.">
+    <meta name="description" content="Choose your favorite AI Tarot reader for professional tarot card readings and life guidance.">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/page-styles/ai-taluopai-eng.css">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/page-styles/ai-taluopai.css">
+    <link rel="stylesheet" href="css/subscription-fix.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation bar -->
+    <!-- 导航栏 -->
     <nav class="navbar">
         <div class="container">
             <div class="logo">
@@ -24,26 +26,26 @@
             </button>
             
             <div class="nav-capsules">
-                <!-- Main navigation capsule -->
+                <!-- 主导航胶囊 -->
                 <div class="nav-capsule main-nav-capsule">
                     <div class="nav-menu">
                         <ul>
                             <li><a href="index-eng.html" class="nav-link">Home</a></li>
                             <li><a href="javascript:void(0)" class="nav-link active">AI Tarot Reading</a></li>
-                            <li><a href="yes-no-tarot.html" class="nav-link">Yes/No Tarot Reading</a></li>
-                            <li><a href="javascript:void(0)" class="nav-link premium" id="premiumLink"><i class="fas fa-crown"></i> Premium</a></li>
+                            <li><a href="yes-no-tarot-eng.html" class="nav-link">Yes/No Tarot</a></li>
+                            <li><a href="javascript:void(0)" class="nav-link premium" id="premiumLink"><i class="fas fa-crown"></i> Membership</a></li>
                         </ul>
                     </div>
                 </div>
                 
-                <!-- User controls capsule -->
+                <!-- 用户控制胶囊 -->
                 <div class="nav-capsule user-controls-capsule">
                     <div class="user-controls">
-                        <button class="theme-toggle" aria-label="Toggle theme">
+                        <button class="theme-toggle" aria-label="Toggle Theme">
                             <i class="fas fa-moon"></i>
                             <i class="fas fa-sun"></i>
                         </button>
-                        <button class="language-toggle" aria-label="Toggle language">
+                        <button class="language-toggle" aria-label="Toggle Language">
                             <i class="fas fa-globe"></i>
                         </button>
                         <a href="javascript:void(0)" class="user-profile">
@@ -55,16 +57,16 @@
         </div>
     </nav>
 
-    <!-- Main content -->
+    <!-- 主要内容 -->
     <main>
-        <!-- Page title -->
+        <!-- 页面标题 -->
         <section class="page-header">
             <div class="container">
                 <h3 class="main-title">Online Tarot Reading</h3>
-                <h1 class="page-title">Choose your <span class="ai-highlight">AI</span> Tarot Reader</h1>
-                <p class="page-subtitle">Discover your destiny through AI tarot card readings</p>
+                <h1 class="page-title">Choose Your <span class="ai-highlight">AI</span> Tarot Cards</h1>
+                <p class="page-subtitle">Divine your path of destiny through AI Tarot card interpretations</p>
                 
-                <!-- Free reading counter display -->
+                <!-- 免费占卜次数显示框 -->
                 <div class="free-counter-box">
                     <div class="free-counter">
                         Free readings remaining today: 2
@@ -76,171 +78,120 @@
                         <i class="fas fa-unlock-alt"></i> Unlock Unlimited Readings
                     </button>
                     <div class="reset-time">
-                        Resets daily at 08:00 CST
+                        Resets daily at CST 08:00
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- Tarot reader selection -->
+        <!-- 开始占卜 -->
         <section class="reader-selection">
             <div class="container">
-                <h2 class="visually-hidden">Tarot Reader List</h2>
-                
-                <div class="reader-grid">
-                    <!-- Reader 1 -->
-                    <div class="reader-card">
-                        <div class="reader-image"></div>
-                        <div class="reader-info">
-                            <h3 class="reader-name">Mystic Mr. <span class="reader-stars">★★★★★</span></h3>
-                            <p class="reader-description">A mysterious Eastern tarot master who specializes in career and wealth analysis, able to predict future trends.</p>
-                            <button class="select-button">Select Reader</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- More readers button -->
-                <div class="more-readers">
-                    <button class="more-button">Coming Soon</button>
-                </div>
-                
-                <!-- Service description -->
-                <div class="service-info">
-                    <div class="reader-card" style="margin-bottom: 15px;">
-                        <div class="reader-image"></div>
-                        <div class="reader-info">
-                            <h3 class="reader-name">Free Tarot Reading - 2 Times</h3>
-                            <p class="reader-description">Free reading service for new users to experience the professional interpretation ability of AI tarot readers.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="reader-card">
-                        <div class="reader-image"></div>
-                        <div class="reader-info">
-                            <h3 class="reader-name">Unlimited Readings for Members</h3>
-                            <p class="reader-description">After becoming a member, you can use all AI tarot reader services unlimited times and enjoy premium features.</p>
-                        </div>
-                    </div>
+                <div class="start-divination-container">
+                    <button class="start-divination-button" id="startDivination">Start Online Reading</button>
                 </div>
             </div>
         </section>
         
-        <!-- How to use AI Tarot Reading -->
+        <!-- 如何使用AI塔罗牌占卜 -->
         <section class="feature-section">
             <div class="container">
                 <h2 class="feature-title">How to Use AI Tarot Reading?</h2>
                 
                 <div class="feature-grid">
                     <div class="feature-card">
-                        <h3>Step 1: Choose a Tarot Reader</h3>
-                        <p>Select a tarot reader that fits your needs from multiple AI tarot readers, each with different specialties and reading styles.</p>
+                        <h3>Step 1: Click Start Online Reading</h3>
+                        <p>Click the "Start Online Reading" button, and the system will automatically generate a tarot spread suitable for your question to begin your divination journey.</p>
                     </div>
                     
                     <div class="feature-card">
                         <h3>Step 2: Ask a Specific Question</h3>
-                        <p>Clearly state the question you want answered. More specific questions lead to more precise readings, helping you get more valuable guidance.</p>
+                        <p>Clarify the question you want answered. The more specific your question, the more precise the reading will be, helping you gain more valuable guidance.</p>
                     </div>
                     
                     <div class="feature-card">
                         <h3>Step 3: Receive Tarot Interpretation</h3>
-                        <p>The AI tarot reader will draw tarot cards for you and provide detailed interpretations, offering insights and possible future trends related to your question.</p>
+                        <p>The AI Tarot reader will draw tarot cards for you and provide detailed interpretations, offering insights into your question and possible future developments.</p>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- AI Tarot Features -->
+        <!-- AI塔罗牌特点 -->
         <section class="feature-section" style="background-color: white;">
             <div class="container">
                 <h2 class="feature-title">AI Tarot Features</h2>
                 
-                <div class="highlight-features">
-                    <div class="highlight-feature">
-                        <div class="highlight-image"></div>
-                        <div class="highlight-content">
-                            <h3>Automatic Card Drawing</h3>
-                            <p>No need to manually select cards, AI will automatically draw the most suitable tarot card combination for you, ensuring accuracy and comprehensiveness.</p>
+                <div class="feature-icons-grid">
+                    <div class="feature-icon-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-globe"></i>
                         </div>
+                        <h3>Online Tarot Interpretation</h3>
+                        <p>Anytime, anywhere, as long as you're connected to the internet, you can receive professional tarot card reading services.</p>
                     </div>
                     
-                    <div class="highlight-feature">
-                        <div class="highlight-image"></div>
-                        <div class="highlight-content">
-                            <h3>Online Tarot Reading</h3>
-                            <p>Get professional tarot card reading services anytime, anywhere, as long as you have an internet connection.</p>
+                    <div class="feature-icon-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-eye"></i>
                         </div>
+                        <h3>Intuitive Tarot Reading</h3>
+                        <p>AI Tarot readers provide clear and intuitive interpretations, presenting the messages contained in tarot cards in an easy-to-understand way.</p>
                     </div>
                     
-                    <div class="highlight-feature">
-                        <div class="highlight-image"></div>
-                        <div class="highlight-content">
-                            <h3>Intuitive Tarot Interpretation</h3>
-                            <p>AI tarot readers provide clear and intuitive interpretations, presenting the messages contained in tarot cards in an easy-to-understand way.</p>
+                    <div class="feature-icon-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-star"></i>
                         </div>
+                        <h3>Mystical Card Predictions</h3>
+                        <p>Combining the mystical power of traditional tarot cards with modern AI technology to provide accurate predictions and guidance for you.</p>
                     </div>
                     
-                    <div class="highlight-feature">
-                        <div class="highlight-image"></div>
-                        <div class="highlight-content">
-                            <h3>Mystical Card Prediction</h3>
-                            <p>Combines the mystical power of traditional tarot cards with modern AI technology to provide accurate predictions and guidance.</p>
+                    <div class="feature-icon-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-comments"></i>
                         </div>
-                    </div>
-                    
-                    <div class="highlight-feature">
-                        <div class="highlight-image"></div>
-                        <div class="highlight-content">
-                            <h3>Follow-up Question Feature</h3>
-                            <p>If you have doubts after the reading, you can ask further questions, and the AI tarot reader will provide deeper answers to satisfy your curiosity.</p>
-                        </div>
+                        <h3>Follow-up Question Feature</h3>
+                        <p>If you have questions after the reading, you can ask further questions, and the AI Tarot reader will provide deeper answers to satisfy your curiosity.</p>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- AI Tarot Reading FAQs -->
+        <!-- AI塔罗牌占卜常见问题 -->
         <section class="faq-section">
             <div class="container">
-                <h2 class="faq-title">AI Tarot Reading FAQs</h2>
+                <h2 class="faq-title">Frequently Asked Questions About AI Tarot Reading</h2>
                 
                 <div class="faq-item">
-                    <h3 class="faq-question">Is AI Tarot Reading effective?</h3>
-                    <p class="faq-answer">AI Tarot Reading combines traditional tarot systems with advanced artificial intelligence technology, providing valuable interpretations through big data analysis and pattern recognition. While it cannot predict the future with 100% accuracy, it can help you think about issues from different perspectives and gain beneficial insights.</p>
+                    <h3 class="faq-question">Are AI Tarot readings effective?</h3>
+                    <p class="faq-answer">AI Tarot reading combines traditional tarot card systems with advanced artificial intelligence technology. Through big data analysis and pattern recognition, it provides interpretations with reference value. While it cannot predict the future with 100% accuracy, it can help you think about issues from different perspectives and gain valuable insights.</p>
                 </div>
                 
                 <div class="faq-item">
-                    <h3 class="faq-question">How to improve the accuracy of AI Tarot Reading?</h3>
-                    <p class="faq-answer">Ask specific and clear questions, maintain an open mindset, and understand the meanings of tarot cards in conjunction with your actual situation during the interpretation process. This way you can get more accurate and valuable reading results.</p>
+                    <h3 class="faq-question">How can I improve the accuracy of AI Tarot readings?</h3>
+                    <p class="faq-answer">Ask specific and clear questions, maintain an open mind, and understand the meanings of tarot cards in relation to your own situation during the interpretation process. This way, you can obtain more accurate and valuable reading results.</p>
                 </div>
                 
                 <div class="faq-item">
-                    <h3 class="faq-question">Can tarot cards predict timing?</h3>
-                    <p class="faq-answer">AI Tarot Reading can provide a general timeframe for event development, but accurate time predictions are influenced by multiple factors. Tarot cards focus more on revealing the development trends and possible outcomes of events rather than precise timing.</p>
+                    <h3 class="faq-question">Can Tarot cards predict time?</h3>
+                    <p class="faq-answer">AI Tarot reading can provide a general timeframe for event development, but accurate time predictions are influenced by many factors. Tarot cards focus more on revealing the development trends and possible outcomes of events rather than precise timing.</p>
                 </div>
                 
                 <div class="faq-item">
-                    <h3 class="faq-question">Do tarot readings reflect inevitable results?</h3>
-                    <p class="faq-answer">Tarot cards show possible outcomes based on current energies and trends, not unchangeable destiny. You always have free will and can make wiser choices based on tarot guidance, thereby changing your future path.</p>
+                    <h3 class="faq-question">Do Tarot readings reflect inevitable outcomes?</h3>
+                    <p class="faq-answer">Tarot cards show possible outcomes based on current energies and trends, not unchangeable destiny. You always have free will and can make wiser choices based on the guidance of tarot cards, thereby changing the course of your future.</p>
                 </div>
                 
                 <div class="faq-item">
                     <h3 class="faq-question">How long should I wait before asking the same question again?</h3>
-                    <p class="faq-answer">It's generally recommended to wait 2-4 weeks before asking the same question again, giving enough time for the situation to develop. Frequent readings on the same question may lead to confused interpretations, unless there are obvious changes in the situation. Member users can flexibly arrange reading frequency according to their needs.</p>
+                    <p class="faq-answer">It is generally recommended to wait 2-4 weeks before doing another reading on the same question, giving enough time for the situation to develop. Frequent readings on the same question may lead to confusing interpretations unless there have been significant changes. Premium members can schedule readings more flexibly according to their needs.</p>
                 </div>
             </div>
         </section>
         
-        <!-- More features -->
-        <section class="more-features">
-            <div class="container">
-                <h2>More <span class="ai-tarot-highlight">AI Tarot</span> Features</h2>
-                <p>Experience the latest 2025 online tarot card drawing system and tarot divination tests</p>
-                <button class="more-features-button" id="exploreMoreButton">Explore More Online AI Tarot Reading Methods</button>
-            </div>
-        </section>
-    </main>
 
-    <!-- Footer -->
+    <!-- 页脚 -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -258,34 +209,34 @@
         </div>
     </footer>
 
-    <!-- Premium subscription modal -->
+    <!-- 会员订阅弹窗 -->
     <div class="modal-overlay" id="subscriptionModal">
         <div class="subscription-modal">
             <div class="modal-header">
-                <h3 class="modal-title">Upgrade to Premium</h3>
+                <h3 class="modal-title">Upgrade Membership</h3>
                 <p class="modal-subtitle">Enjoy unlimited tarot readings and more premium features</p>
             </div>
             
             <div class="plan-options">
                 <div class="plan-option" data-plan="monthly">
                     <div class="plan-name">
-                        Monthly Membership <span class="plan-price">$18.00</span>
+                        Monthly Plan <span class="plan-price">$2.99</span>
                     </div>
                     <p class="plan-description">Auto-renews monthly, cancel anytime</p>
                 </div>
                 
                 <div class="plan-option selected" data-plan="quarterly">
                     <div class="plan-name">
-                        Quarterly Membership <span class="plan-price">$48.00</span>
+                        Quarterly Plan <span class="plan-price">$7.99</span>
                     </div>
-                    <p class="plan-description">Auto-renews every three months, equivalent to $16.00/month</p>
+                    <p class="plan-description">Auto-renews every three months, equivalent to $2.66/month</p>
                 </div>
                 
                 <div class="plan-option" data-plan="yearly">
                     <div class="plan-name">
-                        Annual Membership <span class="plan-price">$168.00</span>
+                        Annual Plan <span class="plan-price">$24.99</span>
                     </div>
-                    <p class="plan-description">Auto-renews annually, equivalent to $14.00/month, best value</p>
+                    <p class="plan-description">Auto-renews yearly, equivalent to $2.08/month, best value</p>
                 </div>
             </div>
             
@@ -295,80 +246,72 @@
             </div>
             
             <div class="term-conditions">
-                <p>By subscribing, you agree to our Terms of Service and Privacy Policy. Auto-renewal can be canceled up to 24 hours before expiration.</p>
+                <p>By subscribing, you agree to our Terms of Service and Privacy Policy. You can cancel auto-renewal up to 24 hours before the renewal date.</p>
             </div>
         </div>
     </div>
 
-    <!-- Import subscription module script -->
+    <!-- 导入订阅模块脚本 -->
     <script src="js/subscription.js"></script>
-    <!-- Import test script -->
+    <!-- 导入测试脚本 -->
     <script src="js/test-subscription.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Get all links
+            // 获取所有链接
             var links = document.querySelectorAll('a');
             
-            // Change all links to invalid links except home page and tarot reader selection
+            // 将所有链接更改为无效链接，但保留首页链接和塔罗师选择链接
             links.forEach(function(link) {
                 var href = link.getAttribute('href');
-                if (href !== 'javascript:void(0)' && href !== 'ai-taluopai-eng.html' && href !== 'yes-no-tarot.html' && href !== 'index-eng.html') {
+                if (href !== 'javascript:void(0)' && href !== 'ai-taluopai-eng.html' && href !== 'yes-no-tarot-eng.html' && href !== 'index-eng.html') {
                     link.setAttribute('href', 'javascript:void(0)');
                 }
             });
             
-            // Tarot reader selection button events
-            var selectButtons = document.querySelectorAll('.select-button');
-            selectButtons.forEach(function(button) {
-                button.addEventListener('click', function() {
-                    // Redirect to question input page after click
+            // 开始在线占卜按钮点击事件
+            const startDivinationBtn = document.getElementById('startDivination');
+            if (startDivinationBtn) {
+                startDivinationBtn.addEventListener('click', function() {
+                    // 点击后跳转到问题输入页面
                     window.location.href = 'tarot-question-eng.html';
-                });
-            });
-            
-            // More tarot readers button event
-            var moreButton = document.querySelector('.more-button');
-            if (moreButton) {
-                moreButton.addEventListener('click', function() {
-                    alert('Loading more tarot readers...');
                 });
             }
             
-            // Explore more button click event
+            // 探索更多按钮点击事件
             const exploreMoreButton = document.getElementById('exploreMoreButton');
             if (exploreMoreButton) {
                 exploreMoreButton.addEventListener('click', function() {
-                    // Could redirect to more AI tarot features page
-                    // Using alert for now
-                    alert('We will show you more AI tarot reading methods and features soon!');
-                    // Future replacement: window.location.href = "more-tarot-features.html";
+                    // 这里可以跳转到更多AI塔罗牌玩法的页面
+                    // 暂时用alert模拟
+                    alert('We will soon show you more AI Tarot features and functions!');
+                    // 未来可以替换为: window.location.href = "more-tarot-features.html";
                 });
             }
             
-            // Refresh icon click
+            // 刷新图标点击
             const refreshIcon = document.querySelector('.refresh-icon');
             if (refreshIcon) {
                 refreshIcon.addEventListener('click', function() {
                     this.querySelector('i').classList.add('fa-spin');
                     
-                    // Simulate refresh, stop spinning after 1 second
+                    // 模拟刷新，1秒后停止旋转
                     setTimeout(() => {
                         this.querySelector('i').classList.remove('fa-spin');
                     }, 1000);
                 });
             }
             
-            // Language toggle functionality
+            // 语言切换按钮功能
             const languageToggle = document.querySelector('.language-toggle');
             if (languageToggle) {
                 languageToggle.addEventListener('click', function() {
-                    // Switch to Chinese version
+                    // 切换到中文版
                     window.location.href = 'ai-taluopai.html';
                 });
             }
         });
     </script>
-    <!-- Import navbar module script -->
+    <!-- 导入导航栏模块脚本 -->
     <script src="js/navbar.js"></script>
 </body>
-</html> 
+</html>

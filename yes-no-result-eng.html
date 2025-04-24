@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yes/No Divination Result - Tarot09</title>
+    <meta name="description" content="View your yes/no tarot divination result, and receive insights and guidance from the tarot cards.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/page-styles/yes-no-result.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index-eng.html">
+                    <span>🔮</span>
+                    <span>Tarot09</span>
+                </a>
+            </div>
+            
+            <button class="menu-toggle" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-capsules">
+                <!-- 主导航胶囊 -->
+                <div class="nav-capsule main-nav-capsule">
+                    <div class="nav-menu">
+                        <ul>
+                            <li><a href="index-eng.html" class="nav-link">Home</a></li>
+                            <li><a href="ai-taluopai-eng.html" class="nav-link">AI Tarot Reading</a></li>
+                            <li><a href="yes-no-question-eng.html" class="nav-link active">Yes/No Tarot Reading</a></li>
+                            <li><a href="javascript:void(0)" class="nav-link premium" id="premiumLink"><i class="fas fa-crown"></i> Premium</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 用户控制胶囊 -->
+                <div class="nav-capsule user-controls-capsule">
+                    <div class="user-controls">
+                        <button class="theme-toggle" aria-label="Toggle Theme">
+                            <i class="fas fa-moon"></i>
+                            <i class="fas fa-sun"></i>
+                        </button>
+                        <button class="language-toggle" aria-label="Toggle Language">
+                            <i class="fas fa-globe"></i>
+                        </button>
+                        <button class="debug-toggle" aria-label="Debug Settings">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                        <a href="javascript:void(0)" class="user-profile">
+                            😊
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main>
+        <div class="result-container">
+            <!-- 装饰性星星 -->
+            <div class="result-stars">
+                <div class="star" style="top: 15%; left: 10%;"></div>
+                <div class="star" style="top: 25%; left: 85%;"></div>
+                <div class="star" style="top: 65%; left: 20%;"></div>
+                <div class="star" style="top: 80%; left: 70%;"></div>
+                <div class="star" style="top: 40%; left: 90%;"></div>
+                <div class="star" style="top: 30%; left: 25%;"></div>
+                <div class="star" style="top: 75%; left: 40%;"></div>
+                <div class="star" style="top: 90%; left: 10%;"></div>
+            </div>
+            
+            <div class="result-header">
+                <h1 class="result-title">Your Yes/No Tarot Reading Result</h1>
+                <div class="result-question" id="resultQuestion">Your Question: Unknown</div>
+                <div class="result-date" id="resultDate">December 30, 2023 19:42</div>
+            </div>
+            
+            <div class="result-content">
+                <div class="card-container">
+                    <div class="tarot-card" id="tarotCard">
+                        <div class="card-face card-back"></div>
+                        <div class="card-face card-front">
+                            <img src="images/17星星.jpg" alt="Tarot Card" class="card-image" id="cardImage">
+                        </div>
+                    </div>
+                </div>
+                
+                <h2 class="card-name" id="cardName">The Star</h2>
+                <div class="card-orientation" id="cardOrientation">Upright</div>
+                
+                <div class="answer-container">
+                    <h3 class="answer-header">The tarot card's answer to your question:</h3>
+                    <div class="answer-result answer-yes" id="answerResult">Yes</div>
+                </div>
+                
+                <div class="result-explanation">
+                    <h3 class="explanation-title">Card Interpretation</h3>
+                    <p class="explanation-text" id="explanationText">
+                        The Star is a symbol of hope and revelation. This card appearing in your yes/no reading indicates that the universe is sending you positive signals. It represents renewal, hope, and inner guidance, suggesting that you are on the right path.
+                    </p>
+                    <p class="explanation-text">
+                        The Star tells you that now is the time to follow your intuition. Whatever choice or decision you're facing, this card encourages you to maintain faith and patience. Even if the road seems long or challenging, the light of the stars will guide you to find your way.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="result-actions">
+                <a href="yes-no-question-eng.html" class="action-button">
+                    <i class="fas fa-redo action-icon"></i>
+                    New Reading
+                </a>
+                <a href="javascript:void(0)" class="action-button" id="saveResult">
+                    <i class="fas fa-save action-icon"></i>
+                    Save Result
+                </a>
+                <a href="javascript:void(0)" class="action-button" id="shareResult">
+                    <i class="fas fa-share-alt action-icon"></i>
+                    Share
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    © 2023 AI Tarot - All Rights Reserved
+                </div>
+                <div class="footer-links">
+                    <a href="javascript:void(0)">About Us</a>
+                    <a href="javascript:void(0)">Privacy Policy</a>
+                    <a href="javascript:void(0)">Terms of Use</a>
+                    <a href="javascript:void(0)">Contact Us</a>
+                    <a href="javascript:void(0)">Feedback</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 会员订阅弹窗 -->
+    <div class="modal-overlay" id="subscriptionModal">
+        <div class="subscription-modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Upgrade to Premium</h3>
+                <p class="modal-subtitle">Enjoy unlimited tarot readings and more premium features</p>
+            </div>
+            
+            <div class="plan-options">
+                <div class="plan-option" data-plan="monthly">
+                    <div class="plan-name">
+                        Monthly Plan <span class="plan-price">$2.99</span>
+                    </div>
+                    <p class="plan-description">Auto-renews monthly, cancel anytime</p>
+                </div>
+                
+                <div class="plan-option selected" data-plan="quarterly">
+                    <div class="plan-name">
+                        Quarterly Plan <span class="plan-price">$7.99</span>
+                    </div>
+                    <p class="plan-description">Auto-renews every three months, equivalent to $2.66/month</p>
+                </div>
+                
+                <div class="plan-option" data-plan="yearly">
+                    <div class="plan-name">
+                        Annual Plan <span class="plan-price">$27.99</span>
+                    </div>
+                    <p class="plan-description">Auto-renews yearly, equivalent to $2.33/month, best value</p>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="cancel-button" id="cancelSubscription">Cancel</button>
+                <button class="subscribe-button" id="confirmSubscription">Subscribe</button>
+            </div>
+            
+            <div class="term-conditions">
+                <p>By subscribing, you agree to our terms of service and privacy policy. Auto-renewal can be canceled up to 24 hours before the renewal date.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Debug Modal -->
+    <div id="debug-modal" class="debug-modal">
+        <div class="debug-modal-content">
+            <span class="close-btn" id="close-debug">&times;</span>
+            <h2>AI Debug Settings</h2>
+            <div class="api-setting">
+                <label for="ai-api-key">Enter AI API Key:</label>
+                <input type="password" id="ai-api-key" placeholder="API Key">
+            </div>
+            <div class="api-setting">
+                <label for="ai-api-url">AI Service URL:</label>
+                <input type="text" id="ai-api-url" placeholder="https://api.example.com/v1/chat/completions">
+            </div>
+            <div class="api-setting">
+                <label for="ai-model">AI Model Selection:</label>
+                <select id="ai-model">
+                    <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+                    <option value="gpt-4">GPT-4</option>
+                    <option value="claude-3-sonnet">Claude 3 Sonnet</option>
+                    <option value="gemini-1.5-pro">Gemini 1.5 Pro</option>
+                    <option value="custom">Custom</option>
+                </select>
+            </div>
+            <div class="api-setting" id="custom-model-setting" style="display: none;">
+                <label for="custom-model">Custom Model Name:</label>
+                <input type="text" id="custom-model" placeholder="Model name">
+            </div>
+            <div class="api-setting">
+                <label for="temperature">Temperature:</label>
+                <input type="range" id="temperature" min="0" max="1" step="0.1" value="0.7">
+                <span id="temperature-value">0.7</span>
+            </div>
+            <div class="api-setting">
+                <label for="tarot-prompt">Tarot Base Prompt:</label>
+                <textarea id="tarot-prompt" rows="6"></textarea>
+            </div>
+            <button id="save-api-settings" class="btn">Save Settings</button>
+            <button id="test-api-connection" class="btn">Test Connection</button>
+            <div id="api-test-result" class="api-test-result"></div>
+        </div>
+    </div>
+
+    <!-- 导入订阅模块脚本 -->
+    <script src="js/subscription.js"></script>
+    <!-- 导入测试脚本 -->
+    <script src="js/test-subscription.js"></script>
+    <!-- 导入导航栏模块脚本 -->
+    <script src="js/navbar.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 塔罗牌数据库 - 示例数据，实际应用中可能需要更完整的数据库
+            const tarotCards = [
+                {
+                    name: "The Fool",
+                    image: "images/00愚者.jpg",
+                    upright: {
+                        meaning: "New beginnings, adventure, freedom, innocence",
+                        answer: "maybe",
+                        explanation: "The Fool represents new beginnings and unknown journeys. For your question, this card suggests that the situation is still unfolding and undetermined. It's advisable to keep an open mind and be ready to embrace new possibilities. Now may not be the time to make a final decision; more exploration and experience is needed."
+                    },
+                    reversed: {
+                        meaning: "Recklessness, risk-taking, foolish choices",
+                        answer: "no",
+                        explanation: "The Fool reversed warns that you may be making decisions without proper consideration. For your question, this card advises that now is not a good time to take action. Reassess your plans to ensure you're not heading into trouble due to impulsiveness or lack of preparation. Taking a pause to consider a more prudent direction would be wise."
+                    }
+                },
+                {
+                    name: "The Magician",
+                    image: "images/01魔术师.jpg",
+                    upright: {
+                        meaning: "Creativity, skill, willpower, confidence",
+                        answer: "yes",
+                        explanation: "The Magician symbolizes the ability to master your own destiny and creative power. For your question, this card gives a definite affirmative answer. You have all the tools and resources needed for success; you just need to focus on your goal and apply your skills and talents. Now is an ideal time to take action."
+                    },
+                    reversed: {
+                        meaning: "Deception, manipulation, unused talents",
+                        answer: "no",
+                        explanation: "The Magician reversed suggests possible deception or self-doubt. For your question, this card advises caution and not to trust surface appearances. You may not be fully utilizing your potential, or you could be misled by false information. Now is not a good time to move forward; you need to reconsider your intentions and methods."
+                    }
+                },
+                {
+                    name: "The High Priestess",
+                    image: "images/02女祭祀.jpg",
+                    upright: {
+                        meaning: "Intuition, inner wisdom, mystery, subconscious",
+                        answer: "maybe",
+                        explanation: "The High Priestess represents profound inner wisdom and intuitive power. For your question, this card suggests listening to your inner voice, as the answer may not be fully apparent yet. This is a time for contemplation and reflection rather than hasty action. Wait for more information to emerge and trust your intuition to guide you."
+                    },
+                    reversed: {
+                        meaning: "Secrets, hidden information, ignoring intuition",
+                        answer: "no",
+                        explanation: "The High Priestess reversed warns that you might be ignoring important inner signals. For your question, this card advises against making a decision now, as you may not have all the information. Some key facts might be hidden or overlooked. Deeper exploration and reflection are needed before taking action."
+                    }
+                },
+                {
+                    name: "The Star",
+                    image: "images/17星星.jpg",
+                    upright: {
+                        meaning: "Hope, faith, inspiration, serenity, renewal",
+                        answer: "yes",
+                        explanation: "The Star is a symbol of hope and revelation. This card appearing in your yes/no reading indicates that the universe is sending you positive signals. It represents renewal, hope, and inner guidance, suggesting that you are on the right path. Now is a good time to believe in yourself and move forward, as the universe is showing you the way."
+                    },
+                    reversed: {
+                        meaning: "Disappointment, pessimism, lack of faith",
+                        answer: "no",
+                        explanation: "The Star reversed suggests you may be experiencing a low point in faith or feeling disappointed. For your question, this card advises that now is not a good time to take action. You need to regain hope and faith, avoiding decisions made with a pessimistic attitude. Wait until inner light emerges again before considering your next move."
+                    }
+                },
+                {
+                    name: "The World",
+                    image: "images/21世界.jpg",
+                    upright: {
+                        meaning: "Completion, achievement, travel, harmony",
+                        answer: "yes",
+                        explanation: "The World card represents completion, success, and fulfillment. For your question, this card gives a strong affirmative answer. You have reached an important milestone, and now is the time to reap the rewards. All elements are in place, and the universe is supporting your decision. Move forward with confidence; this is your destined path."
+                    },
+                    reversed: {
+                        meaning: "Incompletion, delays, obstacles",
+                        answer: "maybe",
+                        explanation: "The World reversed suggests your journey may not be complete yet. For your question, this card indicates that things are developing, but there are still unresolved issues that need attention. While the direction is correct, the timing may not be right. It's advisable to be patient, complete necessary preparations, and resolve remaining obstacles before moving forward."
+                    }
+                }
+            ];
+            
+            // 随机选择塔罗牌
+            function getRandomCard() {
+                const randomIndex = Math.floor(Math.random() * tarotCards.length);
+                const isUpright = Math.random() > 0.5;
+                
+                return {
+                    ...tarotCards[randomIndex],
+                    orientation: isUpright ? 'upright' : 'reversed'
+                };
+            }
+            
+            // 获取URL参数
+            const urlParams = new URLSearchParams(window.location.search);
+            const question = urlParams.get('q');
+            
+            // 设置问题文本
+            if (question) {
+                document.getElementById('resultQuestion').textContent = `Your Question: ${decodeURIComponent(question)}`;
+            }
+            
+            // 设置当前日期和时间
+            const now = new Date();
+            const dateOptions = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+            document.getElementById('resultDate').textContent = now.toLocaleDateString('en-US', dateOptions);
+            
+            // 抽取塔罗牌
+            const selectedCard = getRandomCard();
+            const cardData = selectedCard.orientation === 'upright' ? selectedCard.upright : selectedCard.reversed;
+            
+            // 卡牌翻转动画
+            const tarotCard = document.getElementById('tarotCard');
+            setTimeout(() => {
+                tarotCard.classList.add('flipped');
+                
+                // 显示卡牌信息
+                setTimeout(() => {
+                    document.getElementById('cardImage').src = selectedCard.image;
+                    document.getElementById('cardName').textContent = selectedCard.name;
+                    document.getElementById('cardOrientation').textContent = selectedCard.orientation === 'upright' ? 'Upright' : 'Reversed';
+                    
+                    // 设置回答和解释
+                    const answerResult = document.getElementById('answerResult');
+                    answerResult.textContent = cardData.answer === 'yes' ? 'Yes' : (cardData.answer === 'no' ? 'No' : 'It depends');
+                    answerResult.className = `answer-result answer-${cardData.answer}`;
+                    
+                    document.getElementById('explanationText').textContent = cardData.explanation;
+                }, 500);
+            }, 1000);
+            
+            // 保存结果按钮点击事件
+            document.getElementById('saveResult').addEventListener('click', function() {
+                alert('Result saved! (Simulated function)');
+            });
+            
+            // 分享按钮点击事件
+            document.getElementById('shareResult').addEventListener('click', function() {
+                alert('Share function activated! (Simulated function)');
+            });
+        });
+    </script>
+</body>
+</html> 

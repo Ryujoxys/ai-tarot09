@@ -183,108 +183,12 @@ document.addEventListener('DOMContentLoaded', function() {
         "CardBack": "https://qiniustatic.wodidashi.com/CardBack.jpg"
     };
     
-    // 保留旧的本地映射用于兼容性
-    const cardImageMapping = {
-        // 大阿卡纳牌映射
-        "愚人": "00愚者.jpg",
-        "魔法师": "01魔术师.jpg",
-        "女祭司": "02女祭祀.jpg",
-        "皇后": "03皇后.jpg",
-        "皇帝": "04皇帝.jpg",
-        "教皇": "05教皇.jpg",
-        "恋人": "06恋人.jpg",
-        "战车": "07战车.jpg",
-        "力量": "08力量.jpg",
-        "隐士": "09隐士.jpg",
-        "命运之轮": "10命运之轮.jpg",
-        "正义": "11正义.jpg",
-        "倒吊人": "12倒吊人.jpg",
-        "死神": "13死神.jpg",
-        "节制": "14节制.jpg",
-        "恶魔": "15恶魔.jpg",
-        "高塔": "16高塔.jpg",
-        "星星": "17星星.jpg",
-        "月亮": "18月亮.jpg",
-        "太阳": "19太阳.jpg",
-        "审判": "20审判.jpg",
-        "世界": "21世界.jpg",
-        
-        // 小阿卡纳牌映射 - 权杖
-        "权杖Ace": "权杖ACE.jpg",
-        "权杖2": "权杖2.jpg",
-        "权杖3": "权杖3.jpg",
-        "权杖4": "权杖4.jpg",
-        "权杖5": "权杖5.jpg",
-        "权杖6": "权杖6.jpg",
-        "权杖7": "权杖7.jpg",
-        "权杖8": "权杖8.jpg",
-        "权杖9": "权杖9.jpg",
-        "权杖10": "权杖10.jpg",
-        "权杖侍卫": "权杖侍卫.jpg",
-        "权杖骑士": "权杖骑士.jpg",
-        "权杖王后": "权杖王后.jpg",
-        "权杖国王": "权杖国王.jpg",
-        
-        // 小阿卡纳牌映射 - 圣杯
-        "圣杯Ace": "圣杯ACE.jpg",
-        "圣杯2": "圣杯2.jpg",
-        "圣杯3": "圣杯3.jpg",
-        "圣杯4": "圣杯4.jpg",
-        "圣杯5": "圣杯5.jpg",
-        "圣杯6": "圣杯6.jpg",
-        "圣杯7": "圣杯7.jpg",
-        "圣杯8": "圣杯8.jpg",
-        "圣杯9": "圣杯9.jpg",
-        "圣杯10": "圣杯10.jpg",
-        "圣杯侍卫": "圣杯侍卫.jpg",
-        "圣杯骑士": "圣杯骑士.jpg",
-        "圣杯王后": "圣杯王后.jpg",
-        "圣杯国王": "圣杯国王.jpg",
-        
-        // 小阿卡纳牌映射 - 宝剑
-        "宝剑Ace": "宝剑ACE.jpg",
-        "宝剑2": "宝剑2.jpg",
-        "宝剑3": "宝剑3.jpg",
-        "宝剑4": "宝剑4.jpg",
-        "宝剑5": "宝剑5.jpg",
-        "宝剑6": "宝剑6.jpg",
-        "宝剑7": "宝剑7.jpg",
-        "宝剑8": "宝剑8.jpg",
-        "宝剑9": "宝剑9.jpg",
-        "宝剑10": "宝剑10.jpg",
-        "宝剑侍卫": "宝剑侍卫.jpg",
-        "宝剑骑士": "宝剑骑士.jpg",
-        "宝剑王后": "宝剑王后.jpg",
-        "宝剑国王": "宝剑国王.jpg",
-        
-        // 小阿卡纳牌映射 - 星币
-        "星币Ace": "星币ACE.jpg",
-        "星币2": "星币2.jpg",
-        "星币3": "星币3.jpg",
-        "星币4": "星币4.jpg",
-        "星币5": "星币5.jpg",
-        "星币6": "星币6.jpg",
-        "星币7": "星币7.jpg",
-        "星币8": "星币8.jpg",
-        "星币9": "星币9.jpg",
-        "星币10": "星币10.jpg",
-        "星币侍卫": "星币侍卫.jpg",
-        "星币骑士": "星币骑士.jpg",
-        "星币王后": "星币王后.jpg",
-        "星币国王": "星币国王.jpg"
-    };
-    
-    // 获取卡牌图片文件路径 - 更新为使用CDN链接
+    // 获取卡牌图片路径 - 只使用CDN链接
     function getCardImagePath(cardName) {
-        // 优先使用CDN链接
         if (cardNameMapping[cardName] && cardCdnMapping[cardNameMapping[cardName]]) {
             return cardCdnMapping[cardNameMapping[cardName]];
-        } else if (cardImageMapping[cardName]) {
-            // 兼容旧版本，使用本地路径作为备选
-            console.warn(`未找到卡牌 "${cardName}" 对应的CDN链接，使用本地图片`);
-            return `images/${cardImageMapping[cardName]}`;
         } else {
-            console.warn(`未找到卡牌 "${cardName}" 对应的图片`);
+            console.warn(`未找到卡牌 "${cardName}" 对应的CDN链接`);
             return null;
         }
     }

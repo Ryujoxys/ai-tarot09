@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarot Reading Question - Tarot09</title>
-    <meta name="description" content="Enter your question for AI tarot reading and guidance.">
+    <title>Tarot Reading - Tarot09</title>
+    <meta name="description" content="Choose your tarot spread and start your AI tarot reading.">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/page-styles/tarot-question-eng.css">
+    <link rel="stylesheet" href="css/page-styles/tarot-reading-eng.css">    <!-- Font Awesome icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <!-- Navigation bar -->
@@ -31,7 +32,7 @@
                         <ul>
                             <li><a href="index-eng.html" class="nav-link">Home</a></li>
                             <li><a href="ai-taluopai-eng.html" class="nav-link active">AI Tarot Reading</a></li>
-                            <li><a href="yes-no-question-eng.html" class="nav-link">Yes/No Tarot Reading</a></li>
+                            <li><a href="yes-no-tarot.html" class="nav-link">Yes/No Tarot Reading</a></li>
                             <li><a href="javascript:void(0)" class="nav-link premium" id="premiumLink"><i class="fas fa-crown"></i> Premium</a></li>
                         </ul>
                     </div>
@@ -58,49 +59,40 @@
 
     <!-- Main content -->
     <main>
-        <!-- Question title area -->
-        <section class="question-header">
-            <div class="container">
-                <h1 class="question-title">
-                    <span class="input-highlight">Enter Your</span><br>
-                    Tarot Question
-                </h1>
-                <p class="question-subtitle">What would you like to ask the cards?</p>
-            </div>
-        </section>
+        <h1 class="tarot-header">Tarot Reading</h1>
+        <h2 class="tarot-subtitle">Choose Your Tarot Spread</h2>
         
-        <!-- Question input area -->
-        <section class="question-input-section">
-            <div class="container">
-                <div class="question-input-container">
-                    <div style="position: relative;">
-                        <textarea id="questionInput" class="question-textarea" placeholder="Enter your question for the tarot reading"></textarea>
-                    </div>
-                    <div class="character-counter" id="charCounter">0/300</div>
-                </div>
-                
-                <!-- Question suggestions area -->
-                <div class="question-suggestions">
-                    <button class="suggestion-button">
-                        <span class="suggestion-emoji">🌙</span> Is this relationship meant to continue or will it end?
-                    </button>
-                    <button class="suggestion-button">
-                        <span class="suggestion-emoji">⭐</span> Is there a secret that I should know about?
-                    </button>
-                    <button class="suggestion-button">
-                        <span class="suggestion-emoji">🔮</span> What changes will occur within the next 72 hours?
-                    </button>
-                    <button class="suggestion-button">
-                        <span class="suggestion-emoji">✨</span> What career opportunity should I focus on in the next three months?
-                    </button>
-                </div>
-                
-                <!-- Submit button -->
-                <button class="submit-button" id="submitQuestion">
-                    Start Tarot Reading
-                </button>
+        <!-- Tarot reader info -->
+        <div class="tarot-reader-info">
+            <div class="reader-avatar">Master</div>
+            <div class="reader-message">
+                Let's see what the cards reveal!
             </div>
-        </section>
+        </div>
+        
+        <!-- Tarot spread -->
+        <div class="tarot-spread-container">
+            <h3 class="tarot-spread-title">Development Spread</h3>
+            
+            <!-- Tarot cards -->
+            <div class="tarot-cards">
+                <div class="tarot-card"></div>
+                <div class="tarot-card"></div>
+                <div class="tarot-card"></div>
+                <div class="tarot-card"></div>
+                <div class="tarot-card"></div>
+            </div>
+            
+            <!-- Draw cards button -->
+            <button class="tarot-action-button" id="drawCards">
+                Draw Cards
+            </button>
+            <br>
+            <!-- Other spread options -->
+            <div class="other-spread-option" id="otherSpreadOption">
+                Choose Another Spread <span class="new-badge">NEW</span>
+            </div>
+        </div>
     </main>
 
     <!-- Footer -->
@@ -163,58 +155,55 @@
         </div>
     </div>
 
-
     <!-- Import subscription module script -->
     <script src="js/subscription.js"></script>
     <!-- Import test script -->
     <script src="js/test-subscription.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 获取DOM元素
-            const questionInput = document.getElementById('questionInput');
-            const charCounter = document.getElementById('charCounter');
-            const suggestionButtons = document.querySelectorAll('.suggestion-button');
-            const submitButton = document.getElementById('submitQuestion');
+            // Get DOM elements
+            const drawCardsButton = document.getElementById('drawCards');
+            const otherSpreadOption = document.getElementById('otherSpreadOption');
+            const tarotCards = document.querySelectorAll('.tarot-card');
             
-            // 字符计数功能
-            questionInput.addEventListener('input', function() {
-                const length = this.value.length;
-                charCounter.textContent = length + '/300';
-                
-                // 超出300字符限制
-                if (length > 300) {
-                    this.value = this.value.substring(0, 300);
-                    charCounter.textContent = '300/300';
-                    charCounter.style.color = '#FF3B30';
-                } else {
-                    charCounter.style.color = '#999';
+            // Draw cards button click event
+            drawCardsButton.addEventListener('click', function() {
+                // Pass the question parameter to the drawing page
+                const urlParams = new URLSearchParams(window.location.search);
+                const question = urlParams.get('q');
+                let url = "tarot-drawing-eng.html";
+                if (question) {
+                    url += "?q=" + encodeURIComponent(question);
                 }
+                window.location.href = url;
             });
             
-            // 点击问题建议填充文本框
-            suggestionButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const suggestionText = this.textContent.trim().substring(2); // 去掉emoji和空格
-                    questionInput.value = suggestionText;
-                    // 触发input事件更新计数器
-                    const event = new Event('input');
-                    questionInput.dispatchEvent(event);
-                    // 聚焦文本框
-                    questionInput.focus();
+            // Other spread option click event
+            otherSpreadOption.addEventListener('click', function() {
+                alert('More spread options coming soon...');
+                // Future implementation: window.location.href = "tarot-spreads-eng.html";
+            });
+            
+            // Add click effect for each tarot card
+            tarotCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // Card flip animation
+                    this.style.transform = 'translateY(-10px)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 500);
                 });
             });
             
-            // 提交按钮点击事件
-            submitButton.addEventListener('click', function() {
-                const question = questionInput.value.trim();
-                if (!question) {
-                    alert('Please enter a question for your tarot reading');
-                    return;
-                }
-                
-                // 跳转到塔罗占卜页面，将问题作为参数传递
-                window.location.href = "tarot-reading-eng.html?q=" + encodeURIComponent(question);
-            });
+            // Get question from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const question = urlParams.get('q');
+            
+            // Handle the question if present in URL
+            if (question) {
+                console.log('Current tarot question:', question);
+                // Can customize page content based on question here
+            }
         });
     </script>
     <!-- Import navbar module script -->

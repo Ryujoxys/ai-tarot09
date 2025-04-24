@@ -360,3 +360,56 @@
     grid-column: 2;
     grid-row: 3;
 }
+
+/* 添加紧凑三牌阵的样式 */
+.spread-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-radius: 10px;
+}
+
+.spread-description {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.spread-description p {
+    margin: 5px 0;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.mini-spread {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.three-card-preview {
+    gap: 10px;
+}
+
+.mini-card-static {
+    width: 60px;
+    height: 100px;
+    background-color: #f0edf6;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    cursor: default;
+    background-image: url('../../images/背面A.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* 确保卡片不会被认为是可点击的 */
+.mini-card-static:hover {
+    transform: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

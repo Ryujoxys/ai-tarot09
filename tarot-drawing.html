@@ -777,15 +777,10 @@
             
             // 获取卡牌图片文件路径 - 使用CDN链接
             function getCardImagePath(cardName) {
-                // 优先使用CDN链接
                 if (cardNameMapping[cardName] && cardCdnMapping[cardNameMapping[cardName]]) {
                     return cardCdnMapping[cardNameMapping[cardName]];
-                } else if (cardImageMapping[cardName]) {
-                    // 兼容旧版本，使用本地路径作为备选
-                    console.warn(`未找到卡牌 "${cardName}" 对应的CDN链接，使用本地图片`);
-                    return `images/${cardImageMapping[cardName]}`;
                 } else {
-                    console.warn(`未找到卡牌 "${cardName}" 对应的图片`);
+                    console.warn(`未找到卡牌 "${cardName}" 对应的CDN链接`);
                     return null;
                 }
             }

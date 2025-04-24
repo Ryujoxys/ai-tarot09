@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draw Tarot Cards - Tarot09</title>
+    <meta name="description" content="Swipe left or right to select the tarot card that resonates most with your energy, and receive guidance for your destiny.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/page-styles/tarot-drawing.css">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index-eng.html">
+                    <span>🔮</span>
+                    <span>Tarot09</span>
+                </a>
+            </div>
+            
+            <button class="menu-toggle" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-capsules">
+                <!-- 主导航胶囊 -->
+                <div class="nav-capsule main-nav-capsule">
+                    <div class="nav-menu">
+                        <ul>
+                            <li><a href="index-eng.html" class="nav-link">Home</a></li>
+                            <li><a href="ai-taluopai-eng.html" class="nav-link active">AI Tarot Reading</a></li>
+                            <li><a href="yes-no-tarot-eng.html" class="nav-link">Yes/No Tarot Reading</a></li>
+                            <li><a href="javascript:void(0)" class="nav-link premium" id="premiumLink"><i class="fas fa-crown"></i> Premium Subscription</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 用户控制胶囊 -->
+                <div class="nav-capsule user-controls-capsule">
+                    <div class="user-controls">
+                        <button class="theme-toggle" aria-label="Toggle Theme">
+                            <i class="fas fa-moon"></i>
+                            <i class="fas fa-sun"></i>
+                        </button>
+                        <button class="language-toggle" aria-label="Toggle Language">
+                            <i class="fas fa-globe"></i>
+                        </button>
+                        <button class="debug-toggle" aria-label="Debug Settings">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                        <a href="javascript:void(0)" class="user-profile">
+                            😊
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main>
+        <section class="drawing-header">
+            <div class="container">
+                <h1 class="drawing-title">
+                    Draw Your <span class="tarot-highlight">Tarot Cards</span>
+                </h1>
+                <p class="drawing-subtitle">Click on a card to receive guidance from tarot energy</p>
+            </div>
+        </section>
+        
+        <!-- 在线抽牌按钮 -->
+        <div class="online-drawing-btn" id="onlineDrawingBtn">
+            <i class="fas fa-random shuffle-icon"></i>
+            <span>Draw Cards Online</span>
+        </div>
+        
+        <!-- 塔罗牌扇形展示区域 -->
+        <div class="tarot-container">
+            <!-- 扇形卡牌区 -->
+            <div class="tarot-fan" id="tarotFan">
+                <!-- 卡牌将通过JS动态生成 -->
+            </div>
+            
+            <!-- 牌位展示区域 -->
+            <div class="card-positions" id="cardPositions">
+                <!-- 牌位将通过JS动态生成 -->
+            </div>
+        </div>
+        
+        <!-- 重新抽牌按钮 -->
+        <button class="redraw-button" id="redrawButton">
+            <i class="fas fa-sync-alt redraw-icon"></i>
+            <span>Reshuffle</span>
+        </button>
+    </main>
+
+    <!-- 塔罗牌解读子界面 -->
+    <div class="reading-modal" id="readingModal">
+        <div class="reading-container">
+            <button class="close-reading" id="closeReading">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="reading-header">
+                <h2 class="reading-title">Your Tarot Reading</h2>
+                <div class="reading-question" id="readingQuestion">Your question: How will my career develop in the next month?</div>
+                <div class="reading-date" id="readingDate">December 30, 2023 19:42</div>
+            </div>
+            
+            <div class="cards-summary" id="cardsSummary">
+                <!-- 卡牌总结区域将通过JS动态生成 -->
+            </div>
+            
+            <div class="reading-conversation">
+                <h3 class="conversation-title">Tarot Reading Conversation</h3>
+                
+                <div class="chat-messages" id="chatMessages">
+                    <!-- 聊天消息将通过JS动态生成 -->
+                </div>
+                
+                <div class="chat-input-container">
+                    <input type="text" class="chat-input" id="chatInput" placeholder="Enter your question or response...">
+                    <button class="send-button" id="sendMessage">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="reading-actions">
+                <button class="action-button" id="saveReading">
+                    <i class="fas fa-save action-icon"></i>
+                    Save Reading
+                </button>
+                <button class="action-button" id="newReading">
+                    <i class="fas fa-redo action-icon"></i>
+                    Draw Again
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    © 2023 AI Tarot - All Rights Reserved
+                </div>
+                <div class="footer-links">
+                    <a href="javascript:void(0)">About Us</a>
+                    <a href="javascript:void(0)">Privacy Policy</a>
+                    <a href="javascript:void(0)">Terms of Use</a>
+                    <a href="javascript:void(0)">Contact Us</a>
+                    <a href="javascript:void(0)">Feedback</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 会员订阅弹窗 -->
+    <div class="modal-overlay" id="subscriptionModal">
+        <div class="subscription-modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Upgrade to Premium</h3>
+                <p class="modal-subtitle">Enjoy unlimited tarot readings and more advanced features</p>
+            </div>
+            
+            <div class="plan-options">
+                <div class="plan-option" data-plan="monthly">
+                    <div class="plan-name">
+                        Monthly Membership <span class="plan-price">$2.99</span>
+                    </div>
+                    <p class="plan-description">Auto-renews monthly, cancel anytime</p>
+                </div>
+                
+                <div class="plan-option selected" data-plan="quarterly">
+                    <div class="plan-name">
+                        Quarterly Membership <span class="plan-price">$7.99</span>
+                    </div>
+                    <p class="plan-description">Auto-renews every three months, equivalent to $2.66/month</p>
+                </div>
+                
+                <div class="plan-option" data-plan="yearly">
+                    <div class="plan-name">
+                        Annual Membership <span class="plan-price">$27.99</span>
+                    </div>
+                    <p class="plan-description">Auto-renews yearly, equivalent to $2.33/month, best value</p>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="cancel-button" id="cancelSubscription">Cancel</button>
+                <button class="subscribe-button" id="confirmSubscription">Confirm Subscription</button>
+            </div>
+            
+            <div class="term-conditions">
+                <p>By subscribing, you agree to our Terms of Service and Privacy Policy. Auto-renewal can be canceled up to 24 hours before expiration.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 导入脚本 -->
+    <script src="js/subscription.js"></script>
+    <script src="js/tarot-drawing.js"></script>
+    <script src="js/navbar.js"></script>
+</body>
+</html>

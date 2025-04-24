@@ -121,6 +121,18 @@ const NavbarModule = (function() {
             window.location.href = 'tarot-drawing-eng.html';
         } else if (currentFile === 'tarot-drawing-eng.html') {
             window.location.href = 'tarot-drawing.html';
+        } else if (currentFile === 'yes-no-question.html') {
+            window.location.href = 'yes-no-question-eng.html';
+        } else if (currentFile === 'yes-no-question-eng.html') {
+            window.location.href = 'yes-no-question.html';
+        } else if (currentFile === 'yes-no-tarot.html') {
+            window.location.href = 'yes-no-tarot-eng.html';
+        } else if (currentFile === 'yes-no-tarot-eng.html') {
+            window.location.href = 'yes-no-tarot.html';
+        } else if (currentFile === 'yes-no-result.html') {
+            window.location.href = 'yes-no-result-eng.html';
+        } else if (currentFile === 'yes-no-result-eng.html') {
+            window.location.href = 'yes-no-result.html';
         } else {
             // 其他页面暂时不提供语言切换，或者根据需要扩展
             console.log('当前页面不支持语言切换');

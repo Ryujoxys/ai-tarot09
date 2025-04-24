@@ -1,0 +1,18 @@
+/* 修复会员订阅弹窗选中项显示多余原点的问题 */
+.plan-option.selected::before {
+    content: none !important; /* 移除原点 */
+}
+
+/* 更改选中计划的样式，使用边框和背景色变化表示选中状态 */
+.plan-option.selected {
+    border-color: #8A2BE2 !important;
+    background-color: rgba(138, 43, 226, 0.05) !important;
+    box-shadow: 0 2px 8px rgba(138, 43, 226, 0.1) !important;
+}
+
+/* 夜间模式下的选中计划样式 */
+body.dark-mode .plan-option.selected {
+    background-color: rgba(138, 43, 226, 0.2) !important;
+    border-color: #8A2BE2 !important;
+    box-shadow: 0 2px 8px rgba(138, 43, 226, 0.2) !important;
+} 

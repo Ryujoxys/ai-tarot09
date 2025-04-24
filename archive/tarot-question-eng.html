@@ -6,8 +6,7 @@
     <title>Tarot Reading Question - Tarot09</title>
     <meta name="description" content="Enter your question for AI tarot reading and guidance.">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/page-styles/tarot-question-eng.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/page-styles/tarot-question-eng.css">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Navigation bar -->
@@ -31,7 +30,7 @@
                         <ul>
                             <li><a href="index-eng.html" class="nav-link">Home</a></li>
                             <li><a href="ai-taluopai-eng.html" class="nav-link active">AI Tarot Reading</a></li>
-                            <li><a href="yes-no-question-eng.html" class="nav-link">Yes/No Tarot Reading</a></li>
+                            <li><a href="yes-no-tarot.html" class="nav-link">Yes/No Tarot Reading</a></li>
                             <li><a href="javascript:void(0)" class="nav-link premium" id="premiumLink"><i class="fas fa-crown"></i> Premium</a></li>
                         </ul>
                     </div>
@@ -75,6 +74,9 @@
                 <div class="question-input-container">
                     <div style="position: relative;">
                         <textarea id="questionInput" class="question-textarea" placeholder="Enter your question for the tarot reading"></textarea>
+                        <button class="upload-button" title="Upload image">
+                            <i class="fas fa-image"></i>
+                        </button>
                     </div>
                     <div class="character-counter" id="charCounter">0/300</div>
                 </div>
@@ -163,25 +165,24 @@
         </div>
     </div>
 
-
     <!-- Import subscription module script -->
     <script src="js/subscription.js"></script>
     <!-- Import test script -->
     <script src="js/test-subscription.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 获取DOM元素
+            // Get DOM elements
             const questionInput = document.getElementById('questionInput');
             const charCounter = document.getElementById('charCounter');
             const suggestionButtons = document.querySelectorAll('.suggestion-button');
             const submitButton = document.getElementById('submitQuestion');
             
-            // 字符计数功能
+            // Character counter functionality
             questionInput.addEventListener('input', function() {
                 const length = this.value.length;
                 charCounter.textContent = length + '/300';
                 
-                // 超出300字符限制
+                // Limit to 300 characters
                 if (length > 300) {
                     this.value = this.value.substring(0, 300);
                     charCounter.textContent = '300/300';
@@ -191,20 +192,20 @@
                 }
             });
             
-            // 点击问题建议填充文本框
+            // Click suggestion to fill text box
             suggestionButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    const suggestionText = this.textContent.trim().substring(2); // 去掉emoji和空格
+                    const suggestionText = this.textContent.trim().substring(2); // Remove emoji and space
                     questionInput.value = suggestionText;
-                    // 触发input事件更新计数器
+                    // Trigger input event to update counter
                     const event = new Event('input');
                     questionInput.dispatchEvent(event);
-                    // 聚焦文本框
+                    // Focus on text box
                     questionInput.focus();
                 });
             });
             
-            // 提交按钮点击事件
+            // Submit button click event
             submitButton.addEventListener('click', function() {
                 const question = questionInput.value.trim();
                 if (!question) {
@@ -212,7 +213,7 @@
                     return;
                 }
                 
-                // 跳转到塔罗占卜页面，将问题作为参数传递
+                // Redirect to tarot reading page, passing the question as a parameter
                 window.location.href = "tarot-reading-eng.html?q=" + encodeURIComponent(question);
             });
         });

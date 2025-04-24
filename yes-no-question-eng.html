@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yes/No Question Divination - Tarot09</title>
+    <meta name="description" content="Enter your yes/no question and receive guidance and insights from the tarot cards.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/page-styles/yes-no-question.css">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index-eng.html">
+                    <span>🔮</span>
+                    <span>Tarot09</span>
+                </a>
+            </div>
+            
+            <button class="menu-toggle" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-capsules">
+                <!-- 主导航胶囊 -->
+                <div class="nav-capsule main-nav-capsule">
+                    <div class="nav-menu">
+                        <ul>
+                            <li><a href="index-eng.html" class="nav-link">Home</a></li>
+                            <li><a href="ai-taluopai-eng.html" class="nav-link">AI Tarot Reading</a></li>
+                            <li><a href="yes-no-tarot-eng.html" class="nav-link active">Yes/No Tarot Reading</a></li>
+                            <li><a href="javascript:void(0)" class="nav-link premium" id="premiumLink"><i class="fas fa-crown"></i> Membership</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 用户控制胶囊 -->
+                <div class="nav-capsule user-controls-capsule">
+                    <div class="user-controls">
+                        <button class="theme-toggle" aria-label="Toggle Theme">
+                            <i class="fas fa-moon"></i>
+                            <i class="fas fa-sun"></i>
+                        </button>
+                        <button class="language-toggle" aria-label="Toggle Language">
+                            <i class="fas fa-globe"></i>
+                        </button>
+                        <a href="javascript:void(0)" class="user-profile">
+                            😊
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main>
+        <div class="question-container">
+            <div class="question-header">
+                <h1 class="question-title">Enter Your Yes/No Question</h1>
+                <p class="question-subtitle">Let the tarot cards guide your way</p>
+            </div>
+            
+            <form class="question-form" id="questionForm">
+                <div class="form-group">
+                    <label for="question" class="form-label">Your Yes/No Question</label>
+                    <input type="text" id="question" name="question" class="form-control" placeholder="Example: Should I accept this job offer?" required>
+                </div>
+                
+                <div class="question-examples">
+                    <h3 class="examples-title">Example Questions:</h3>
+                    <ul class="examples-list">
+                        <li>Should I accept the current job opportunity?</li>
+                        <li>Is this a good time to start a new relationship?</li>
+                        <li>Should I move to a new city?</li>
+                        <li>Is this decision beneficial for my long-term development?</li>
+                        <li>Am I on the right path currently?</li>
+                    </ul>
+                </div>
+                
+                <button type="submit" class="submit-btn">Draw Tarot Cards</button>
+            </form>
+            
+            <div class="notes">
+                <h4 class="notes-title">Tips:</h4>
+                <p>For the most accurate guidance, ensure your question is clear and specific, and can be answered with a simple "yes" or "no". Before asking, take a moment to breathe deeply and focus your attention, which will help you establish a better energy connection with the tarot cards.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    © 2023 AI Tarot - All Rights Reserved
+                </div>
+                <div class="footer-links">
+                    <a href="javascript:void(0)">About Us</a>
+                    <a href="javascript:void(0)">Privacy Policy</a>
+                    <a href="javascript:void(0)">Terms of Use</a>
+                    <a href="javascript:void(0)">Contact Us</a>
+                    <a href="javascript:void(0)">Feedback</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 会员订阅弹窗 -->
+    <div class="modal-overlay" id="subscriptionModal">
+        <div class="subscription-modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Upgrade Membership</h3>
+                <p class="modal-subtitle">Enjoy unlimited tarot readings and more premium features</p>
+            </div>
+            
+            <div class="plan-options">
+                <div class="plan-option" data-plan="monthly">
+                    <div class="plan-name">
+                        Monthly Membership <span class="plan-price">$2.99</span>
+                    </div>
+                    <p class="plan-description">Auto-renews monthly, cancel anytime</p>
+                </div>
+                
+                <div class="plan-option selected" data-plan="quarterly">
+                    <div class="plan-name">
+                        Quarterly Membership <span class="plan-price">$7.99</span>
+                    </div>
+                    <p class="plan-description">Auto-renews every three months, equivalent to $2.66/month</p>
+                </div>
+                
+                <div class="plan-option" data-plan="yearly">
+                    <div class="plan-name">
+                        Annual Membership <span class="plan-price">$27.99</span>
+                    </div>
+                    <p class="plan-description">Auto-renews annually, equivalent to $2.33/month, best value</p>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="cancel-button" id="cancelSubscription">Cancel</button>
+                <button class="subscribe-button" id="confirmSubscription">Confirm Subscription</button>
+            </div>
+            
+            <div class="term-conditions">
+                <p>By subscribing, you agree to our terms of service and privacy policy. Auto-renewal can be canceled up to 24 hours before the expiration date.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 导入订阅模块脚本 -->
+    <script src="js/subscription.js"></script>
+    <!-- 导入测试脚本 -->
+    <script src="js/test-subscription.js"></script>
+    <!-- 导入导航栏模块脚本 -->
+    <script src="js/navbar.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const questionForm = document.getElementById('questionForm');
+            
+            // 表单提交事件
+            questionForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const question = document.getElementById('question').value.trim();
+                if (!question) {
+                    alert('Please enter your yes/no question!');
+                    return;
+                }
+                
+                // 将问题作为URL参数传递到结果页面
+                window.location.href = `yes-no-result-eng.html?q=${encodeURIComponent(question)}`;
+            });
+            
+            // 点击示例问题，填充到输入框
+            const exampleQuestions = document.querySelectorAll('.examples-list li');
+            exampleQuestions.forEach(example => {
+                example.addEventListener('click', function() {
+                    document.getElementById('question').value = this.textContent;
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

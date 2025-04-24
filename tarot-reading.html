@@ -61,15 +61,18 @@
         <h2 class="tarot-subtitle">选择您的塔罗牌阵</h2>
         <!-- 塔罗牌阵 -->
         <div class="tarot-spread-container">
-            <h3 class="tarot-spread-title">发展牌阵</h3>
+            <h3 class="tarot-spread-title">三牌阵</h3>
             
-            <!-- 塔罗牌卡片 -->
-            <div class="tarot-cards">
-                <div class="tarot-card"></div>
-                <div class="tarot-card"></div>
-                <div class="tarot-card"></div>
-                <div class="tarot-card"></div>
-                <div class="tarot-card"></div>
+            <div class="spread-preview">
+                <div class="spread-description">
+                    <p>过去、现在、未来的简洁解读</p>
+                    <p>适合于探索事件的时间发展和进程</p>
+                </div>
+                <div class="mini-spread three-card-preview">
+                    <div class="mini-card-static"></div>
+                    <div class="mini-card-static"></div>
+                    <div class="mini-card-static"></div>
+                </div>
             </div>
             
             <!-- 开始抽牌按钮 -->
@@ -211,7 +214,7 @@
             const tarotSpreadTitle = document.querySelector('.tarot-spread-title');
             
             // 当前选择的牌阵类型
-            let currentSpreadType = 'five-card'; // 默认为五卡牌阵
+            let currentSpreadType = 'three-card'; // 默认为三牌阵
             
             // 牌阵配置
             const spreadConfigs = {
@@ -219,19 +222,25 @@
                     title: '三牌阵',
                     cardCount: 3,
                     className: 'three-card-spread',
-                    positions: ['过去', '现在', '未来']
+                    positions: ['过去', '现在', '未来'],
+                    description: '过去、现在、未来的简洁解读',
+                    subDescription: '适合于探索事件的时间发展和进程'
                 },
                 'cross': {
                     title: '十字牌阵',
                     cardCount: 5,
                     className: 'cross-spread',
-                    positions: ['核心问题', '阻碍', '当前状态', '影响', '可能结果']
+                    positions: ['核心问题', '阻碍', '当前状态', '影响', '可能结果'],
+                    description: '全面深入的五卡牌阵解读',
+                    subDescription: '适合复杂问题的多角度分析'
                 },
                 'five-card': {
                     title: '发展牌阵',
                     cardCount: 5,
                     className: '',
-                    positions: ['当前状态', '未来发展', '障碍', '最终结果', '建议']
+                    positions: ['当前状态', '未来发展', '障碍', '最终结果', '建议'],
+                    description: '当前状态及发展路径的解读',
+                    subDescription: '全面了解情况发展的各个方面'
                 }
             };
             
@@ -301,24 +310,35 @@
                 // 更新牌阵标题
                 tarotSpreadTitle.textContent = config.title;
                 
-                // 更新卡牌容器类名
-                tarotCardsContainer.className = 'tarot-cards';
-                if (config.className) {
-                    tarotCardsContainer.classList.add(config.className);
+                // 获取描述元素
+                const spreadDescriptionEl = document.querySelector('.spread-description');
+                if (spreadDescriptionEl) {
+                    spreadDescriptionEl.innerHTML = `
+                        <p>${config.description || '选择的牌阵'}</p>
+                        <p>${config.subDescription || ''}</p>
+                    `;
                 }
                 
-                // 更新卡牌数量
-                tarotCardsContainer.innerHTML = '';
-                for (let i = 0; i < config.cardCount; i++) {
-                    const card = document.createElement('div');
-                    card.className = 'tarot-card';
-                    card.addEventListener('click', function() {
-                        this.style.transform = 'translateY(-10px)';
-                        setTimeout(() => {
-                            this.style.transform = '';
-                        }, 500);
-                    });
-                    tarotCardsContainer.appendChild(card);
+                // 更新卡片预览
+                const miniSpreadEl = document.querySelector('.mini-spread');
+                if (miniSpreadEl) {
+                    // 更新类名
+                    miniSpreadEl.className = 'mini-spread';
+                    if (spreadType === 'three-card') {
+                        miniSpreadEl.classList.add('three-card-preview');
+                    } else if (spreadType === 'cross') {
+                        miniSpreadEl.classList.add('cross-preview');
+                    } else {
+                        miniSpreadEl.classList.add('five-card-preview');
+                    }
+                    
+                    // 更新卡片数量
+                    miniSpreadEl.innerHTML = '';
+                    for (let i = 0; i < config.cardCount; i++) {
+                        const card = document.createElement('div');
+                        card.className = 'mini-card-static';
+                        miniSpreadEl.appendChild(card);
+                    }
                 }
             }
             

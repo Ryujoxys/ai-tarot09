@@ -6,12 +6,10 @@
     <title>Tarot Reading - Tarot09</title>
     <meta name="description" content="Choose your tarot spread and start your AI tarot reading.">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/page-styles/tarot-reading-eng.css">    <!-- Font Awesome icon library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/page-styles/tarot-reading-eng.css">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation bar -->
+    <!-- 导航栏 -->
     <nav class="navbar">
         <div class="container">
             <div class="logo">
@@ -26,19 +24,19 @@
             </button>
             
             <div class="nav-capsules">
-                <!-- Main navigation capsule -->
+                <!-- 主导航胶囊 -->
                 <div class="nav-capsule main-nav-capsule">
                     <div class="nav-menu">
                         <ul>
                             <li><a href="index-eng.html" class="nav-link">Home</a></li>
                             <li><a href="ai-taluopai-eng.html" class="nav-link active">AI Tarot Reading</a></li>
-                            <li><a href="yes-no-tarot.html" class="nav-link">Yes/No Tarot Reading</a></li>
+                            <li><a href="yes-no-tarot-eng.html" class="nav-link">Yes/No Tarot Reading</a></li>
                             <li><a href="javascript:void(0)" class="nav-link premium" id="premiumLink"><i class="fas fa-crown"></i> Premium</a></li>
                         </ul>
                     </div>
                 </div>
                 
-                <!-- User controls capsule -->
+                <!-- 用户控制胶囊 -->
                 <div class="nav-capsule user-controls-capsule">
                     <div class="user-controls">
                         <button class="theme-toggle" aria-label="Toggle theme">
@@ -57,45 +55,87 @@
         </div>
     </nav>
 
-    <!-- Main content -->
+    <!-- 主要内容 -->
     <main>
         <h1 class="tarot-header">Tarot Reading</h1>
-        <h2 class="tarot-subtitle">Choose Your Tarot Spread</h2>
-        
-        <!-- Tarot reader info -->
-        <div class="tarot-reader-info">
-            <div class="reader-avatar">Master</div>
-            <div class="reader-message">
-                Let's see what the cards reveal!
-            </div>
-        </div>
-        
-        <!-- Tarot spread -->
+        <h2 class="tarot-subtitle">Select Your Tarot Spread</h2>
+        <!-- 塔罗牌阵 -->
         <div class="tarot-spread-container">
-            <h3 class="tarot-spread-title">Development Spread</h3>
+            <h3 class="tarot-spread-title">Three Card Spread</h3>
             
-            <!-- Tarot cards -->
-            <div class="tarot-cards">
-                <div class="tarot-card"></div>
-                <div class="tarot-card"></div>
-                <div class="tarot-card"></div>
-                <div class="tarot-card"></div>
-                <div class="tarot-card"></div>
+            <div class="spread-preview">
+                <div class="spread-description">
+                    <p>A concise reading of past, present, and future</p>
+                    <p>Perfect for exploring the timeline of an event or situation</p>
+                </div>
+                <div class="mini-spread three-card-preview">
+                    <div class="mini-card-static"></div>
+                    <div class="mini-card-static"></div>
+                    <div class="mini-card-static"></div>
+                </div>
             </div>
             
-            <!-- Draw cards button -->
+            <!-- 开始抽牌按钮 -->
             <button class="tarot-action-button" id="drawCards">
-                Draw Cards
+                Start Drawing
             </button>
             <br>
-            <!-- Other spread options -->
+            <!-- 其他牌阵选项 -->
             <div class="other-spread-option" id="otherSpreadOption">
                 Choose Another Spread <span class="new-badge">NEW</span>
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
+    <!-- 牌阵选择弹出菜单 -->
+    <div class="spread-selection-modal" id="spreadSelectionModal">
+        <div class="spread-selection-container">
+            <div class="spread-selection-title">Select a Tarot Spread</div>
+            
+            <div class="spread-options">
+                <div class="spread-option" data-spread="three-card">
+                    <div class="spread-option-title">Three Card Spread</div>
+                    <div class="spread-option-image three-card">
+                        <div class="mini-card"></div>
+                        <div class="mini-card"></div>
+                        <div class="mini-card"></div>
+                    </div>
+                    <div class="spread-option-desc">A concise reading of past, present, and future</div>
+                </div>
+                
+                <div class="spread-option" data-spread="cross">
+                    <div class="spread-option-title">Cross Spread</div>
+                    <div class="spread-option-image cross-spread">
+                        <div class="mini-card"></div>
+                        <div class="mini-card"></div>
+                        <div class="mini-card"></div>
+                        <div class="mini-card"></div>
+                        <div class="mini-card"></div>
+                    </div>
+                    <div class="spread-option-desc">A comprehensive five-card spread reading</div>
+                </div>
+                
+                <div class="spread-option selected" data-spread="five-card">
+                    <div class="spread-option-title">Development Spread</div>
+                    <div class="spread-option-image five-card">
+                        <div class="mini-card"></div>
+                        <div class="mini-card"></div>
+                        <div class="mini-card"></div>
+                        <div class="mini-card"></div>
+                        <div class="mini-card"></div>
+                    </div>
+                    <div class="spread-option-desc">A reading of current status and development path</div>
+                </div>
+            </div>
+            
+            <div class="spread-selection-buttons">
+                <button class="spread-selection-button cancel-selection" id="cancelSpreadSelection">Cancel</button>
+                <button class="spread-selection-button confirm-selection" id="confirmSpreadSelection">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -113,7 +153,7 @@
         </div>
     </footer>
 
-    <!-- Premium subscription modal -->
+    <!-- 会员订阅弹窗 -->
     <div class="modal-overlay" id="subscriptionModal">
         <div class="subscription-modal">
             <div class="modal-header">
@@ -155,39 +195,76 @@
         </div>
     </div>
 
-    <!-- Import subscription module script -->
+    <!-- 导入订阅模块脚本 -->
     <script src="js/subscription.js"></script>
-    <!-- Import test script -->
+    <!-- 导入测试脚本 -->
     <script src="js/test-subscription.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Get DOM elements
+            // 获取DOM元素
             const drawCardsButton = document.getElementById('drawCards');
             const otherSpreadOption = document.getElementById('otherSpreadOption');
             const tarotCards = document.querySelectorAll('.tarot-card');
+            const spreadSelectionModal = document.getElementById('spreadSelectionModal');
+            const cancelSpreadSelection = document.getElementById('cancelSpreadSelection');
+            const confirmSpreadSelection = document.getElementById('confirmSpreadSelection');
+            const spreadOptions = document.querySelectorAll('.spread-option');
+            const tarotSpreadContainer = document.querySelector('.tarot-spread-container');
+            const tarotCardsContainer = document.querySelector('.tarot-cards');
+            const tarotSpreadTitle = document.querySelector('.tarot-spread-title');
             
-            // Draw cards button click event
+            // 当前选择的牌阵类型
+            let currentSpreadType = 'three-card'; // 默认为三牌阵
+            
+            // 牌阵配置
+            const spreadConfigs = {
+                'three-card': {
+                    title: 'Three Card Spread',
+                    cardCount: 3,
+                    className: 'three-card-spread',
+                    positions: ['Past', 'Present', 'Future'],
+                    description: 'A concise reading of past, present, and future',
+                    subDescription: 'Perfect for exploring the timeline of an event or situation'
+                },
+                'cross': {
+                    title: 'Cross Spread',
+                    cardCount: 5,
+                    className: 'cross-spread',
+                    positions: ['Core Issue', 'Challenge', 'Current Status', 'Influence', 'Outcome'],
+                    description: 'A comprehensive five-card spread reading',
+                    subDescription: 'Ideal for complex questions requiring multiple perspectives'
+                },
+                'five-card': {
+                    title: 'Development Spread',
+                    cardCount: 5,
+                    className: '',
+                    positions: ['Current Status', 'Future Development', 'Obstacles', 'Final Result', 'Advice'],
+                    description: 'A reading of current status and development path',
+                    subDescription: 'Provides insights into all aspects of a situation\'s progression'
+                }
+            };
+            
+            // 抽牌按钮点击事件
             drawCardsButton.addEventListener('click', function() {
-                // Pass the question parameter to the drawing page
+                // 将问题参数与牌阵类型一起传递到抽牌页面
                 const urlParams = new URLSearchParams(window.location.search);
                 const question = urlParams.get('q');
-                let url = "tarot-drawing-eng.html";
+                let url = "tarot-drawing-eng.html?spread=" + currentSpreadType;
                 if (question) {
-                    url += "?q=" + encodeURIComponent(question);
+                    url += "&q=" + encodeURIComponent(question);
                 }
                 window.location.href = url;
             });
             
-            // Other spread option click event
+            // 其他牌阵选项点击事件 - 打开牌阵选择弹窗
             otherSpreadOption.addEventListener('click', function() {
-                alert('More spread options coming soon...');
-                // Future implementation: window.location.href = "tarot-spreads-eng.html";
+                spreadSelectionModal.style.display = 'flex';
             });
             
-            // Add click effect for each tarot card
+            // 为每张塔罗牌添加点击效果
             tarotCards.forEach(card => {
                 card.addEventListener('click', function() {
-                    // Card flip animation
+                    // 这里可以添加卡片翻转动画
                     this.style.transform = 'translateY(-10px)';
                     setTimeout(() => {
                         this.style.transform = '';
@@ -195,18 +272,104 @@
                 });
             });
             
-            // Get question from URL parameters
+            // 取消牌阵选择按钮点击事件
+            cancelSpreadSelection.addEventListener('click', function() {
+                spreadSelectionModal.style.display = 'none';
+            });
+            
+            // 为牌阵选项添加点击事件
+            spreadOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // 移除所有选项的selected类
+                    spreadOptions.forEach(opt => opt.classList.remove('selected'));
+                    // 给当前选项添加selected类
+                    this.classList.add('selected');
+                });
+            });
+            
+            // 确认牌阵选择按钮点击事件
+            confirmSpreadSelection.addEventListener('click', function() {
+                // 获取选中的牌阵类型
+                const selectedOption = document.querySelector('.spread-option.selected');
+                if (selectedOption) {
+                    const spreadType = selectedOption.getAttribute('data-spread');
+                    currentSpreadType = spreadType;
+                    
+                    // 更新页面上的牌阵
+                    updateSpreadLayout(spreadType);
+                    
+                    // 关闭弹窗
+                    spreadSelectionModal.style.display = 'none';
+                }
+            });
+            
+            // 更新牌阵布局
+            function updateSpreadLayout(spreadType) {
+                const config = spreadConfigs[spreadType];
+                
+                // 更新牌阵标题
+                tarotSpreadTitle.textContent = config.title;
+                
+                // 获取描述元素
+                const spreadDescriptionEl = document.querySelector('.spread-description');
+                if (spreadDescriptionEl) {
+                    spreadDescriptionEl.innerHTML = `
+                        <p>${config.description || 'Selected spread'}</p>
+                        <p>${config.subDescription || ''}</p>
+                    `;
+                }
+                
+                // 更新卡片预览
+                const miniSpreadEl = document.querySelector('.mini-spread');
+                if (miniSpreadEl) {
+                    // 更新类名
+                    miniSpreadEl.className = 'mini-spread';
+                    if (spreadType === 'three-card') {
+                        miniSpreadEl.classList.add('three-card-preview');
+                    } else if (spreadType === 'cross') {
+                        miniSpreadEl.classList.add('cross-preview');
+                    } else {
+                        miniSpreadEl.classList.add('five-card-preview');
+                    }
+                    
+                    // 更新卡片数量
+                    miniSpreadEl.innerHTML = '';
+                    for (let i = 0; i < config.cardCount; i++) {
+                        const card = document.createElement('div');
+                        card.className = 'mini-card-static';
+                        miniSpreadEl.appendChild(card);
+                    }
+                }
+            }
+            
+            // 获取URL参数中的问题
             const urlParams = new URLSearchParams(window.location.search);
             const question = urlParams.get('q');
             
-            // Handle the question if present in URL
+            // 如果URL中包含问题，可以在这里处理
             if (question) {
-                console.log('Current tarot question:', question);
-                // Can customize page content based on question here
+                console.log('Current reading question:', question);
+                // 这里可以根据问题定制页面内容
+            }
+            
+            // 从URL中获取牌阵类型并初始化布局
+            const spreadType = urlParams.get('spread');
+            if (spreadType && spreadConfigs[spreadType]) {
+                currentSpreadType = spreadType;
+                updateSpreadLayout(spreadType);
+                
+                // 在弹窗中选中对应的牌阵
+                spreadOptions.forEach(option => {
+                    if (option.getAttribute('data-spread') === spreadType) {
+                        option.classList.add('selected');
+                    } else {
+                        option.classList.remove('selected');
+                    }
+                });
             }
         });
     </script>
-    <!-- Import navbar module script -->
+    <!-- 导入导航栏模块脚本 -->
     <script src="js/navbar.js"></script>
 </body>
 </html> 

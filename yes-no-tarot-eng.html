@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yes/No Tarot Reading - Tarot09</title>
+    <meta name="description" content="Get guidance from tarot cards through yes/no questions, a simple and quick divination method.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/page-styles/yes-no-tarot.css">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index-eng.html">
+                    <span>🔮</span>
+                    <span>Tarot09</span>
+                </a>
+            </div>
+            
+            <button class="menu-toggle" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-capsules">
+                <!-- 主导航胶囊 -->
+                <div class="nav-capsule main-nav-capsule">
+                    <div class="nav-menu">
+                        <ul>
+                            <li><a href="index-eng.html" class="nav-link">Home</a></li>
+                            <li><a href="ai-taluopai-eng.html" class="nav-link">AI Tarot Reading</a></li>
+                            <li><a href="yes-no-tarot-eng.html" class="nav-link active">Yes/No Tarot</a></li>
+                            <li><a href="javascript:void(0)" class="nav-link premium" id="premiumLink"><i class="fas fa-crown"></i> Premium Subscription</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 用户控制胶囊 -->
+                <div class="nav-capsule user-controls-capsule">
+                    <div class="user-controls">
+                        <button class="theme-toggle" aria-label="Toggle Theme">
+                            <i class="fas fa-moon"></i>
+                            <i class="fas fa-sun"></i>
+                        </button>
+                        <button class="language-toggle" aria-label="Toggle Language">
+                            <i class="fas fa-globe"></i>
+                        </button>
+                        <a href="javascript:void(0)" class="user-profile">
+                            😊
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main>
+        <section class="header-section">
+            <h1 class="main-title">Yes/No Tarot Cards</h1>
+            <h2 class="sub-title">Free Online Divination</h2>
+            <p class="intro-text">
+                Get guidance from tarot cards through yes/no questions! Draw one card for a simple answer, or three cards for a deeper analysis. A quick and intuitive divination method to help you make decisions.
+            </p>
+        </section>
+        
+        <section class="options-container">
+            <div class="option-card">
+                <div class="option-header">
+                    <h3 class="option-title">Single Card Guidance</h3>
+                    <p class="option-subtitle">The answer awakens like a seed in crystal</p>
+                </div>
+                <div class="option-image">
+                    <img src="images/00愚者.jpg" alt="Single Tarot Card">
+                </div>
+                <p class="option-description">
+                    Already have a clear question in mind? Draw a single tarot card for immediate focused insights and direction for action.
+                </p>
+                <a href="yes-no-question-eng.html" class="option-button">Single Card Reading</a>
+            </div>
+        </section>
+        
+        <section class="how-to-section">
+            <h2 class="how-to-title">How to Perform a Yes/No Tarot Reading?</h2>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="step-title">Prepare Your Mind</h3>
+                    <p class="step-description">
+                        In a quiet environment, take deep breaths and relax. Meditate on the yes/no question you want to solve, allowing your inner self to resonate with the tarot cards. This step helps improve the accuracy of your yes/no tarot reading.
+                    </p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3 class="step-title">Choose a Yes/No Spread</h3>
+                    <p class="step-description">
+                        Yes/No tarot readings typically use either a single card or three-card spread. A single card directly answers your yes/no question with concise clarity; a three-card spread provides more detailed background information and guidance.
+                    </p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="step-title">Ask a Clear Question</h3>
+                    <p class="step-description">
+                        Ensure your yes/no question is clear and specific. For example, "Is this job right for me?" or "Is now a good time to start a new relationship?" Avoid vague questions to get accurate yes/no tarot reading results.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    © 2023 AI Tarot - All Rights Reserved
+                </div>
+                <div class="footer-links">
+                    <a href="javascript:void(0)">About Us</a>
+                    <a href="javascript:void(0)">Privacy Policy</a>
+                    <a href="javascript:void(0)">Terms of Use</a>
+                    <a href="javascript:void(0)">Contact Us</a>
+                    <a href="javascript:void(0)">Feedback</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 会员订阅弹窗 -->
+    <div class="modal-overlay" id="subscriptionModal">
+        <div class="subscription-modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Upgrade to Premium</h3>
+                <p class="modal-subtitle">Enjoy unlimited tarot readings and more advanced features</p>
+            </div>
+            
+            <div class="plan-options">
+                <div class="plan-option" data-plan="monthly">
+                    <div class="plan-name">
+                        Monthly Membership <span class="plan-price">$2.99</span>
+                    </div>
+                    <p class="plan-description">Auto-renews monthly, cancel anytime</p>
+                </div>
+                
+                <div class="plan-option selected" data-plan="quarterly">
+                    <div class="plan-name">
+                        Quarterly Membership <span class="plan-price">$7.99</span>
+                    </div>
+                    <p class="plan-description">Auto-renews every three months, equivalent to $2.66/month</p>
+                </div>
+                
+                <div class="plan-option" data-plan="yearly">
+                    <div class="plan-name">
+                        Annual Membership <span class="plan-price">$27.99</span>
+                    </div>
+                    <p class="plan-description">Auto-renews yearly, equivalent to $2.33/month, best value</p>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="cancel-button" id="cancelSubscription">Cancel</button>
+                <button class="subscribe-button" id="confirmSubscription">Confirm Subscription</button>
+            </div>
+            
+            <div class="term-conditions">
+                <p>By subscribing, you agree to our Terms of Service and Privacy Policy. Auto-renewal can be canceled up to 24 hours before expiration.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 导入订阅模块脚本 -->
+    <script src="js/subscription.js"></script>
+    <!-- 导入测试脚本 -->
+    <script src="js/test-subscription.js"></script>
+    <!-- 导入导航栏模块脚本 -->
+    <script src="js/navbar.js"></script>
+</body>
+</html> 

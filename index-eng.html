@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tarot09 - Explore the Mysteries of Destiny with AI</title>
-    <meta name="description" content="AI Tarot provides professional tarot divination services, interpreting tarot cards through artificial intelligence to help you gain guidance for your destiny.">
+    <meta name="description" content="AI Tarot provides professional tarot card reading services, using artificial intelligence to interpret tarot cards and help you gain guidance for your destiny.">
     <link rel="stylesheet" href="css/styles.css">
-    <!-- Import Font Awesome icon library -->
+    <link rel="stylesheet" href="css/subscription-fix.css">
+    <!-- 引入Font Awesome图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <!-- Navigation bar -->
+    <!-- 导航栏 -->
     <nav class="navbar">
         <div class="container">
             <div class="logo">
@@ -26,26 +27,26 @@
             </button>
             
             <div class="nav-capsules">
-                <!-- Main navigation capsule -->
+                <!-- 主导航胶囊 -->
                 <div class="nav-capsule main-nav-capsule">
                     <div class="nav-menu">
                         <ul>
                             <li><a href="javascript:void(0)" class="nav-link active">Home</a></li>
-                            <li><a href="ai-taluopai.html" class="nav-link">AI Tarot Reading</a></li>
-                            <li><a href="yes-no-tarot.html" class="nav-link">Yes/No Tarot Reading</a></li>
-                            <li><a href="javascript:void(0)" class="nav-link premium" id="premiumLink"><i class="fas fa-crown"></i> Premium</a></li>
+                            <li><a href="ai-taluopai-eng.html" class="nav-link">AI Tarot Reading</a></li>
+                            <li><a href="yes-no-tarot.html" class="nav-link">Yes/No Tarot</a></li>
+                            <li><a href="javascript:void(0)" class="nav-link premium" id="premiumLink"><i class="fas fa-crown"></i> Membership</a></li>
                         </ul>
                     </div>
                 </div>
                 
-                <!-- User controls capsule -->
+                <!-- 用户控制胶囊 -->
                 <div class="nav-capsule user-controls-capsule">
                     <div class="user-controls">
-                        <button class="theme-toggle" aria-label="Toggle theme">
+                        <button class="theme-toggle" aria-label="Toggle Theme">
                             <i class="fas fa-moon"></i>
                             <i class="fas fa-sun"></i>
                         </button>
-                        <button class="language-toggle" aria-label="Toggle language">
+                        <button class="language-toggle" aria-label="Toggle Language">
                             <i class="fas fa-globe"></i>
                         </button>
                         <a href="javascript:void(0)" class="user-profile">
@@ -57,40 +58,109 @@
         </div>
     </nav>
 
-    <!-- Main content -->
+    <!-- 主要内容 -->
     <main>
-        <!-- Header area -->
+        <!-- 头部区域 -->
         <section class="hero-section text-center">
             <div class="container">
                 <h1 class="main-title">
                     <span class="title-black">Free Online</span><br>
                     <span class="title-purple">AI Tarot</span><span class="title-black"> Reading</span>
                 </h1>
-                <p class="subtitle">2025 Online AI Tarot Reading, Highly Accurate AI Tarot Interpretations for Your Love, Career, Study, and Fortune</p>
-                
-                <div class="tarot-card-single">
-                    <div class="card-image-container">
-                        <div class="card-image"></div>
-                    </div>
-                </div>
-                
-                <a href="ai-taluopai.html" class="action-button purple-button">
+                <p class="subtitle">2025 Online AI Tarot Reading, AI Tarot interprets your love, career, studies, and fortune</p>
+                <a href="ai-taluopai-eng.html" class="action-button purple-button">
                     Start Tarot Reading <i class="fas fa-arrow-right"></i>
                 </a>
+                
+                <!-- 故事分享模块 -->
+                <div class="story-sharing-section">
+                    <h2 class="section-title">Story Sharing</h2>
+                    <div class="stories-container">
+                        <!-- 故事卡片1 -->
+                        <div class="story-card" data-story-id="1">
+                            <h3 class="story-title">Dilemma of Love Choices</h3>
+                            <div class="story-tarot-cards">
+                                <div class="story-tarot-card">
+                                    <img src="images/06恋人.jpg" alt="The Lovers">
+                                </div>
+                                <div class="story-tarot-card">
+                                    <img src="images/圣杯2.jpg" alt="Two of Cups">
+                                </div>
+                                <div class="story-tarot-card">
+                                    <img src="images/权杖骑士.jpg" alt="Knight of Wands">
+                                </div>
+                            </div>
+                            <p class="story-preview">Facing two relationships, how should I choose? AI's interpretation enlightened me...</p>
+                            <button class="story-read-more">Read Full Story</button>
+                        </div>
+                        
+                        <!-- 故事卡片2 -->
+                        <div class="story-card" data-story-id="2">
+                            <h3 class="story-title">Career Transition Confusion</h3>
+                            <div class="story-tarot-cards">
+                                <div class="story-tarot-card">
+                                    <img src="images/10命运之轮.jpg" alt="Wheel of Fortune">
+                                </div>
+                                <div class="story-tarot-card">
+                                    <img src="images/星币8.jpg" alt="Eight of Pentacles">
+                                </div>
+                                <div class="story-tarot-card">
+                                    <img src="images/19太阳.jpg" alt="The Sun">
+                                </div>
+                            </div>
+                            <p class="story-preview">Is changing careers the right move? Tarot cards pointed me in the right direction...</p>
+                            <button class="story-read-more">Read Full Story</button>
+                        </div>
+                        
+                        <!-- 故事卡片3 -->
+                        <div class="story-card" data-story-id="3">
+                            <h3 class="story-title">Relieving Academic Pressure</h3>
+                            <div class="story-tarot-cards">
+                                <div class="story-tarot-card">
+                                    <img src="images/09隐士.jpg" alt="The Hermit">
+                                </div>
+                                <div class="story-tarot-card">
+                                    <img src="images/宝剑4.jpg" alt="Four of Swords">
+                                </div>
+                                <div class="story-tarot-card">
+                                    <img src="images/星币ACE.jpg" alt="Ace of Pentacles">
+                                </div>
+                            </div>
+                            <p class="story-preview">The pressure of exams was overwhelming, AI Tarot gave me unexpected advice...</p>
+                            <button class="story-read-more">Read Full Story</button>
+                        </div>
+                    </div>
+                    <!-- 查看更多按钮 -->
+                    <div class="view-more-container">
+                        <a href="stories.html" class="action-button purple-button view-more-button">
+                            View More Stories <i class="fas fa-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- AI Tarot Reading section -->
+        <!-- AI塔罗牌占卜部分 -->
         <section class="content-section split-section tarot-feature-section">
             <div class="container fullwidth-container">
                 <div class="split-content center-content">
                     <div class="image-content">
-                        <div class="readers-grid-container"></div>
+                        <div class="three-card-spread">
+                            <div class="tarot-card-back">
+                                <img src="images/背面A.jpg" alt="Tarot Card Back">
+                            </div>
+                            <div class="tarot-card-back">
+                                <img src="images/背面A.jpg" alt="Tarot Card Back">
+                            </div>
+                            <div class="tarot-card-back">
+                                <img src="images/背面A.jpg" alt="Tarot Card Back">
+                            </div>
+                        </div>
                     </div>
                     <div class="text-content">
                         <h2 class="section-title feature-title">AI Tarot Reading</h2>
-                        <p class="section-description">Direct tarot reading, choose different styles of tarot readers to interpret your questions</p>
-                        <a href="ai-taluopai.html" class="action-button purple-sm-button">
+                        <p class="section-description">Direct tarot card readings, choose different styles of tarot readers to interpret your questions</p>
+                        <a href="ai-taluopai-eng.html" class="action-button purple-sm-button">
                             Start AI Tarot Reading
                         </a>
                     </div>
@@ -98,26 +168,37 @@
             </div>
         </section>
 
-        <!-- Yes/No Tarot Reading section -->
+        <!-- 是否塔罗牌占卜部分 -->
         <section class="content-section split-section tarot-feature-section">
             <div class="container fullwidth-container">
                 <div class="split-content center-content">
                     <div class="text-content">
                         <h2 class="section-title feature-title">Yes/No Tarot Reading</h2>
-                        <p class="section-description">Get intelligent guidance from online tarot through simple yes or no questions</p>
+                        <p class="section-description">Get intelligent guidance from online tarot through simple yes/no questions</p>
                         <a href="yes-no-tarot.html" class="action-button purple-sm-button">
-                            Free Tarot Reading Now
+                            Start Free Tarot Reading Now
                         </a>
                     </div>
                     <div class="image-content">
-                        <div class="yes-no-cards-container"></div>
+                        <div class="single-card-spread">
+                            <div class="tarot-card-back flippable" id="yesNoCard">
+                                <div class="card-inner">
+                                    <div class="card-front">
+                                        <img src="images/背面A.jpg" alt="Tarot Card Back">
+                                    </div>
+                                    <div class="card-back">
+                                        <!-- 翻牌后显示随机卡牌，由JS控制 -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
 
-        <!-- Features area -->
+        <!-- 功能特点区域 -->
         <section class="features-section">
             <div class="container">
                 <div class="features-grid">
@@ -126,49 +207,49 @@
                             <i class="fas fa-clock"></i>
                         </div>
                         <h3>Online Tarot Reading Service</h3>
-                        <p>Anytime, anywhere, our online AI tarot readers can provide you with professional tarot reading services.</p>
+                        <p>Anytime, anywhere, our online AI tarot readers can provide you with professional tarot card reading services.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon blue-icon">
                             <i class="fas fa-user-friends"></i>
                         </div>
-                        <h3>Multiple Tarot Reader Styles</h3>
-                        <p>Choose different AI tarot reader styles to experience personalized reading interpretations.</p>
+                        <h3>Diverse Tarot Reader Styles</h3>
+                        <p>Choose from different styles of AI tarot readers for personalized reading interpretations.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon blue-icon">
                             <i class="fas fa-layer-group"></i>
                         </div>
-                        <h3>Various Mystical Spreads</h3>
-                        <p>Classic spreads, each designed to provide in-depth interpretations for different types of questions.</p>
+                        <h3>Multiple Mystical Card Spreads</h3>
+                        <p>Various classic card spreads, each offering in-depth interpretations for different types of questions.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon blue-icon">
                             <i class="fas fa-history"></i>
                         </div>
                         <h3>Online Reading Storage System</h3>
-                        <p>Scientific storage system, view historical tarot records, and check previous interpretations.</p>
+                        <p>Scientific storage system to save and view your historical tarot card readings and interpretations.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon blue-icon">
                             <i class="fas fa-calendar-alt"></i>
                         </div>
                         <h3>Daily Tarot Fortune</h3>
-                        <p>Subscribe to daily precise tarot readings, receive accurate electronic reminders every day.</p>
+                        <p>Subscribe to daily accurate tarot readings and receive precise electronic reminders every day.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon blue-icon">
                             <i class="fas fa-star"></i>
                         </div>
-                        <h3>Zodiac Reading Answers</h3>
-                        <p>Tarot card readings for specific zodiac signs, get more targeted tarot interpretations.</p>
+                        <h3>Zodiac Divination Answers</h3>
+                        <p>Tarot card readings tailored for specific zodiac signs, providing more targeted interpretations.</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
+    <!-- 页脚 -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -186,34 +267,34 @@
         </div>
     </footer>
 
-    <!-- Premium subscription modal -->
+    <!-- 会员订阅弹窗 -->
     <div class="modal-overlay" id="subscriptionModal">
         <div class="subscription-modal">
             <div class="modal-header">
-                <h3 class="modal-title">Upgrade to Premium</h3>
-                <p class="modal-subtitle">Enjoy unlimited tarot readings and more advanced features</p>
+                <h3 class="modal-title">Upgrade Membership</h3>
+                <p class="modal-subtitle">Enjoy unlimited tarot readings and more premium features</p>
             </div>
             
             <div class="plan-options">
                 <div class="plan-option" data-plan="monthly">
                     <div class="plan-name">
-                        Monthly Premium <span class="plan-price">$2.99</span>
+                        Monthly Plan <span class="plan-price">$2.99</span>
                     </div>
                     <p class="plan-description">Auto-renews monthly, cancel anytime</p>
                 </div>
                 
                 <div class="plan-option selected" data-plan="quarterly">
                     <div class="plan-name">
-                        Quarterly Premium <span class="plan-price">$7.99</span>
+                        Quarterly Plan <span class="plan-price">$7.99</span>
                     </div>
                     <p class="plan-description">Auto-renews every three months, equivalent to $2.66/month</p>
                 </div>
                 
                 <div class="plan-option" data-plan="yearly">
                     <div class="plan-name">
-                        Annual Premium <span class="plan-price">$28.99</span>
+                        Annual Plan <span class="plan-price">$24.99</span>
                     </div>
-                    <p class="plan-description">Auto-renews yearly, equivalent to $2.41/month, best value</p>
+                    <p class="plan-description">Auto-renews yearly, equivalent to $2.08/month, best value</p>
                 </div>
             </div>
             
@@ -223,30 +304,101 @@
             </div>
             
             <div class="term-conditions">
-                <p>By subscribing, you agree to our Terms of Service and Privacy Policy. Auto-renewal can be canceled up to 24 hours before expiration.</p>
+                <p>By subscribing, you agree to our Terms of Service and Privacy Policy. You can cancel auto-renewal up to 24 hours before the renewal date.</p>
             </div>
         </div>
     </div>
 
+    <!-- 故事详情弹窗 -->
+    <div class="modal-overlay" id="storyDetailModal">
+        <div class="story-detail-modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="storyModalTitle">Story Title</h3>
+                <button class="close-modal" id="closeStoryModal"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="story-tarot-cards-large">
+                <div class="story-tarot-card-large" id="storyCard1">
+                    <img src="" alt="Tarot Card">
+                    <p class="card-name">Card Name</p>
+                </div>
+                <div class="story-tarot-card-large" id="storyCard2">
+                    <img src="" alt="Tarot Card">
+                    <p class="card-name">Card Name</p>
+                </div>
+                <div class="story-tarot-card-large" id="storyCard3">
+                    <img src="" alt="Tarot Card">
+                    <p class="card-name">Card Name</p>
+                </div>
+            </div>
+            
+            <div class="chat-container" id="storyChat">
+                <!-- 问题 -->
+                <div class="chat-message user-message">
+                    <div class="message-avatar">👤</div>
+                    <div class="message-content">
+                        <p class="message-text" id="userQuestion">User question will be shown here</p>
+                    </div>
+                </div>
+                
+                <!-- AI回答 -->
+                <div class="chat-message ai-message">
+                    <div class="message-avatar">🔮</div>
+                    <div class="message-content">
+                        <p class="message-text" id="aiAnswer">AI answer will be shown here</p>
+                    </div>
+                </div>
+                
+                <!-- 用户反馈 -->
+                <div class="chat-message user-message">
+                    <div class="message-avatar">👤</div>
+                    <div class="message-content">
+                        <p class="message-text" id="userFeedback">User feedback will be shown here</p>
+                    </div>
+                </div>
+                
+                <!-- AI再次回答 -->
+                <div class="chat-message ai-message">
+                    <div class="message-avatar">🔮</div>
+                    <div class="message-content">
+                        <p class="message-text" id="aiSecondAnswer">AI's further interpretation will be shown here</p>
+                    </div>
+                </div>
+            </div>
+            <div class="privacy-notice">We value your privacy. This content is generated by AI</div>
+        </div>
+    </div>
+
     <script src="js/script.js"></script>
-    <!-- Import subscription module script -->
+    <!-- 导入订阅模块脚本 -->
     <script src="js/subscription.js"></script>
-    <!-- Import test script -->
+    <!-- 导入测试脚本 -->
     <script src="js/test-subscription.js"></script>
-    <!-- Import navbar module script -->
+    <!-- 导入导航栏模块脚本 -->
     <script src="js/navbar.js"></script>
+    <!-- 导入故事分享模块脚本 -->
+    <script src="js/story-sharing.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Get all links
+            // 获取所有链接
             var links = document.querySelectorAll('a');
             
-            // Change all links to invalid links, but preserve AI Tarot Reading link
+            // 将所有链接更改为无效链接，但保留AI塔罗占卜链接
             links.forEach(function(link) {
                 var href = link.getAttribute('href');
-                if (href !== 'javascript:void(0)' && href !== 'ai-taluopai.html' && href !== 'yes-no-tarot.html') {
+                if (href !== 'javascript:void(0)' && href !== 'ai-taluopai-eng.html' && href !== 'yes-no-tarot.html' && href !== 'stories.html') {
                     link.setAttribute('href', 'javascript:void(0)');
                 }
             });
+            
+            // 语言切换按钮功能
+            const languageToggle = document.querySelector('.language-toggle');
+            if (languageToggle) {
+                languageToggle.addEventListener('click', function() {
+                    // 切换到中文版
+                    window.location.href = 'index.html';
+                });
+            }
         });
     </script>
 </body>
