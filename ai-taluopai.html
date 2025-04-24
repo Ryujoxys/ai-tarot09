@@ -61,7 +61,7 @@
         <section class="page-header">
             <div class="container">
                 <h3 class="main-title">在线塔罗占卜</h3>
-                <h1 class="page-title">选择你的 <span class="ai-highlight">AI</span> 塔罗师</h1>
+                <h1 class="page-title">选择你的 <span class="ai-highlight">AI</span> 塔罗牌</h1>
                 <p class="page-subtitle">通过AI塔罗牌解读，占卜你的命运轨迹</p>
                 
                 <!-- 免费占卜次数显示框 -->
@@ -82,26 +82,11 @@
             </div>
         </section>
         
-        <!-- 塔罗师选择 -->
+        <!-- 开始占卜 -->
         <section class="reader-selection">
             <div class="container">
-                <h2 class="visually-hidden">塔罗师列表</h2>
-                
-                <div class="reader-grid">
-                    <!-- 塔罗师1 -->
-                    <div class="reader-card">
-                        <div class="reader-image"></div>
-                        <div class="reader-info">
-                            <h3 class="reader-name">神秘先生 <span class="reader-stars">★★★★★</span></h3>
-                            <p class="reader-description">来自东方的神秘塔罗大师，专注于事业和财运方向的分析，能够预测未来发展趋势。</p>
-                            <button class="select-button">选择塔罗师</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 更多塔罗师按钮 -->
-                <div class="more-readers">
-                    <button class="more-button">敬请期待</button>
+                <div class="start-divination-container">
+                    <button class="start-divination-button" id="startDivination">开始在线占卜</button>
                 </div>
                 
                 <!-- 服务说明 -->
@@ -132,8 +117,8 @@
                 
                 <div class="feature-grid">
                     <div class="feature-card">
-                        <h3>步骤1：选择塔罗师</h3>
-                        <p>从多位AI塔罗师中选择一位符合您需求的塔罗师，每位塔罗师都有不同的专长和解读风格。</p>
+                        <h3>步骤1：点击开始在线占卜</h3>
+                        <p>点击"开始在线占卜"按钮，系统将自动为您生成适合您问题的塔罗牌阵，开始占卜旅程。</p>
                     </div>
                     
                     <div class="feature-card">
@@ -154,45 +139,37 @@
             <div class="container">
                 <h2 class="feature-title">AI塔罗牌特点</h2>
                 
-                <div class="highlight-features">
-                    <div class="highlight-feature">
-                        <div class="highlight-image"></div>
-                        <div class="highlight-content">
-                            <h3>自动抽取牌阵</h3>
-                            <p>无需手动选牌，AI会为您自动抽取最合适的塔罗牌组合，确保解读的准确性与全面性。</p>
+                <div class="feature-icons-grid">
+                    <div class="feature-icon-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-globe"></i>
                         </div>
+                        <h3>塔罗在线解读</h3>
+                        <p>无论何时何地，只要连接网络，就能获得专业的塔罗牌解读服务。</p>
                     </div>
                     
-                    <div class="highlight-feature">
-                        <div class="highlight-image"></div>
-                        <div class="highlight-content">
-                            <h3>塔罗在线解读</h3>
-                            <p>无论何时何地，只要连接网络，就能获得专业的塔罗牌解读服务。</p>
+                    <div class="feature-icon-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-eye"></i>
                         </div>
+                        <h3>直观式塔罗解读</h3>
+                        <p>AI塔罗师提供清晰直观的解读，以易于理解的方式呈现塔罗牌蕴含的讯息。</p>
                     </div>
                     
-                    <div class="highlight-feature">
-                        <div class="highlight-image"></div>
-                        <div class="highlight-content">
-                            <h3>直观式塔罗解读</h3>
-                            <p>AI塔罗师提供清晰直观的解读，以易于理解的方式呈现塔罗牌蕴含的讯息。</p>
+                    <div class="feature-icon-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-star"></i>
                         </div>
+                        <h3>神秘卡牌预测</h3>
+                        <p>融合了传统塔罗牌的神秘力量与现代AI技术，为您提供准确的预测和指引。</p>
                     </div>
                     
-                    <div class="highlight-feature">
-                        <div class="highlight-image"></div>
-                        <div class="highlight-content">
-                            <h3>神秘卡牌预测</h3>
-                            <p>融合了传统塔罗牌的神秘力量与现代AI技术，为您提供准确的预测和指引。</p>
+                    <div class="feature-icon-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-comments"></i>
                         </div>
-                    </div>
-                    
-                    <div class="highlight-feature">
-                        <div class="highlight-image"></div>
-                        <div class="highlight-content">
-                            <h3>继续追问功能</h3>
-                            <p>解读后如有疑问，可以进一步提问，AI塔罗师会给予更深入的解答，满足您的好奇心。</p>
-                        </div>
+                        <h3>继续追问功能</h3>
+                        <p>解读后如有疑问，可以进一步提问，AI塔罗师会给予更深入的解答，满足您的好奇心。</p>
                     </div>
                 </div>
             </div>
@@ -317,20 +294,12 @@
                 }
             });
             
-            // 塔罗师选择按钮事件
-            var selectButtons = document.querySelectorAll('.select-button');
-            selectButtons.forEach(function(button) {
-                button.addEventListener('click', function() {
+            // 开始在线占卜按钮点击事件
+            const startDivinationBtn = document.getElementById('startDivination');
+            if (startDivinationBtn) {
+                startDivinationBtn.addEventListener('click', function() {
                     // 点击后跳转到问题输入页面
                     window.location.href = 'tarot-question.html';
-                });
-            });
-            
-            // 更多塔罗师按钮事件
-            var moreButton = document.querySelector('.more-button');
-            if (moreButton) {
-                moreButton.addEventListener('click', function() {
-                    alert('加载更多塔罗师...');
                 });
             }
             

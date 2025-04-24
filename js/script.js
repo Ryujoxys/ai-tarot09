@@ -14,6 +14,39 @@ document.addEventListener('DOMContentLoaded', function() {
     initTarotCard();
     initReadingButtons();
     initReaderSelection();
+    
+    // 是否塔罗牌翻牌效果
+    const yesNoCard = document.getElementById('yesNoCard');
+    if (yesNoCard) {
+        // 塔罗牌图片数组
+        const tarotCards = [
+            '00愚者.jpg', '01魔术师.jpg', '02女祭祀.jpg', '03皇后.jpg', '04皇帝.jpg',
+            '05教皇.jpg', '06恋人.jpg', '07战车.jpg', '08力量.jpg', '09隐士.jpg',
+            '10命运之轮.jpg', '11正义.jpg', '12倒吊人.jpg', '13死神.jpg', '14节制.jpg',
+            '15恶魔.jpg', '16高塔.jpg', '17星星.jpg', '18月亮.jpg', '19太阳.jpg',
+            '20审判.jpg', '21世界.jpg'
+        ];
+        
+        // 点击卡片翻转
+        yesNoCard.addEventListener('click', function() {
+            if (!this.classList.contains('flipped')) {
+                // 随机选择一张塔罗牌
+                const randomCard = tarotCards[Math.floor(Math.random() * tarotCards.length)];
+                
+                // 设置卡片背面图片
+                const cardBack = this.querySelector('.card-back');
+                cardBack.innerHTML = `<img src="images/${randomCard}" alt="塔罗牌">`;
+                
+                // 添加翻转类
+                this.classList.add('flipped');
+                
+                // 3秒后自动翻回
+                setTimeout(() => {
+                    this.classList.remove('flipped');
+                }, 3000);
+            }
+        });
+    }
 });
 
 /**
@@ -92,15 +125,6 @@ function initTarotCard() {
     const tarotCard = document.querySelector('.tarot-card');
     
     if (tarotCard) {
-        // 添加鼠标悬停时的微妙浮动动画
-        tarotCard.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) rotate(2deg)';
-        });
-        
-        tarotCard.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) rotate(0)';
-        });
-        
         // 添加点击效果
         tarotCard.addEventListener('click', function() {
             // 预留：点击卡片的功能，例如翻转或展示卡牌详情

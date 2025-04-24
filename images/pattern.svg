@@ -1,0 +1,23 @@
+<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="tarotPattern" patternUnits="userSpaceOnUse" width="100" height="100">
+      <circle cx="10" cy="10" r="2" fill="#ffffff" opacity="0.3"/>
+      <circle cx="35" cy="35" r="3" fill="#ffffff" opacity="0.3"/>
+      <circle cx="60" cy="10" r="2" fill="#ffffff" opacity="0.3"/>
+      <circle cx="85" cy="35" r="3" fill="#ffffff" opacity="0.3"/>
+      <circle cx="10" cy="60" r="2" fill="#ffffff" opacity="0.3"/>
+      <circle cx="35" cy="85" r="3" fill="#ffffff" opacity="0.3"/>
+      <circle cx="60" cy="60" r="2" fill="#ffffff" opacity="0.3"/>
+      <circle cx="85" cy="85" r="3" fill="#ffffff" opacity="0.3"/>
+      <path d="M0 50 L100 50" stroke="#ffffff" stroke-width="0.5" opacity="0.2"/>
+      <path d="M50 0 L50 100" stroke="#ffffff" stroke-width="0.5" opacity="0.2"/>
+      <path d="M0 0 L100 100" stroke="#ffffff" stroke-width="0.5" opacity="0.2"/>
+      <path d="M0 100 L100 0" stroke="#ffffff" stroke-width="0.5" opacity="0.2"/>
+      <path d="M25 0 L25 100" stroke="#ffffff" stroke-width="0.3" opacity="0.1"/>
+      <path d="M75 0 L75 100" stroke="#ffffff" stroke-width="0.3" opacity="0.1"/>
+      <path d="M0 25 L100 25" stroke="#ffffff" stroke-width="0.3" opacity="0.1"/>
+      <path d="M0 75 L100 75" stroke="#ffffff" stroke-width="0.3" opacity="0.1"/>
+    </pattern>
+  </defs>
+  <rect width="100" height="100" fill="url(#tarotPattern)"/>
+</svg> 

@@ -66,17 +66,70 @@
                     <span class="title-black">免费在线</span><br>
                     <span class="title-purple">AI塔罗牌</span><span class="title-black">占卜</span>
                 </h1>
-                <p class="subtitle">2025年在线AI塔罗牌占卜，超准AI塔罗牌占卜解读您的爱情事业学业运势</p>
-                
-                <div class="tarot-card-single">
-                    <div class="card-image-container">
-                        <div class="card-image"></div>
-                    </div>
-                </div>
-                
+                <p class="subtitle">2025年在线AI塔罗牌占卜，AI塔罗牌占卜解读您的爱情事业学业运势</p>
                 <a href="ai-taluopai.html" class="action-button purple-button">
                     开始塔罗占卜 <i class="fas fa-arrow-right"></i>
                 </a>
+                
+                <!-- 故事分享模块 -->
+                <div class="story-sharing-section">
+                    <h2 class="section-title">故事分享</h2>
+                    <div class="stories-container">
+                        <!-- 故事卡片1 -->
+                        <div class="story-card" data-story-id="1">
+                            <h3 class="story-title">爱情抉择的困惑</h3>
+                            <div class="story-tarot-cards">
+                                <div class="story-tarot-card">
+                                    <img src="images/06恋人.jpg" alt="恋人牌">
+                                </div>
+                                <div class="story-tarot-card">
+                                    <img src="images/圣杯2.jpg" alt="圣杯二">
+                                </div>
+                                <div class="story-tarot-card">
+                                    <img src="images/权杖骑士.jpg" alt="权杖骑士">
+                                </div>
+                            </div>
+                            <p class="story-preview">面对两段感情，我该如何抉择？AI的解读让我豁然开朗...</p>
+                            <button class="story-read-more">查看完整故事</button>
+                        </div>
+                        
+                        <!-- 故事卡片2 -->
+                        <div class="story-card" data-story-id="2">
+                            <h3 class="story-title">职业转型的迷茫</h3>
+                            <div class="story-tarot-cards">
+                                <div class="story-tarot-card">
+                                    <img src="images/10命运之轮.jpg" alt="命运之轮">
+                                </div>
+                                <div class="story-tarot-card">
+                                    <img src="images/星币8.jpg" alt="星币八">
+                                </div>
+                                <div class="story-tarot-card">
+                                    <img src="images/19太阳.jpg" alt="太阳">
+                                </div>
+                            </div>
+                            <p class="story-preview">转行是否正确？塔罗牌给我指明了方向...</p>
+                            <button class="story-read-more">查看完整故事</button>
+                        </div>
+                        
+                        <!-- 故事卡片3 -->
+                        <div class="story-card" data-story-id="3">
+                            <h3 class="story-title">学业压力的缓解</h3>
+                            <div class="story-tarot-cards">
+                                <div class="story-tarot-card">
+                                    <img src="images/09隐士.jpg" alt="隐士">
+                                </div>
+                                <div class="story-tarot-card">
+                                    <img src="images/宝剑4.jpg" alt="宝剑四">
+                                </div>
+                                <div class="story-tarot-card">
+                                    <img src="images/星币ACE.jpg" alt="星币王牌">
+                                </div>
+                            </div>
+                            <p class="story-preview">考研压力让我喘不过气，AI塔罗给我意想不到的建议...</p>
+                            <button class="story-read-more">查看完整故事</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -85,7 +138,17 @@
             <div class="container fullwidth-container">
                 <div class="split-content center-content">
                     <div class="image-content">
-                        <div class="readers-grid-container"></div>
+                        <div class="three-card-spread">
+                            <div class="tarot-card-back">
+                                <img src="images/背面A.jpg" alt="塔罗牌背面">
+                            </div>
+                            <div class="tarot-card-back">
+                                <img src="images/背面A.jpg" alt="塔罗牌背面">
+                            </div>
+                            <div class="tarot-card-back">
+                                <img src="images/背面A.jpg" alt="塔罗牌背面">
+                            </div>
+                        </div>
                     </div>
                     <div class="text-content">
                         <h2 class="section-title feature-title">AI塔罗牌占卜</h2>
@@ -110,7 +173,18 @@
                         </a>
                     </div>
                     <div class="image-content">
-                        <div class="yes-no-cards-container"></div>
+                        <div class="single-card-spread">
+                            <div class="tarot-card-back flippable" id="yesNoCard">
+                                <div class="card-inner">
+                                    <div class="card-front">
+                                        <img src="images/背面A.jpg" alt="塔罗牌背面">
+                                    </div>
+                                    <div class="card-back">
+                                        <!-- 翻牌后显示随机卡牌，由JS控制 -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -228,6 +302,66 @@
         </div>
     </div>
 
+    <!-- 故事详情弹窗 -->
+    <div class="modal-overlay" id="storyDetailModal">
+        <div class="story-detail-modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="storyModalTitle">故事标题</h3>
+                <button class="close-modal" id="closeStoryModal"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="story-tarot-cards-large">
+                <div class="story-tarot-card-large" id="storyCard1">
+                    <img src="" alt="塔罗牌">
+                    <p class="card-name">牌名</p>
+                </div>
+                <div class="story-tarot-card-large" id="storyCard2">
+                    <img src="" alt="塔罗牌">
+                    <p class="card-name">牌名</p>
+                </div>
+                <div class="story-tarot-card-large" id="storyCard3">
+                    <img src="" alt="塔罗牌">
+                    <p class="card-name">牌名</p>
+                </div>
+            </div>
+            
+            <div class="chat-container" id="storyChat">
+                <!-- 问题 -->
+                <div class="chat-message user-message">
+                    <div class="message-avatar">👤</div>
+                    <div class="message-content">
+                        <p class="message-text" id="userQuestion">用户问题将显示在这里</p>
+                    </div>
+                </div>
+                
+                <!-- AI回答 -->
+                <div class="chat-message ai-message">
+                    <div class="message-avatar">🔮</div>
+                    <div class="message-content">
+                        <p class="message-text" id="aiAnswer">AI回答将显示在这里</p>
+                    </div>
+                </div>
+                
+                <!-- 用户反馈 -->
+                <div class="chat-message user-message">
+                    <div class="message-avatar">👤</div>
+                    <div class="message-content">
+                        <p class="message-text" id="userFeedback">用户反馈将显示在这里</p>
+                    </div>
+                </div>
+                
+                <!-- AI再次回答 -->
+                <div class="chat-message ai-message">
+                    <div class="message-avatar">🔮</div>
+                    <div class="message-content">
+                        <p class="message-text" id="aiSecondAnswer">AI的进一步解读将显示在这里</p>
+                    </div>
+                </div>
+            </div>
+            <div class="privacy-notice">我们注重用户隐私，此内容由ai生成</div>
+        </div>
+    </div>
+
     <script src="js/script.js"></script>
     <!-- 导入订阅模块脚本 -->
     <script src="js/subscription.js"></script>
@@ -235,6 +369,8 @@
     <script src="js/test-subscription.js"></script>
     <!-- 导入导航栏模块脚本 -->
     <script src="js/navbar.js"></script>
+    <!-- 导入故事分享模块脚本 -->
+    <script src="js/story-sharing.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // 获取所有链接
