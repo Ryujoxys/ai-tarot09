@@ -611,3 +611,110 @@ body.dark-mode .feature-icon-item p {
         padding: 12px 30px;
     }
 }
+
+/* 会员特权卡片 */
+.premium-card {
+    background: linear-gradient(135deg, #2c0a4a, #420d82);
+    border-radius: 15px;
+    padding: 25px 30px;
+    box-shadow: 0 10px 30px rgba(66, 13, 130, 0.3);
+    display: flex;
+    align-items: center;
+    margin: 40px 0;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+}
+
+.premium-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(66, 13, 130, 0.4);
+}
+
+.premium-icon {
+    flex-shrink: 0;
+    margin-right: 30px;
+    filter: drop-shadow(0 5px 15px rgba(255, 215, 0, 0.5));
+    animation: gentle-pulse 3s infinite alternate;
+}
+
+@keyframes gentle-pulse {
+    0% {
+        transform: scale(1);
+        filter: drop-shadow(0 5px 15px rgba(255, 215, 0, 0.3));
+    }
+    100% {
+        transform: scale(1.05);
+        filter: drop-shadow(0 8px 20px rgba(255, 215, 0, 0.6));
+    }
+}
+
+.premium-info {
+    flex: 1;
+}
+
+.premium-title {
+    color: #FFD700;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.premium-description {
+    color: #ffffff;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.premium-button {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #420d82;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    display: inline-flex;
+    align-items: center;
+}
+
+.premium-button i {
+    margin-right: 8px;
+}
+
+.premium-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .premium-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px 20px;
+    }
+    
+    .premium-icon {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    
+    .premium-title {
+        font-size: 1.3rem;
+    }
+    
+    .premium-description {
+        font-size: 0.95rem;
+    }
+    
+    .premium-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
