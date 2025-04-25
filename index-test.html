@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarot09 - 探索命运的奥秘</title>
+    <meta name="description" content="AI塔罗牌提供专业的塔罗牌占卜服务，利用人工智能解读塔罗牌，帮助您获取命运指引。">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/subscription-fix.css">
+    <!-- 引入Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <style>
+        /* 用户菜单样式 */
+        .user-dropdown {
+            position: absolute;
+            top: 60px;
+            right: 0;
+            width: 240px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: none;
+            overflow: hidden;
+        }
+        
+        .dark-mode .user-dropdown {
+            background-color: #24204b;
+            color: #f8f8f8;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .user-dropdown-show {
+            display: block;
+        }
+        
+        .user-email {
+            padding: 15px;
+            border-bottom: 1px solid #eeeeee;
+            font-size: 14px;
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .dark-mode .user-email {
+            border-bottom: 1px solid #393463;
+        }
+        
+        .vip-indicator {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+        
+        .vip-indicator.is-vip {
+            background-color: #fef6e6;
+            color: #f5a623;
+            border: 1px solid #f5a623;
+        }
+        
+        .vip-indicator.not-vip {
+            background-color: #f5f5f5;
+            color: #999999;
+            border: 1px solid #e0e0e0;
+            opacity: 0.7;
+        }
+        
+        .user-menu-item {
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .user-menu-item:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .dark-mode .user-menu-item:hover {
+            background-color: #2e2b59;
+        }
+        
+        .user-menu-item i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+            color: #7c4dff;
+        }
+        
+        .user-menu-item span {
+            flex-grow: 1;
+        }
+        
+        .user-menu-item .tag {
+            font-size: 11px;
+            padding: 2px 6px;
+            background-color: #ebf7e9;
+            color: #4caf50;
+            border-radius: 4px;
+            margin-left: 5px;
+        }
+        
+        .user-profile-container {
+            position: relative;
+        }
+        
+        /* 登录模态窗口样式 */
+        .login-modal {
+            width: 350px;
+            max-width: 90%;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 25px;
+        }
+        
+        .dark-mode .login-modal {
+            background-color: #24204b;
+            color: #f8f8f8;
+        }
+        
+        .login-modal .modal-title {
+            font-size: 22px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .login-form .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .login-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .login-form input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+        
+        .dark-mode .login-form input {
+            background-color: #2e2b59;
+            border: 1px solid #393463;
+            color: #f8f8f8;
+        }
+        
+        .login-form input:focus {
+            border-color: #7c4dff;
+            outline: none;
+        }
+        
+        .login-form button {
+            width: 100%;
+            padding: 12px;
+            background-color: #7c4dff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .login-form button:hover {
+            background-color: #6c42e0;
+        }
+        
+        .login-form .form-footer {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 13px;
+        }
+        
+        .login-form .form-footer a {
+            color: #7c4dff;
+            text-decoration: none;
+        }
+        
+        .dark-mode .login-form .form-footer a {
+            color: #9c7aff;
+        }
+        
+        /* 用户中心弹窗样式 */
+        .user-center-modal {
+            width: 480px;
+            max-width: 90%;
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .dark-mode .user-center-modal {
+            background-color: #24204b;
+            color: #f8f8f8;
+        }
+        
+        .user-center-header {
+            background-color: #7c4dff;
+            color: white;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .user-center-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #9c7aff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin: 0 auto 15px;
+            border: 3px solid rgba(255,255,255,0.3);
+        }
+        
+        .user-center-name {
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        
+        .user-center-email {
+            font-size: 14px;
+            text-align: center;
+            opacity: 0.9;
+        }
+        
+        .user-center-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+        
+        .user-center-close:hover {
+            opacity: 1;
+        }
+        
+        .user-center-content {
+            padding: 20px;
+        }
+        
+        .profile-form .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .profile-form label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #666;
+        }
+        
+        .dark-mode .profile-form label {
+            color: #ccc;
+        }
+        
+        .profile-form .form-control {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+            background-color: #f9f9f9;
+        }
+        
+        .dark-mode .profile-form .form-control {
+            background-color: #2e2b59;
+            border-color: #393463;
+            color: #f8f8f8;
+        }
+        
+        .profile-form select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            padding-right: 30px;
+        }
+        
+        .dark-mode .profile-form select.form-control {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ccc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+        }
+        
+        .toggle-switch-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .dark-mode .toggle-switch-container {
+            border-top-color: #393463;
+        }
+        
+        .toggle-switch-label {
+            font-weight: 500;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .toggle-slider {
+            background-color: #7c4dff;
+        }
+        
+        input:checked + .toggle-slider:before {
+            transform: translateX(20px);
+        }
+        
+        .user-center-footer {
+            padding: 15px 20px;
+            text-align: right;
+            border-top: 1px solid #eee;
+        }
+        
+        .dark-mode .user-center-footer {
+            border-top-color: #393463;
+        }
+        
+        .save-button {
+            padding: 8px 16px;
+            background-color: #7c4dff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .save-button:hover {
+            background-color: #6c42e0;
+        }
+        
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        
+        .modal-overlay.modal-show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* 占卜记录弹窗样式 */
+        .tarot-history-modal {
+            width: 800px;
+            max-width: 90%;
+            max-height: 80vh;
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .dark-mode .tarot-history-modal {
+            background-color: #24204b;
+            color: #f8f8f8;
+        }
+        
+        .tarot-history-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .dark-mode .tarot-history-header {
+            border-bottom-color: #393463;
+        }
+        
+        .tarot-history-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .dark-mode .tarot-history-title {
+            color: #f8f8f8;
+        }
+        
+        .tarot-history-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px 20px;
+        }
+        
+        .history-empty {
+            text-align: center;
+            padding: 40px 0;
+            color: #888;
+        }
+        
+        .history-item {
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #eee;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        
+        .dark-mode .history-item {
+            border-color: #393463;
+        }
+        
+        .history-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            background-color: #fafafa;
+        }
+        
+        .dark-mode .history-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
+            background-color: #2e2b59;
+        }
+        
+        .history-item-cards {
+            display: flex;
+            margin-right: 15px;
+        }
+        
+        .history-item-card {
+            width: 48px;
+            height: 80px;
+            margin-right: -15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .history-item-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .history-item-content {
+            flex: 1;
+        }
+        
+        .history-item-title {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .history-item-meta {
+            display: flex;
+            font-size: 12px;
+            color: #888;
+        }
+        
+        .dark-mode .history-item-meta {
+            color: #aaa;
+        }
+        
+        .history-item-date {
+            margin-right: 15px;
+        }
+        
+        .history-item-tags {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .history-tag {
+            padding: 2px 8px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            font-size: 11px;
+        }
+        
+        .dark-mode .history-tag {
+            background-color: #393463;
+        }
+        
+        .history-tag.love {
+            background-color: #ffe6e8;
+            color: #ff5c75;
+        }
+        
+        .history-tag.career {
+            background-color: #e6f3ff;
+            color: #3498db;
+        }
+        
+        .history-tag.health {
+            background-color: #e8f5e9;
+            color: #4caf50;
+        }
+        
+        .history-tag.finance {
+            background-color: #fff8e1;
+            color: #f5a623;
+        }
+        
+        /* 占卜详情样式 */
+        .tarot-detail-container {
+            display: none;
+        }
+        
+        .tarot-detail-container.active {
+            display: block;
+        }
+        
+        .detail-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .back-button {
+            background: none;
+            border: none;
+            color: #7c4dff;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 0;
+            margin-right: 15px;
+        }
+        
+        .dark-mode .back-button {
+            color: #9c7aff;
+        }
+        
+        .back-button i {
+            margin-right: 5px;
+        }
+        
+        .detail-title {
+            font-size: 18px;
+            font-weight: 600;
+            flex: 1;
+        }
+        
+        .detail-date {
+            font-size: 12px;
+            color: #888;
+        }
+        
+        .dark-mode .detail-date {
+            color: #aaa;
+        }
+        
+        .detail-cards {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .detail-card {
+            width: 120px;
+            position: relative;
+        }
+        
+        .detail-card.reversed img {
+            transform: rotate(180deg);
+        }
+        
+        .detail-card-image {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .detail-card-label {
+            text-align: center;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+        
+        .detail-card-position {
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+        }
+        
+        .detail-reading {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .dark-mode .detail-reading {
+            background-color: #2e2b59;
+        }
+        
+        .reading-section {
+            margin-bottom: 20px;
+        }
+        
+        .reading-section-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #7c4dff;
+        }
+        
+        .dark-mode .reading-section-title {
+            color: #9c7aff;
+        }
+        
+        .reading-section-content {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="javascript:void(0)">
+                    <span>🔮</span>
+                    <span>Tarot09</span>
+                </a>
+            </div>
+            
+            <button class="menu-toggle" aria-label="菜单">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-capsules">
+                <!-- 主导航胶囊 -->
+                <div class="nav-capsule main-nav-capsule">
+                    <div class="nav-menu">
+                        <ul>
+                            <li><a href="javascript:void(0)" class="nav-link active">首页</a></li>
+                            <li><a href="ai-taluopai.html" class="nav-link">AI塔罗占卜</a></li>
+                            <li><a href="yes-no-tarot.html" class="nav-link">是否塔罗占卜</a></li>
+                            <li><a href="javascript:void(0)" class="nav-link premium" id="premiumLink"><i class="fas fa-crown"></i> 会员订阅</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 用户控制胶囊 -->
+                <div class="nav-capsule user-controls-capsule">
+                    <div class="user-controls">
+                        <button class="theme-toggle" aria-label="切换主题">
+                            <i class="fas fa-moon"></i>
+                            <i class="fas fa-sun"></i>
+                        </button>
+                        <button class="language-toggle" aria-label="切换语言">
+                            <i class="fas fa-globe"></i>
+                        </button>
+                        <div class="user-profile-container">
+                            <a href="javascript:void(0)" class="user-profile" id="userProfileButton">
+                                😊
+                            </a>
+                            <!-- 用户菜单下拉框 -->
+                            <div class="user-dropdown" id="userDropdown">
+                                <div class="user-email">
+                                    当前账号<br>
+                                    <span id="userEmailDisplay">ryujo.xys@gmail.com</span>
+                                    <span id="vipStatusIndicator" class="vip-indicator not-vip">非VIP会员</span>
+                                </div>
+                                <div class="user-menu-item" id="userCenterMenuItem">
+                                    <i class="fas fa-user"></i>
+                                    <span>个人中心</span>
+                                </div>
+                                <div class="user-menu-item" id="tarotHistoryMenuItem">
+                                    <i class="fas fa-history"></i>
+                                    <span>占卜记录</span>
+                                </div>
+                                <div class="user-menu-item" id="membershipStatusMenuItem">
+                                    <i class="fas fa-crown"></i>
+                                    <span>会员订阅</span>
+                                </div>
+                                <div class="user-menu-item" id="logoutMenuItem">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <span>注销</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main>
+        <!-- 头部区域 -->
+        <section class="hero-section text-center">
+            <div class="container">
+                <h1 class="main-title">
+                    <span class="title-black">免费在线</span><br>
+                    <span class="title-purple">AI塔罗牌</span><span class="title-black">占卜</span>
+                </h1>
+                <p class="subtitle">2025年在线AI塔罗牌占卜，AI塔罗牌占卜解读您的爱情事业学业运势</p>
+                <a href="ai-taluopai.html" class="action-button purple-button">
+                    开始塔罗占卜 <i class="fas fa-arrow-right"></i>
+                </a>
+                
+                <!-- 故事分享模块 -->
+                <div class="story-sharing-section">
+                    <h2 class="section-title">故事分享</h2>
+                    <div class="stories-container">
+                        <!-- 故事卡片1 -->
+                        <div class="story-card" data-story-id="1">
+                            <h3 class="story-title">爱情抉择的困惑</h3>
+                            <div class="story-tarot-cards">
+                                <div class="story-tarot-card">
+                                    <img src="images/06恋人.jpg" alt="恋人牌">
+                                </div>
+                                <div class="story-tarot-card">
+                                    <img src="images/圣杯2.jpg" alt="圣杯二">
+                                </div>
+                                <div class="story-tarot-card">
+                                    <img src="images/权杖骑士.jpg" alt="权杖骑士">
+                                </div>
+                            </div>
+                            <p class="story-preview">面对两段感情，我该如何抉择？AI的解读让我豁然开朗...</p>
+                            <button class="story-read-more">查看完整故事</button>
+                        </div>
+                        
+                        <!-- 故事卡片2 -->
+                        <div class="story-card" data-story-id="2">
+                            <h3 class="story-title">职业转型的迷茫</h3>
+                            <div class="story-tarot-cards">
+                                <div class="story-tarot-card">
+                                    <img src="images/10命运之轮.jpg" alt="命运之轮">
+                                </div>
+                                <div class="story-tarot-card">
+                                    <img src="images/星币8.jpg" alt="星币八">
+                                </div>
+                                <div class="story-tarot-card">
+                                    <img src="images/19太阳.jpg" alt="太阳">
+                                </div>
+                            </div>
+                            <p class="story-preview">转行是否正确？塔罗牌给我指明了方向...</p>
+                            <button class="story-read-more">查看完整故事</button>
+                        </div>
+                        
+                        <!-- 故事卡片3 -->
+                        <div class="story-card" data-story-id="3">
+                            <h3 class="story-title">学业压力的缓解</h3>
+                            <div class="story-tarot-cards">
+                                <div class="story-tarot-card">
+                                    <img src="images/09隐士.jpg" alt="隐士">
+                                </div>
+                                <div class="story-tarot-card">
+                                    <img src="images/宝剑4.jpg" alt="宝剑四">
+                                </div>
+                                <div class="story-tarot-card">
+                                    <img src="images/星币ACE.jpg" alt="星币王牌">
+                                </div>
+                            </div>
+                            <p class="story-preview">考研压力让我喘不过气，AI塔罗给我意想不到的建议...</p>
+                            <button class="story-read-more">查看完整故事</button>
+                        </div>
+                    </div>
+                    <!-- 查看更多按钮 -->
+                    <div class="view-more-container">
+                        <a href="stories.html" class="action-button purple-button view-more-button">
+                            查看更多故事 <i class="fas fa-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI塔罗牌占卜部分 -->
+        <section class="content-section split-section tarot-feature-section">
+            <div class="container fullwidth-container">
+                <div class="split-content center-content">
+                    <div class="image-content">
+                        <div class="three-card-spread">
+                            <div class="tarot-card-back">
+                                <img src="images/背面A.jpg" alt="塔罗牌背面">
+                            </div>
+                            <div class="tarot-card-back">
+                                <img src="images/背面A.jpg" alt="塔罗牌背面">
+                            </div>
+                            <div class="tarot-card-back">
+                                <img src="images/背面A.jpg" alt="塔罗牌背面">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-content">
+                        <h2 class="section-title feature-title">AI塔罗牌占卜</h2>
+                        <p class="section-description">直击式塔罗牌占卜，选择不同风格的塔罗师解读问题</p>
+                        <a href="ai-taluopai.html" class="action-button purple-sm-button">
+                            开始AI塔罗占卜
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 是否塔罗牌占卜部分 -->
+        <section class="content-section split-section tarot-feature-section">
+            <div class="container fullwidth-container">
+                <div class="split-content center-content">
+                    <div class="text-content">
+                        <h2 class="section-title feature-title">是否塔罗牌占卜</h2>
+                        <p class="section-description">通过简单的是否问题，获得在线塔罗的智能指引</p>
+                        <a href="yes-no-tarot.html" class="action-button purple-sm-button">
+                            立即免费塔罗占卜
+                        </a>
+                    </div>
+                    <div class="image-content">
+                        <div class="single-card-spread">
+                            <div class="tarot-card-back flippable" id="yesNoCard">
+                                <div class="card-inner">
+                                    <div class="card-front">
+                                        <img src="images/背面A.jpg" alt="塔罗牌背面">
+                                    </div>
+                                    <div class="card-back">
+                                        <!-- 翻牌后显示随机卡牌，由JS控制 -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 功能特点区域 -->
+        <section class="features-section">
+            <div class="container">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon blue-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>在线塔罗占卜服务</h3>
+                        <p>无论何时何地，我们的在线AI塔罗师都能为您提供专业的塔罗牌占卜服务。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon blue-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <h3>多元塔罗师风格</h3>
+                        <p>选择不同风格的AI塔罗师，体验个性化的占卜解读。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon blue-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h3>多种神秘牌阵</h3>
+                        <p>种下经典牌阵，每种牌阵针对不同问题类型提供深入解读。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon blue-icon">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <h3>在线解牌储存系统</h3>
+                        <p>满足科学存储系统，查看历史塔罗牌记录，查询以往的解读力。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon blue-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>每日塔罗牌运势</h3>
+                        <p>订阅每日精准的塔罗日占卜，每天获得精准电子提醒。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon blue-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>星座占卜解答</h3>
+                        <p>针对特定星座的塔罗牌解读，获得更有针对性的塔罗牌解读。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    © 2023 AI塔罗牌 - 版权所有
+                </div>
+                <div class="footer-links">
+                    <a href="about.html">关于我们</a>
+                    <a href="privacy.html">隐私政策</a>
+                    <a href="terms.html">使用条款</a>
+                    <a href="contact.html">联系我们</a>
+                    <a href="wenti-fankui.html">问题反馈</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 会员订阅弹窗 -->
+    <div class="modal-overlay" id="subscriptionModal">
+        <div class="subscription-modal">
+            <div class="modal-header">
+                <h3 class="modal-title">升级会员</h3>
+                <p class="modal-subtitle">享受无限次塔罗占卜和更多高级功能</p>
+            </div>
+            
+            <div class="plan-options">
+                <div class="plan-option" data-plan="monthly">
+                    <div class="plan-name">
+                        月度会员 <span class="plan-price">¥18.00</span>
+                    </div>
+                    <p class="plan-description">每月自动续费，随时可取消</p>
+                </div>
+                
+                <div class="plan-option selected" data-plan="quarterly">
+                    <div class="plan-name">
+                        季度会员 <span class="plan-price">¥48.00</span>
+                    </div>
+                    <p class="plan-description">每三个月自动续费，相当于每月¥16.00</p>
+                </div>
+                
+                <div class="plan-option" data-plan="yearly">
+                    <div class="plan-name">
+                        年度会员 <span class="plan-price">¥168.00</span>
+                    </div>
+                    <p class="plan-description">每年自动续费，相当于每月¥14.00，最划算</p>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="cancel-button" id="cancelSubscription">取消</button>
+                <button class="subscribe-button" id="confirmSubscription">确认订阅</button>
+            </div>
+            
+            <div class="term-conditions">
+                <p>订阅即表示您同意我们的服务条款和隐私政策。可在到期前24小时取消自动续订。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 登录弹窗 -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="login-modal">
+            <div class="modal-header">
+                <h3 class="modal-title">用户登录</h3>
+            </div>
+            
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">邮箱</label>
+                    <input type="email" id="loginEmail" name="email" placeholder="请输入邮箱" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="loginPassword">密码</label>
+                    <input type="password" id="loginPassword" name="password" placeholder="请输入密码" required>
+                </div>
+                
+                <button type="submit" class="login-button">登录</button>
+                
+                <div class="form-footer">
+                    <p>还没有账号？<a href="javascript:void(0)" id="registerLink">立即注册</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 故事详情弹窗 -->
+    <div class="modal-overlay" id="storyDetailModal">
+        <div class="story-detail-modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="storyModalTitle">故事标题</h3>
+                <button class="close-modal" id="closeStoryModal"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="story-tarot-cards-large">
+                <div class="story-tarot-card-large" id="storyCard1">
+                    <img src="" alt="塔罗牌">
+                    <p class="card-name">牌名</p>
+                </div>
+                <div class="story-tarot-card-large" id="storyCard2">
+                    <img src="" alt="塔罗牌">
+                    <p class="card-name">牌名</p>
+                </div>
+                <div class="story-tarot-card-large" id="storyCard3">
+                    <img src="" alt="塔罗牌">
+                    <p class="card-name">牌名</p>
+                </div>
+            </div>
+            
+            <div class="chat-container" id="storyChat">
+                <!-- 问题 -->
+                <div class="chat-message user-message">
+                    <div class="message-avatar">👤</div>
+                    <div class="message-content">
+                        <p class="message-text" id="userQuestion">用户问题将显示在这里</p>
+                    </div>
+                </div>
+                
+                <!-- AI回答 -->
+                <div class="chat-message ai-message">
+                    <div class="message-avatar">🔮</div>
+                    <div class="message-content">
+                        <p class="message-text" id="aiAnswer">AI回答将显示在这里</p>
+                    </div>
+                </div>
+                
+                <!-- 用户反馈 -->
+                <div class="chat-message user-message">
+                    <div class="message-avatar">👤</div>
+                    <div class="message-content">
+                        <p class="message-text" id="userFeedback">用户反馈将显示在这里</p>
+                    </div>
+                </div>
+                
+                <!-- AI再次回答 -->
+                <div class="chat-message ai-message">
+                    <div class="message-avatar">🔮</div>
+                    <div class="message-content">
+                        <p class="message-text" id="aiSecondAnswer">AI的进一步解读将显示在这里</p>
+                    </div>
+                </div>
+            </div>
+            <div class="privacy-notice">我们注重用户隐私，此内容由ai生成</div>
+        </div>
+    </div>
+
+    <!-- 个人中心弹窗 -->
+    <div class="modal-overlay" id="userCenterModal">
+        <div class="user-center-modal">
+            <div class="user-center-header">
+                <button class="user-center-close" id="closeUserCenter"><i class="fas fa-times"></i></button>
+                <div class="user-center-avatar" id="userAvatar">😊</div>
+                <div class="user-center-name" id="userNickname">塔罗爱好者</div>
+                <div class="user-center-email" id="userCenterEmail">ryujo.xys@gmail.com</div>
+            </div>
+            
+            <div class="user-center-content">
+                <form class="profile-form" id="profileForm">
+                    <div class="form-group">
+                        <label for="profileEmail">邮箱</label>
+                        <input type="email" id="profileEmail" class="form-control" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="profileNickname">昵称</label>
+                        <input type="text" id="profileNickname" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="profileGender">性别</label>
+                        <select id="profileGender" class="form-control">
+                            <option value="male">男</option>
+                            <option value="female">女</option>
+                            <option value="secret">保密</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="profileBirthday">生日</label>
+                        <input type="date" id="profileBirthday" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="profileStatus">生活状态</label>
+                        <select id="profileStatus" class="form-control">
+                            <option value="single">单身</option>
+                            <option value="relationship">恋爱中</option>
+                            <option value="married">已婚</option>
+                            <option value="complicated">复杂</option>
+                            <option value="secret">保密</option>
+                        </select>
+                    </div>
+                    
+                    <div class="toggle-switch-container">
+                        <span class="toggle-switch-label">开启专属塔罗师解读</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="exclusiveTarotistToggle">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="user-center-footer">
+                <button class="save-button" id="saveProfile">保存设置</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 占卜记录弹窗 -->
+    <div class="modal-overlay" id="tarotHistoryModal">
+        <div class="tarot-history-modal">
+            <div class="tarot-history-header">
+                <h3 class="tarot-history-title">占卜记录</h3>
+                <button class="close-modal" id="closeTarotHistory"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="tarot-history-content" id="tarotHistoryContent">
+                <!-- 占卜记录列表 -->
+                <div class="history-list-container" id="historyListContainer">
+                    <div class="history-empty" id="historyEmpty">
+                        <i class="fas fa-search" style="font-size: 40px; margin-bottom: 15px; opacity: 0.3;"></i>
+                        <p>暂无占卜记录</p>
+                    </div>
+                </div>
+                
+                <!-- 占卜详情界面 -->
+                <div class="tarot-detail-container" id="tarotDetailContainer">
+                    <div class="detail-header">
+                        <button class="back-button" id="backToHistoryList">
+                            <i class="fas fa-arrow-left"></i> 返回
+                        </button>
+                        <div class="detail-title">我的创业计划会成功吗？</div>
+                        <div class="detail-date">2023-11-15 08:30</div>
+                    </div>
+                    
+                    <div class="detail-cards">
+                        <div class="detail-card">
+                            <img src="images/星币4.jpg" alt="塔罗牌" class="detail-card-image">
+                            <div class="detail-card-label">星币四</div>
+                            <div class="detail-card-position">过去</div>
+                        </div>
+                        <div class="detail-card reversed">
+                            <img src="images/圣杯2.jpg" alt="塔罗牌" class="detail-card-image">
+                            <div class="detail-card-label">圣杯二（逆位）</div>
+                            <div class="detail-card-position">现在</div>
+                        </div>
+                        <div class="detail-card">
+                            <img src="images/权杖骑士.jpg" alt="塔罗牌" class="detail-card-image">
+                            <div class="detail-card-label">权杖骑士</div>
+                            <div class="detail-card-position">未来</div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-reading">
+                        <div class="reading-section">
+                            <div class="reading-section-title">综合解读</div>
+                            <div class="reading-section-content">
+                                根据塔罗牌的指引，您的创业计划显示出很强的潜力。您过去的努力和资源积累（星币四）为您奠定了坚实的基础，虽然目前面临一些合作或决策上的挑战（圣杯二逆位），但未来有积极行动和突破的迹象（权杖骑士）。总体而言，只要克服当前的障碍并保持进取精神，您的创业计划有较大可能获得成功。
+                            </div>
+                        </div>
+                        
+                        <div class="reading-section">
+                            <div class="reading-section-title">过去 - 星币四</div>
+                            <div class="reading-section-content">
+                                星币四代表资源的积累和管理。在您的创业计划中，这张牌显示您已经做了充分的准备工作，积累了必要的资源、经验或人脉。您的基础相当扎实，这是支持您创业的重要因素。过去的务实态度和严谨规划为您赢得了稳定的起点。
+                            </div>
+                        </div>
+                        
+                        <div class="reading-section">
+                            <div class="reading-section-title">现在 - 圣杯二（逆位）</div>
+                            <div class="reading-section-content">
+                                圣杯二逆位暗示合作关系或决策方面的困难。在当前阶段，您可能面临合作伙伴选择的挑战，或在重要决策上感到犹豫不决。这张牌提醒您需要更果断地处理人际关系，明确自己真正想要的方向。逆位的圣杯二也可能表明现阶段存在沟通不畅或内部不和谐的情况需要解决。
+                            </div>
+                        </div>
+                        
+                        <div class="reading-section">
+                            <div class="reading-section-title">未来 - 权杖骑士</div>
+                            <div class="reading-section-content">
+                                权杖骑士代表热情、行动和冒险精神。这张牌出现在未来位置，预示着您的创业之旅将呈现积极向上的势头。您将以充沛的能量和创新精神推动项目前进，并可能迎来新的机遇和突破。权杖骑士也暗示您需要保持灵活性和适应能力，准备好迅速行动以把握转瞬即逝的机会。
+                            </div>
+                        </div>
+                        
+                        <div class="reading-section">
+                            <div class="reading-section-title">建议</div>
+                            <div class="reading-section-content">
+                                <ul>
+                                    <li>利用好您已积累的资源和经验，这是您创业的有力支撑</li>
+                                    <li>明确合作伙伴选择的标准，提升团队沟通效率</li>
+                                    <li>在关键决策点保持果断，避免过度犹豫</li>
+                                    <li>保持创业的热情和进取精神，同时确保计划的灵活性</li>
+                                    <li>准备好应对快速变化的市场环境，及时调整策略</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <!-- 导入订阅模块脚本 -->
+    <script src="js/subscription.js"></script>
+    <!-- 导入测试脚本 -->
+    <script src="js/test-subscription.js"></script>
+    <!-- 导入导航栏模块脚本 -->
+    <script src="js/navbar.js"></script>
+    <!-- 导入故事分享模块脚本 -->
+    <script src="js/story-sharing.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取所有链接
+            var links = document.querySelectorAll('a');
+            
+            // 将所有链接更改为无效链接，但保留AI塔罗占卜链接
+            links.forEach(function(link) {
+                var href = link.getAttribute('href');
+                if (href !== 'javascript:void(0)' && href !== 'ai-taluopai.html' && href !== 'yes-no-tarot.html' && href !== 'stories.html') {
+                    link.setAttribute('href', 'javascript:void(0)');
+                }
+            });
+            
+            // 用户数据模拟 - 实际应用中应当从服务器获取
+            let userData = {
+                isLoggedIn: true,
+                email: 'ryujo.ryujo@protonmail.com',
+                isVip: false,
+                nickname: '塔罗爱好者',
+                gender: '保密',
+                birthday: '1990-01-01',
+                status: '单身',
+                exclusiveTarotist: false
+            };
+            
+            // 模拟占卜记录数据
+            let tarotHistoryData = [
+                {
+                    id: 1,
+                    question: "我的创业计划会成功吗？",
+                    date: "2023-11-15 08:30",
+                    cards: ["星币4.jpg", "圣杯2.jpg", "权杖骑士.jpg"],
+                    tags: ["事业", "财富"]
+                },
+                {
+                    id: 2,
+                    question: "我和现在的伴侣关系会长久吗？",
+                    date: "2023-11-10 15:45",
+                    cards: ["恋人.jpg", "星币6.jpg", "圣杯9.jpg"],
+                    tags: ["爱情"]
+                },
+                {
+                    id: 3,
+                    question: "最近的健康状况如何？",
+                    date: "2023-11-05 09:15",
+                    cards: ["星币国王.jpg", "权杖2.jpg", "节制.jpg"],
+                    tags: ["健康"]
+                },
+                {
+                    id: 4,
+                    question: "下个月的财务状况如何？",
+                    date: "2023-10-28 14:20",
+                    cards: ["圣杯7.jpg", "星币ACE.jpg", "塔.jpg"],
+                    tags: ["财富"]
+                },
+                {
+                    id: 5,
+                    question: "我是否应该接受新的工作机会？",
+                    date: "2023-10-15 10:30",
+                    cards: ["正义.jpg", "命运之轮.jpg", "宝剑骑士.jpg"],
+                    tags: ["事业", "财富"]
+                }
+            ];
+            
+            // 用户登录状态切换函数
+            function toggleLoginStatus(isLoggedIn) {
+                userData.isLoggedIn = isLoggedIn;
+                updateUserDisplay();
+                
+                // 如果登出，更新用户头像显示
+                if (!isLoggedIn) {
+                    const userProfileButton = document.getElementById('userProfileButton');
+                    userProfileButton.textContent = '👤'; // 更新为默认头像
+                } else {
+                    const userProfileButton = document.getElementById('userProfileButton');
+                    userProfileButton.textContent = '😊'; // 登录后的头像
+                }
+            }
+            
+            // 更新用户显示
+            function updateUserDisplay() {
+                const userEmailDisplay = document.getElementById('userEmailDisplay');
+                const vipStatusIndicator = document.getElementById('vipStatusIndicator');
+                const userCenterEmail = document.getElementById('userCenterEmail');
+                const userNickname = document.getElementById('userNickname');
+                
+                if (userData.isLoggedIn) {
+                    userEmailDisplay.textContent = userData.email;
+                    if (userCenterEmail) userCenterEmail.textContent = userData.email;
+                    if (userNickname) userNickname.textContent = userData.nickname;
+                    
+                    // 更新VIP状态指示
+                    if (userData.isVip) {
+                        vipStatusIndicator.classList.add('is-vip');
+                        vipStatusIndicator.classList.remove('not-vip');
+                        vipStatusIndicator.textContent = "VIP会员";
+                    } else {
+                        vipStatusIndicator.classList.add('not-vip');
+                        vipStatusIndicator.classList.remove('is-vip');
+                        vipStatusIndicator.textContent = "非VIP会员";
+                    }
+                }
+            }
+            
+            // 用户菜单切换
+            const userProfileButton = document.getElementById('userProfileButton');
+            const userDropdown = document.getElementById('userDropdown');
+            
+            userProfileButton.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                if (userData.isLoggedIn) {
+                    // 已登录，显示/隐藏用户菜单
+                    userDropdown.classList.toggle('user-dropdown-show');
+                } else {
+                    // 未登录，显示登录模态窗口
+                    document.getElementById('loginModal').classList.add('modal-show');
+                }
+            });
+            
+            // 点击页面其他地方关闭用户菜单
+            document.addEventListener('click', function(e) {
+                if (userDropdown.classList.contains('user-dropdown-show') && !userDropdown.contains(e.target) && e.target !== userProfileButton) {
+                    userDropdown.classList.remove('user-dropdown-show');
+                }
+            });
+            
+            // 用户菜单项点击事件
+            document.getElementById('userCenterMenuItem').addEventListener('click', function() {
+                // 填充个人中心弹窗内容
+                document.getElementById('userNickname').textContent = userData.nickname;
+                document.getElementById('userCenterEmail').textContent = userData.email;
+                document.getElementById('profileEmail').value = userData.email;
+                document.getElementById('profileNickname').value = userData.nickname;
+                document.getElementById('profileGender').value = userData.gender === '男' ? 'male' : userData.gender === '女' ? 'female' : 'secret';
+                document.getElementById('profileBirthday').value = userData.birthday;
+                document.getElementById('profileStatus').value = userData.status === '单身' ? 'single' : 
+                                                               userData.status === '恋爱中' ? 'relationship' : 
+                                                               userData.status === '已婚' ? 'married' : 
+                                                               userData.status === '复杂' ? 'complicated' : 'secret';
+                document.getElementById('exclusiveTarotistToggle').checked = userData.exclusiveTarotist;
+                
+                // 显示个人中心弹窗
+                document.getElementById('userCenterModal').classList.add('modal-show');
+                userDropdown.classList.remove('user-dropdown-show');
+            });
+            
+            // 关闭个人中心弹窗
+            document.getElementById('closeUserCenter').addEventListener('click', function() {
+                document.getElementById('userCenterModal').classList.remove('modal-show');
+            });
+            
+            // 保存个人资料
+            document.getElementById('saveProfile').addEventListener('click', function() {
+                // 更新用户数据
+                userData.nickname = document.getElementById('profileNickname').value;
+                userData.gender = document.getElementById('profileGender').value === 'male' ? '男' : 
+                                document.getElementById('profileGender').value === 'female' ? '女' : '保密';
+                userData.birthday = document.getElementById('profileBirthday').value;
+                userData.status = document.getElementById('profileStatus').value === 'single' ? '单身' : 
+                                document.getElementById('profileStatus').value === 'relationship' ? '恋爱中' : 
+                                document.getElementById('profileStatus').value === 'married' ? '已婚' : 
+                                document.getElementById('profileStatus').value === 'complicated' ? '复杂' : '保密';
+                userData.exclusiveTarotist = document.getElementById('exclusiveTarotistToggle').checked;
+                
+                // 更新显示
+                document.getElementById('userNickname').textContent = userData.nickname;
+                
+                // 关闭弹窗
+                document.getElementById('userCenterModal').classList.remove('modal-show');
+                
+                // 提示保存成功
+                alert('个人资料保存成功！');
+            });
+            
+            document.getElementById('tarotHistoryMenuItem').addEventListener('click', function() {
+                // 显示占卜记录弹窗
+                document.getElementById('tarotHistoryModal').classList.add('modal-show');
+                userDropdown.classList.remove('user-dropdown-show');
+                
+                // 渲染占卜记录
+                renderTarotHistory();
+            });
+            
+            // 关闭占卜记录弹窗
+            document.getElementById('closeTarotHistory').addEventListener('click', function() {
+                document.getElementById('tarotHistoryModal').classList.remove('modal-show');
+            });
+            
+            // 点击占卜记录弹窗外区域关闭弹窗
+            document.getElementById('tarotHistoryModal').addEventListener('click', function(e) {
+                // 如果点击的是模态窗口的背景（即不是模态窗口内容），则关闭模态窗口
+                if (e.target === this) {
+                    this.classList.remove('modal-show');
+                    
+                    // 返回到记录列表视图
+                    showHistoryList();
+                }
+            });
+            
+            // 渲染占卜记录列表
+            function renderTarotHistory() {
+                const historyListContainer = document.getElementById('historyListContainer');
+                const historyEmpty = document.getElementById('historyEmpty');
+                
+                // 初始化时显示记录列表，隐藏详情
+                showHistoryList();
+                
+                // 如果没有记录，显示空状态
+                if (tarotHistoryData.length === 0) {
+                    historyEmpty.style.display = 'block';
+                    historyListContainer.innerHTML = '';
+                    historyListContainer.appendChild(historyEmpty);
+                    return;
+                }
+                
+                // 有记录，隐藏空状态并渲染记录
+                historyEmpty.style.display = 'none';
+                
+                // 按日期排序（最新的在前面）
+                const sortedHistory = [...tarotHistoryData].sort((a, b) => {
+                    return new Date(b.date) - new Date(a.date);
+                });
+                
+                // 清空内容并添加新记录
+                historyListContainer.innerHTML = '';
+                historyListContainer.appendChild(historyEmpty);
+                
+                sortedHistory.forEach(record => {
+                    const historyItem = document.createElement('div');
+                    historyItem.className = 'history-item';
+                    historyItem.dataset.id = record.id;
+                    
+                    // 创建卡牌预览
+                    const cardsHTML = `
+                        <div class="history-item-cards">
+                            ${record.cards.map(card => `
+                                <div class="history-item-card">
+                                    <img src="images/${card}" alt="塔罗牌">
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                    
+                    // 创建标签
+                    const tagsHTML = `
+                        <div class="history-item-tags">
+                            ${record.tags.map(tag => `
+                                <span class="history-tag ${getTagClass(tag)}">${tag}</span>
+                            `).join('')}
+                        </div>
+                    `;
+                    
+                    historyItem.innerHTML = `
+                        ${cardsHTML}
+                        <div class="history-item-content">
+                            <div class="history-item-title">${record.question}</div>
+                            <div class="history-item-meta">
+                                <div class="history-item-date">${record.date}</div>
+                                ${tagsHTML}
+                            </div>
+                        </div>
+                    `;
+                    
+                    // 添加点击事件
+                    historyItem.addEventListener('click', function() {
+                        // 显示占卜详情
+                        showTarotDetail(record.id);
+                    });
+                    
+                    historyListContainer.appendChild(historyItem);
+                });
+            }
+            
+            // 显示占卜记录列表
+            function showHistoryList() {
+                document.getElementById('historyListContainer').style.display = 'block';
+                document.getElementById('tarotDetailContainer').classList.remove('active');
+            }
+            
+            // 显示占卜详情
+            function showTarotDetail(recordId) {
+                // 将详情页显示为块级元素
+                document.getElementById('historyListContainer').style.display = 'none';
+                document.getElementById('tarotDetailContainer').classList.add('active');
+                
+                console.log("显示占卜详情，ID:", recordId);
+                
+                // 更新详情内容（示例实现，仅适用于第一条记录）
+                if (recordId === 1) {
+                    // 已有静态内容，不需要更新
+                } else {
+                    // 在实际应用中，这里应该根据recordId动态加载对应的占卜详情
+                    console.log("其他记录ID，需要动态加载详情");
+                }
+            }
+            
+            // 根据标签名称获取对应的CSS类
+            function getTagClass(tag) {
+                switch(tag) {
+                    case '爱情': return 'love';
+                    case '事业': return 'career';
+                    case '健康': return 'health';
+                    case '财富': return 'finance';
+                    default: return '';
+                }
+            }
+            
+            document.getElementById('membershipStatusMenuItem').addEventListener('click', function() {
+                document.getElementById('subscriptionModal').classList.add('modal-show');
+                userDropdown.classList.remove('user-dropdown-show');
+            });
+            
+            document.getElementById('logoutMenuItem').addEventListener('click', function() {
+                // 设置为登出状态
+                toggleLoginStatus(false);
+                
+                // 关闭用户下拉菜单
+                userDropdown.classList.remove('user-dropdown-show');
+            });
+            
+            // 处理登录表单提交
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const email = document.getElementById('loginEmail').value;
+                    // 在实际应用中，这里应当进行服务器验证
+                    
+                    // 模拟登录成功
+                    userData.email = email;
+                    toggleLoginStatus(true);
+                    
+                    document.getElementById('loginModal').classList.remove('modal-show');
+                });
+            }
+            
+            // 关闭登录弹窗的事件
+            document.getElementById('loginModal').addEventListener('click', function(e) {
+                // 如果点击的是模态窗口的背景（即不是模态窗口内容），则关闭模态窗口
+                if (e.target === this) {
+                    this.classList.remove('modal-show');
+                }
+            });
+            
+            // 添加会员订阅弹窗点击外部关闭功能
+            document.getElementById('subscriptionModal').addEventListener('click', function(e) {
+                // 如果点击的是模态窗口的背景（即不是模态窗口内容），则关闭模态窗口
+                if (e.target === this) {
+                    this.classList.remove('modal-show');
+                }
+            });
+            
+            // 初始化
+            updateUserDisplay();
+        });
+    </script>
+</body>
+</html> 
