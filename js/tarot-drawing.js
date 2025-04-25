@@ -896,7 +896,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // 按顺序抽取随机洗牌后的卡牌
             for (let i = 0; i < cardsToSelect; i++) {
                 setTimeout(() => {
-                    selectCard(remainingIndices[i]);
+                    // 将卡牌的朝向信息传递给selectCard函数
+                    selectCard(remainingIndices[i], cardOrientations[remainingIndices[i]]);
                 }, i * 600); // 间隔抽牌
             }
         }
