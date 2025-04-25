@@ -9,8 +9,133 @@
     <link rel="stylesheet" href="css/subscription-fix.css">
     <!-- 引入Font Awesome图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <!-- 更新favicon为SVG格式，匹配新logo设计 -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB4PSIxMCIgeT0iMTIiIHdpZHRoPSIzMiIgaGVpZ2h0PSI0MCIgcng9IjQiIHRyYW5zZm9ybT0icm90YXRlKC01IDI2IDMyKSIgZmlsbD0idXJsKCNwYWludDFfbGluZWFyKSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLW9wYWNpdHk9IjAuMiIvPjx0ZXh0IHg9IjE4IiB5PSIzMCIgZm9udC1zaXplPSIxNCIgZmlsbD0id2hpdGUiPuKYhO+4jzwvdGV4dD48cmVjdCB4PSIyMCIgeT0iMTIiIHdpZHRoPSIzMiIgaGVpZ2h0PSI0MCIgcng9IjQiIGZpbGw9InVybCgjcGFpbnQyX2xpbmVhcikiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjIiLz48dGV4dCB4PSIyOCIgeT0iMzAiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiNmNWE2MjMiPuKYuTwvdGV4dD48cmVjdCB4PSIzMCIgeT0iMTIiIHdpZHRoPSIzMiIgaGVpZ2h0PSI0MCIgcng9IjQiIHRyYW5zZm9ybT0icm90YXRlKDUgNDYgMzIpIiBmaWxsPSJ1cmwoI3BhaW50M19saW5lYXIpIiBzdHJva2U9IndoaXRlIiBzdHJva2Utb3BhY2l0eT0iMC4yIi8+PHRleHQgeD0iMzgiIHk9IjMwIiBmb250LXNpemU9IjE0IiBmaWxsPSJ3aGl0ZSI+4piFPC90ZXh0PjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQxX2xpbmVhciIgeDE9IjE1IiB5MT0iMTUiIHgyPSI0NSIgeTI9IjUwIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agc3RvcC1jb2xvcj0iIzdjNGRmZiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzZjNDJlMCIvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJwYWludDJfbGluZWFyIiB4MT0iMjUiIHkxPSIxNSIgeDI9IjU1IiB5Mj0iNTAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBzdG9wLWNvbG9yPSIjNmM0MmUwIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNWMzMmQwIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InBhaW50M19saW5lYXIiIHgxPSIzNSIgeTE9IjE1IiB4Mj0iNjUiIHkyPSI1MCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIHN0b3AtY29sb3I9IiM1YzMyZDAiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM0YzIyYzAiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48L3N2Zz4=" />
     <style>
+        /* logo样式 */
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .logo-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo-card {
+            position: absolute;
+            width: 24px;
+            height: 34px;
+            background: linear-gradient(135deg, #7c4dff, #6c42e0);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(124, 77, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform: rotate(-5deg);
+            z-index: 1;
+        }
+        
+        .logo-card:before {
+            content: "☀️";
+            position: absolute;
+            font-size: 10px;
+            top: 10px;
+            left: 7px;
+        }
+        
+        .logo-card-middle {
+            position: absolute;
+            width: 24px;
+            height: 34px;
+            background: linear-gradient(135deg, #6c42e0, #5c32d0);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(124, 77, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform: translateX(4px);
+            z-index: 2;
+        }
+        
+        .logo-card-middle:before {
+            content: "☾";
+            position: absolute;
+            color: #f5a623;
+            font-size: 10px;
+            top: 10px;
+            left: 7px;
+        }
+        
+        .logo-card-front {
+            position: absolute;
+            width: 24px;
+            height: 34px;
+            background: linear-gradient(135deg, #5c32d0, #4c22c0);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(124, 77, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform: translateX(8px) rotate(5deg);
+            z-index: 3;
+        }
+        
+        .logo-card-front:before {
+            content: "★";
+            position: absolute;
+            color: #ffffff;
+            font-size: 10px;
+            top: 10px;
+            left: 7px;
+        }
+        
+        .logo-text {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            background: linear-gradient(90deg, #7c4dff, #b47cff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+        }
+        
+        .dark-mode .logo-card,
+        .dark-mode .logo-card-middle,
+        .dark-mode .logo-card-front {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dark-mode .logo-card {
+            background: linear-gradient(135deg, #9c7aff, #7c4dff);
+        }
+        
+        .dark-mode .logo-card-middle {
+            background: linear-gradient(135deg, #8c6aff, #6c4aff);
+        }
+        
+        .dark-mode .logo-card-front {
+            background: linear-gradient(135deg, #7c5aff, #5c3aff);
+        }
+        
+        .dark-mode .logo-text {
+            background: linear-gradient(90deg, #9c7aff, #d4b3ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+        
         /* 用户菜单样式 */
         .user-dropdown {
             position: absolute;
@@ -688,8 +813,12 @@
         <div class="container">
             <div class="logo">
                 <a href="javascript:void(0)">
-                    <span>🔮</span>
-                    <span>Tarot09</span>
+                    <div class="logo-icon">
+                        <div class="logo-card"></div>
+                        <div class="logo-card-middle"></div>
+                        <div class="logo-card-front"></div>
+                    </div>
+                    <span class="logo-text">Tarot09</span>
                 </a>
             </div>
             
@@ -951,14 +1080,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="copyright">
-                    © 2023 AI塔罗牌 - 版权所有
-                </div>
-                <div class="footer-links">
-                    <a href="about.html">关于我们</a>
-                    <a href="privacy.html">隐私政策</a>
-                    <a href="terms.html">使用条款</a>
-                    <a href="contact.html">联系我们</a>
-                    <a href="wenti-fankui.html">问题反馈</a>
+                    © 2025 Tarot09 - 版权所有
                 </div>
             </div>
         </div>
