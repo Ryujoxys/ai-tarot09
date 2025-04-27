@@ -1,0 +1,144 @@
+{
+  "common": {
+    "siteName": "Tarot09",
+    "siteTitle": "探索命运的奥秘",
+    "siteDescription": "AI塔罗牌提供专业的塔罗牌占卜服务，利用人工智能解读塔罗牌，帮助您获取命运指引。",
+    "copyright": "© 2023 AI塔罗牌 - 版权所有",
+    "privacyNotice": "我们注重用户隐私，此内容由ai生成"
+  },
+  "navigation": {
+    "home": "首页",
+    "aiTarot": "AI塔罗占卜",
+    "yesNoTarot": "是否塔罗占卜",
+    "premium": "会员订阅",
+    "toggleTheme": "切换主题",
+    "toggleLanguage": "切换语言",
+    "menu": "菜单",
+    "aboutUs": "关于我们",
+    "privacyPolicy": "隐私政策",
+    "termsOfUse": "使用条款",
+    "contactUs": "联系我们",
+    "feedback": "问题反馈"
+  },
+  "homepage": {
+    "hero": {
+      "title1": "免费在线",
+      "title2": "AI塔罗牌",
+      "title3": "占卜",
+      "subtitle": "2025年在线AI塔罗牌占卜，AI塔罗牌占卜解读您的爱情事业学业运势",
+      "startButton": "开始塔罗占卜"
+    },
+    "stories": {
+      "title": "故事分享",
+      "viewMore": "查看更多故事",
+      "storyTitle": "故事标题",
+      "story1": {
+        "title": "爱情抉择的困惑",
+        "preview": "面对两段感情，我该如何抉择？AI的解读让我豁然开朗..."
+      },
+      "story2": {
+        "title": "职业转型的迷茫",
+        "preview": "转行是否正确？塔罗牌给我指明了方向..."
+      },
+      "story3": {
+        "title": "学业压力的缓解",
+        "preview": "考研压力让我喘不过气，AI塔罗给我意想不到的建议..."
+      },
+      "readMore": "查看完整故事"
+    },
+    "features": {
+      "aiTarot": {
+        "title": "AI塔罗牌占卜",
+        "description": "直击式塔罗牌占卜，选择不同风格的塔罗师解读问题",
+        "button": "开始AI塔罗占卜"
+      },
+      "yesNoTarot": {
+        "title": "是否塔罗牌占卜",
+        "description": "通过简单的是否问题，获得在线塔罗的智能指引",
+        "button": "立即免费塔罗占卜"
+      }
+    },
+    "advantages": {
+      "service": {
+        "title": "在线塔罗占卜服务",
+        "description": "无论何时何地，我们的在线AI塔罗师都能为您提供专业的塔罗牌占卜服务。"
+      },
+      "styles": {
+        "title": "多元塔罗师风格",
+        "description": "选择不同风格的AI塔罗师，体验个性化的占卜解读。"
+      },
+      "layouts": {
+        "title": "多种神秘牌阵",
+        "description": "种下经典牌阵，每种牌阵针对不同问题类型提供深入解读。"
+      },
+      "storage": {
+        "title": "在线解牌储存系统",
+        "description": "满足科学存储系统，查看历史塔罗牌记录，查询以往的解读力。"
+      },
+      "daily": {
+        "title": "每日塔罗牌运势",
+        "description": "订阅每日精准的塔罗日占卜，每天获得精准电子提醒。"
+      },
+      "zodiac": {
+        "title": "星座占卜解答",
+        "description": "针对特定星座的塔罗牌解读，获得更有针对性的塔罗牌解读。"
+      }
+    }
+  },
+  "storyModal": {
+    "userQuestion": "用户问题将显示在这里",
+    "aiAnswer": "AI回答将显示在这里",
+    "userFeedback": "用户反馈将显示在这里",
+    "aiSecondAnswer": "AI的进一步解读将显示在这里",
+    "cardName": "牌名"
+  },
+  "subscription": {
+    "title": "升级会员",
+    "subtitle": "享受无限次塔罗占卜和更多高级功能",
+    "monthly": {
+      "name": "月度会员",
+      "price": "¥18.00",
+      "description": "每月自动续费，随时可取消"
+    },
+    "quarterly": {
+      "name": "季度会员",
+      "price": "¥48.00",
+      "description": "每三个月自动续费，相当于每月¥16.00"
+    },
+    "yearly": {
+      "name": "年度会员",
+      "price": "¥168.00",
+      "description": "每年自动续费，相当于每月¥14.00，最划算"
+    },
+    "cancel": "取消",
+    "confirm": "确认订阅",
+    "terms": "订阅即表示您同意我们的服务条款和隐私政策。可在到期前24小时取消自动续订。"
+  },
+  "tarotQuestion": {
+    "title": "输入您的",
+    "subtitle": "塔罗牌问题",
+    "questionPlaceholder": "输入您想占卜的问题",
+    "questionHelper": "您想占卜什么问题？",
+    "charCounter": "0/300",
+    "submit": "开始塔罗占卜",
+    "emptyError": "请输入您想要占卜的问题",
+    "suggestions": {
+      "love": "这段缘分是未完待续...还是终将散场？",
+      "secret": "Ta心底是否藏着一个「秘密答案」？",
+      "timing": "谁会先打破沉默？72小时内的转机",
+      "career": "三个月内，我的事业转折点会出现在哪个方向？"
+    }
+  },
+  "tarotCards": {
+    "theLovers": "恋人牌",
+    "cupTwo": "圣杯二",
+    "knightOfWands": "权杖骑士",
+    "wheelOfFortune": "命运之轮",
+    "pentaclesEight": "星币八",
+    "theSun": "太阳",
+    "theHermit": "隐士",
+    "swordsFour": "宝剑四",
+    "aceOfPentacles": "星币王牌",
+    "cardBack": "塔罗牌背面"
+  }
+} 
